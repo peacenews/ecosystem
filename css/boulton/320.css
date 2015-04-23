@@ -1,0 +1,177 @@
+/*
+"Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
+Copyright (C) 2014 Zylum Ltd.
+admin@zylum.org / 5 Caledonian Rd, London, N1 9DY
+
+Version one of Peace News Ecosystem was authored by http://www.wave.coop/ info@wave.coop
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+/* Query Styles for 320px and up */
+
+body {
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+/* Header */
+
+.header {
+    border-top: 5px solid #262522;
+    border-bottom: 1px solid #d3d2cc;
+    padding-bottom: 18px ;
+    padding-bottom: 1.8rem ;
+}
+
+.header h2 {
+    font-size: 10px;
+    font-size: 1.0rem;
+    margin-top: 10px;
+    margin-top: 1.0rem;
+    margin-bottom: 3px;
+    margin-bottom: 0.3rem;
+}
+
+.header h1 {
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 14px;
+    line-height: 1.4rem;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* Post */
+
+.post {
+    margin-top: 14px;
+    margin-top: 1.4rem;
+    margin-bottom: 60px;
+    margin-bottom: 6rem;
+}
+
+article.post h1 {
+    font-size: 21px;
+    font-size: 2.1rem;
+    line-height: 30px;
+    line-height: 3rem;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+article.post span.date {
+    display: block;
+}
+
+.date {
+    font-size: 11px;
+    font-size: 1.1rem;
+}
+
+span.date {
+    margin-bottom: 18px;
+    margin-bottom: 1.8rem;
+    margin-top: 0;
+}
+
+/* Homepage */
+
+p.bio {
+    font-size: 21px;
+    font-size: 2.1rem;
+    line-height: 30px;
+    line-height: 3rem;
+    padding-top: 18px;
+    padding-top: 1.8rem;
+    padding-bottom: 18px;
+    padding-bottom: 1.8rem;
+    border-bottom: 1px solid #d3d2cc;
+}
+
+body#home #writing .date,
+body#home #speaking .date {
+    font-size: 12px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #959592;
+}
+
+body#home #writing h2,
+body#home #speaking h2 {
+    font-family: "colfax-web", sans-serif;
+    text-transform: uppercase;
+    margin-top: 0;
+    font-weight: 700;
+    text-align: center;
+    font-size: 11px;
+    font-size: 1.1rem;
+    margin: 12px 0 0 0;
+    padding: 0;
+    color: #827f7a;
+    letter-spacing: 1px;
+}
+
+body#home #writing h3,
+body#home #speaking h3 {
+    font-size: 16px;
+    font-size: 1.6rem;
+    text-align: left;
+    padding: 0;
+    margin: 16px 0 0 0;
+}
+
+body#home #writing ul li, body#home #speaking ul li {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 8px 0;
+    line-height: 1.2;
+}
+
+body#home #writing .entry {
+    margin: 0;
+}
+
+/* Footer */
+
+footer {
+    font-size: 11px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    border-bottom: 10px solid #262522;
+    border-top: 1px solid #d3d2cc;
+}
+
+footer h2 {
+    font-family: "Colfax", sans-serif;
+    text-transform: uppercase;
+    margin-top: 0;
+    font-weight: 700;
+    text-align: center;
+    font-size: 12px;
+    font-size: 1.2rem;
+    margin: 12px 0 0 0;
+    padding: 0;
+    color: #827f7a;
+    letter-spacing: 1px;
+}
+
+p.copyright {
+    border-top: 1px solid #d3d2cc;
+    padding-top: 21px;
+    padding-top: 2.1rem;
+    padding-bottom: 16px;
+    padding-bottom: 1.6rem;
+    margin-top: 58px;
+    margin-top: 5.8rem;
+}
+
+p img {
+    margin: 1em 0 1em -40px;
+    padding: 1em;
+}

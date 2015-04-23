@@ -1,0 +1,238 @@
+/*
+"Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
+Copyright (C) 2014 Zylum Ltd.
+admin@zylum.org / 5 Caledonian Rd, London, N1 9DY
+
+Version one of Peace News Ecosystem was authored by http://www.wave.coop/ info@wave.coop
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+/* General Styles (all sizes)
+
+/* Layout ------------------------------ */
+
+/* Header */
+
+.header {
+    text-align: center;
+    margin-top: 0;    
+    border-bottom: 1px solid #d3d2cc;
+}
+
+.header h2 {
+    font-style: italic;
+    color: #92918c;
+}
+
+.header h1 {
+    font-family: "colfax-web", sans-serif;
+    color: #413f3a;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* General Typography ------------------------------ */
+
+body {
+    line-height: 3.2;
+    line-height: 3.2rem;
+    color: #302c25;
+    background: #f9f9f7;
+}
+
+h1 {
+    font-size: 24px;
+    font-size: 2.4rem;
+    line-height: 30px;
+    line-height: 3rem;
+    text-align: center;
+}
+
+article.post h1 {
+    font-size: 36px;
+    font-size: 3.6rem;
+    line-height: 48px;
+    line-height: 4.8rem;
+    text-align: center;
+    color: #484236;
+    font-weight: 100;
+}
+
+article.post h3 {
+    text-align: center;
+}
+
+h2, h3 {
+    font-size: 18px;
+    font-size: 1.8rem;
+    margin-top: 36px;
+    margin-top: 3.6rem;
+    margin-bottom: 18px;
+    margin-bottom: 1.8rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 100;
+}
+
+p + p {
+    text-indent: 2em;
+}
+
+h1 + p.date {
+}
+
+.date {
+    font-style: italic;    
+}
+
+span.date {
+    text-align: center;
+    color: #60594c;
+}
+
+p.meta {
+    font-size: 12px;
+    font-size: 1.2rem;
+    font-family: "colfax-web", sans-serif;
+    margin-top: 0;
+    padding-top: 0;
+    text-align: center;
+    margin: 2em 0 0 0;
+    padding: 1em 0 1em 0;
+    border-bottom: 3px solid #ccc;
+}
+
+
+blockquote {
+    margin: 0 2em 1em;
+    color: #878580;
+    font-style: italic;
+    font-size: 18px;
+    font-size: 1.8rem;
+    line-height: 28px;
+    margin-top: 1.8em;
+    margin-bottom: 1.8em;
+}
+
+
+blockquote a {
+    color: #3c3831;
+    border-bottom: 1px solid #3c3831;
+    text-decoration: none;
+}
+
+blockquote a:hover {
+    color: #262522;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+cite {
+    display: block;
+}
+
+h2 + *, h3 + *, h4 + * {
+    margin-top: 20px;
+    margin-top: 2rem;
+}
+
+h2 + p, h3 + p, h4 + p {
+    margin-top: 0;
+}
+
+a {
+    color: #729638;
+    border-bottom: 1px solid #729638;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4d6624;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+img {
+}
+
+ul,
+ol {
+    margin-top: 16px;
+    margin-top: 1.6rem;
+    margin-bottom: 16px;
+    margin-bottom: 1.6rem;
+}
+
+/* Promos */
+
+#fusion_ad,
+#book {
+    margin-top: 16px;
+    margin-top: 1.6rem;
+    padding-top: 0;
+    margin-bottom: 21px;
+    margin-bottom: 2.1rem;
+}
+
+#fusion_ad .fusionentire img {
+    float: left;
+    margin-right: 12px;
+    margin-right: 1.2rem;
+}
+
+#book img {
+    float: left;
+    margin-right: 12px;
+    margin-right: 1.2rem;
+}
+
+/* Homepage */
+
+p.bio {
+    border-bottom: 1px solid #d3d2cc;
+}
+
+p.copyright {    
+    text-align: center;
+    padding-left: 9.3%;
+    padding-right: 9.3%;
+}
+
+/* Layout ------------------------------ */
+
+body#home #writing .date,
+body#home #speaking .date {
+    color: #959592;
+}
+
+body#home #writing ul,
+body#home #speaking ul {
+    list-style: none;
+}
+
+body#home #writing ul li,
+body#home #speaking ul li {
+    margin: 0;
+    padding: 0;
+}
+
+body#home #writing a,
+body#home #speaking a {
+    font-family: "colfax-web", sans-serif;
+    text-decoration: none;
+    border: none;
+    color: #000;
+    font-weight: 500;
+    color: #302c25;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

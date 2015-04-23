@@ -1,0 +1,633 @@
+/*
+"Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
+Copyright (C) 2014 Zylum Ltd.
+admin@zylum.org / 5 Caledonian Rd, London, N1 9DY
+
+Version one of Peace News Ecosystem was authored by http://www.wave.coop/ info@wave.coop
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+@charset "UTF-8";
+/* RESET */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strike, strong, sub, sup, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    font-size: 100%;
+    font-style: normal;
+    vertical-align: baseline;
+    text-decoration: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body {
+    color: #2f2012;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.25em;
+    background: #eee;
+    margin: 0;
+    position: relative;
+}
+ul {
+    list-style: none;
+}
+a, a:hover, a:active, a:focus {
+    outline: none; /* stops nasty dotted line in firefox from showing on clicked elements */
+}
+/* end RESET */
+
+button, input, select, textarea {
+    /*font-size: 11px;*/
+    margin: 0;
+    vertical-align: baseline;
+}
+* html .group, :first-child+html .group {
+    zoom: 1;
+}
+.group:after { /* like clearfix */
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+* {
+    margin: 0;
+}
+* html .group, :first-child+html .group {
+    zoom: 1;
+}
+.group:after { /* like clearfix */
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+/* -------------------------------------------------------------- 
+   
+   Basic typography
+  
+-------------------------------------------------------------- */
+
+h1 {
+    font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
+    line-height: 1.15em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: #666;
+}
+#header h1 {
+    font-size: 1em;
+}
+h2 {
+    font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
+    line-height: 1.15em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: #666;
+}
+h3 {
+    font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
+    line-height: 1.15em;
+    font-weight: bold;
+    margin-bottom: 0.25em;
+    color: #666;
+}
+h4 {
+    line-height: 1.15em;
+    font-weight: bold;
+    color: #666;
+}
+h5, h6 {
+    font-size: 1em;
+    font-weight: bold;
+    color: #666;
+}
+em {
+    font-style: italic;
+}
+th, td {
+    text-align: left;
+}
+
+#main ul {
+    font-size: 1;
+    margin-bottom: 1.25em;
+    line-height: 1.5em;
+}
+#main li {
+    margin-bottom: 0.25em;
+}
+#main form.full-form {
+    padding: 1em;
+    background: #cc66cc;
+    border: solid 1px #ddd;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin-bottom: 2em;
+}
+#main form fieldset {
+    clear: both;
+}
+#main form legend {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+#main form fieldset label {
+    margin-bottom: 0.25em;
+}
+#main hr {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    border: none;
+    background-color: #ddd;
+    color: #ddd;
+    height: 1px;
+    clear:both;
+}
+input {
+    margin-left: 0.5em;
+}
+input[type=checkbox], input[type=radio] {
+    height: 1.5em;
+    vertical-align: middle;
+    margin-left: 0.5em;
+}
+input[type=radio] {
+    clear:both;
+    height: 1.5em;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+input[type=submit] {
+    display: block;
+    margin-left: 0em;
+    background: #4c4c4c; /* Old browsers */
+    background: -moz-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c4c4c), color-stop(100%, #333333)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #4c4c4c 0%, #333333 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#333333', GradientType=0 ); /* IE6-9 */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 0.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #666;
+    filter: dropshadow(color=#666, offx=1, offy=1);
+}
+input[type=text], input[type=email] {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    border: solid 1px #ddd;
+    padding: 3px;
+}
+#main ul {
+    margin-top: 0em;
+    float: left;
+    clear: both;
+    width: 100%;
+}
+#main li {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+#main ul.no-bullets li {
+    list-style-type: none;
+}
+.figure {
+    padding: 5px;
+    background-color: #f4f0dc;
+    margin-bottom: 1.5em;
+}
+.figcaption {
+    font-size: 0.75em;
+    font-weight: normal;
+    color: #333;
+}
+#main a, #crumb a {
+    color: #e94a2b;
+    text-decoration: underline;
+}
+a h2, a h3 {
+    color: #e94a2b;
+}
+label {
+    float: left;
+    clear: both;
+    margin-bottom: 1em;
+}
+.radiobuttons label {
+    float: left;
+    clear: none;
+    margin-bottom: 1em;
+}
+form input {
+    float: left;
+    margin-bottom: 1em;
+}
+input[type="submit"] {
+    clear: both;
+}
+select {
+    float: left;
+    margin-bottom: 1em;
+    margin-left: 0.5em;
+}
+/* -------------------------------------------------------------- 
+   
+   Wrappers
+  
+-------------------------------------------------------------- */
+
+#header-wrapper {
+    width: 100%;
+    text-align: center;
+    background: none repeat scroll 0 0 #fff;
+    color: #fff;
+}
+#top-menu-wrapper {
+    width: 100%;
+    background: none repeat scroll 0 0 #ccc;
+    border-bottom: solid 1px #999;
+}
+#main-nav-wrapper {
+    width: 100%;
+}
+#crumb-wrapper {
+    width: 100%;
+    background-color: #fff2f0;
+    border-bottom: solid 1px #ddd;
+}
+#main-wrapper {
+    width: 100%;
+    background-color: #fff;
+    min-height: 530px;
+    padding-top: 15px;
+}
+#footer-wrapper {
+    width: 100%;
+    border-top: solid 1px #ccc;
+}
+/* -------------------------------------------------------------- 
+   
+   Header
+  
+-------------------------------------------------------------- */
+
+#top-menu li {
+    float: left;
+    list-style-type: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: inherit;
+    list-style-position: outside;
+}
+#top-menu a:link, #top-menu a:visited {
+    color: #fff;
+    line-height: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
+    float: left;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #666;
+    filter: dropshadow(color=#666, offx=1, offy=1);
+}
+#top-menu a:hover, #top-menu a:visited:hover {
+    background: #000;
+}
+#top-menu .dash-link:link, #top-menu .dash-link:visited {
+    /*margin-right: 2em;*/
+}
+#header {
+    max-width: 980px;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    padding-bottom: 1em;
+    display: none;
+}
+#top-menu {
+    width: 100%;
+    text-align: left;
+    max-width: 98%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#brand {
+    float: left;
+    width: 100%;
+}
+#header a {
+}
+/* -------------------------------------------------------------- 
+   
+   Main nav
+  
+-------------------------------------------------------------- */
+
+#main-nav {
+    max-width: 980px;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+}
+#main-nav .nav {
+    margin-left: -18px;
+}
+#main-nav li {
+    float: left;
+    line-height: 1;
+}
+#main-nav a:link, #main-nav a:visited {
+    float: left;
+    padding-top: 8px;
+    padding-right: 19px;
+    padding-left: 18px;
+    padding-bottom: 8px;
+}
+#main-nav a:hover, #main-nav a:visited:hover {
+}
+/* -------------------------------------------------------------- 
+   
+   Main
+  
+-------------------------------------------------------------- */
+#crumb {
+    max-width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+#main {
+    max-width: 980px;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #fff;
+    margin-top: 1em;
+}
+#main .chunk {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-bottom: 1em;
+}
+#main .chunk .padded {
+    margin: 1em;
+}
+#main .pale-bg {
+    background-color: #f1f1f1;
+}
+.s-printfriendly-doc {
+    padding: 1em;
+    border: solid 1px #ddd;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+#main .button {
+    clear:both;
+    float:left;
+    margin-bottom:2em;
+}
+#main .button a  {
+    margin-right:1em;
+    background: #4c4c4c; /* Old browsers */
+    background: -moz-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c4c4c), color-stop(100%, #333333)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #4c4c4c 0%, #333333 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#333333', GradientType=0 ); /* IE6-9 */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 0.5em;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #666;
+    filter: dropshadow(color=#666, offx=1, offy=1);
+}
+/* TABLES WITH BORDES AND ROUNDED CORNERS */
+.table-list-type1 {
+    border: none;
+    border-collapse: separate;
+}
+.table-list-type1 th:first-of-type {
+    border-top-left-radius: 6px;
+}
+.table-list-type1 th:last-of-type {
+    border-top-right-radius: 6px;
+}
+.table-list-type1 tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: 6px;
+}
+.table-list-type1 tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: 6px;
+}
+.table-list-type1 th, .table-list-type1 td {
+    padding: 0.5em;
+}
+.table-list-type1 th {
+    border-top: solid 1px #ddd;
+    background: #efefef; /* Old browsers */
+    background: -moz-linear-gradient(top, #efefef 0%, #e0e0e0 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #efefef), color-stop(100%, #e0e0e0)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #efefef 0%, #e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #efefef 0%, #e0e0e0 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #efefef 0%, #e0e0e0 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #efefef 0%, #e0e0e0 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#e0e0e0', GradientType=0 ); /* IE6-9 */
+}
+.table-list-type1 td {
+    border-top: solid 1px #ddd;
+    background: #fcfcfc; /* Old browsers */
+    background: -moz-linear-gradient(top, #fcfcfc 0%, #efefef 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcfcfc), color-stop(100%, #efefef)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fcfcfc 0%, #efefef 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fcfcfc 0%, #efefef 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fcfcfc 0%, #efefef 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #fcfcfc 0%, #efefef 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#efefef', GradientType=0 ); /* IE6-9 */
+}
+/* More borders */
+.table-list-type1 tr:last-of-type td {
+    border-bottom: solid 1px #ddd;
+}
+.table-list-type1 tr th:first-of-type, .table-list-type1 tr td:first-of-type {
+    border-left: solid 1px #ddd;
+}
+.table-list-type1 tr th:last-of-type, .table-list-type1 tr td:last-of-type {
+    border-right: solid 1px #ddd;
+}
+#main .table-list-type1 p {
+    margin-bottom: 0.5em;
+}
+/* -------------------------------------------------------------- 
+   
+   Footer
+  
+-------------------------------------------------------------- */
+
+#footer {
+    max-width: 980px;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+}
+/* -------------------------------------------------------------- 
+   
+   Websites cms
+  
+-------------------------------------------------------------- */
+#w-cms {
+/*border: solid 1px #ddd;*/
+}
+#w-cms-menu {
+    width: 100%;
+    float: left;
+    clear: both;
+    overflow: hidden;
+}
+#w-cms-menu ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: inherit;
+    float: left;
+    margin-bottom: 1em;
+    border-bottom: solid 1px #DFDFDF;
+}
+#w-cms-menu li {
+    float: left;
+    list-style-type: none;
+    margin-top: 0;
+    line-height: inherit;
+    list-style-position: outside;
+    margin-bottom: 0;
+}
+#w-cms-menu a:link, #w-cms-menu a:visited {
+    color: #fff;
+    padding-left: 1em;
+    padding-right: 1em;
+    line-height: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
+    float: left;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 1px;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: #4c4c4c; /* Old browsers */
+    background: -moz-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c4c4c), color-stop(100%, #333333)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #4c4c4c 0%, #333333 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #4c4c4c 0%, #333333 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#333333', GradientType=0 ); /* IE6-9 */
+    text-shadow: 1px 1px 1px #666;
+    filter: dropshadow(color=#666, offx=1, offy=1);
+}
+#w-cms-menu a:hover, #w-cms-menu a:visited:hover {
+    background-color: #000;
+}
+#main .paged-nav li {
+    float: left;
+    list-style-type: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.5em;
+    line-height: inherit;
+    list-style-position: outside;
+}
+#main .help-q {
+    color: #fff;
+    background: #0099ff;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    margin-left: 0.5em;
+}
+#main form .help-q {
+    display: block;
+    float: left;
+    margin-bottom: 1em;
+}
+
+/* -------------------------------------------------------------- 
+   
+   Shapes n sizes - media queries
+  
+-------------------------------------------------------------- */
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* increase tappable area for fat fingers */
+
+}
+p.note, p.note2, div.note {
+    padding: 1em;
+    border: solid 1px #000;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    clear:both;
+}
+.note {
+    padding: 0;
+    background-color: #c00;
+    color: #fff;
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+    opacity: 0.75;
+}
+
+.note2 {
+    padding: 0;
+    background-color: #FC3;
+    color: #000;
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+    opacity: 0.75;
+}
+#main  .note a:link, #main .note a:visited {
+    color: #ff0;
+}
+.note h2, .note h3, .note h4 {    
+color:#fff;
+}
