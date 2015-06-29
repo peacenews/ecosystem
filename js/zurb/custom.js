@@ -28,21 +28,21 @@ $(document).ready(function() {
             width:'40%',
             height:'60%',
             inline: true,
-            className: 'login-to-zylum'
+            className: 'login'
         });
     } else {
-        jQuery('.home #register-for-zylum-button').colorbox({
+        jQuery('.home #register-button').colorbox({
             width:'90%',
             height:'90%',
             inline: true,
-            className: 'register-for-zylum'
+            className: 'register'
         });
 
-        $('.home #login-to-zylum-button').colorbox({
+        $('.home #login-button').colorbox({
             width:'90%',
             height:'90%',
             inline: true,
-            className: 'login-to-zylum'
+            className: 'login'
         });
     }
 
