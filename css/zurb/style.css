@@ -57,12 +57,12 @@ a.button.green, button.green{background-color:#6da430;}
 }
 
 /** popup register **/
-#cboxOverlay.register-for-zylum{background-color:#77337c;}
-#cboxContent #register-for-zylum{padding:55px 90px 55px 90px;}
-#cboxContent #register-for-zylum h2{margin-bottom:20px;font-size:36px;}
-#cboxContent #register-for-zylum label{color:#7c137a;font-size:18px;font-family: 'zylumbold';margin-bottom:10px;}
-#cboxContent #register-for-zylum input{border:0;border:1px solid #c5bdc4;padding:10px;font-size:24px;font-family: 'zylumlight';margin-bottom:25px;height:50px;}
-#cboxContent #register-for-zylum button{font-family: 'zylumlight';font-size:26px;border-radius: 0;color:#ffffff;}
+#cboxOverlay.register{background-color:#77337c;}
+#cboxContent #register{padding:55px 90px 55px 90px;}
+#cboxContent #register h2{margin-bottom:20px;font-size:36px;}
+#cboxContent #register label{color:#7c137a;font-size:18px;font-family: 'zylumbold';margin-bottom:10px;}
+#cboxContent #register input{border:0;border:1px solid #c5bdc4;padding:10px;font-size:24px;font-family: 'zylumlight';margin-bottom:25px;height:50px;}
+#cboxContent #register button{font-family: 'zylumlight';font-size:26px;border-radius: 0;color:#ffffff;}
 
 #cboxOverlay.login-to-zylum{background-color:#588822;}
 #cboxContent #login-to-zylum{padding:25px;}
