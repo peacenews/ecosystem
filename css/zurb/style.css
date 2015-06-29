@@ -64,15 +64,15 @@ a.button.green, button.green{background-color:#6da430;}
 #cboxContent #register input{border:0;border:1px solid #c5bdc4;padding:10px;font-size:24px;font-family: 'zylumlight';margin-bottom:25px;height:50px;}
 #cboxContent #register button{font-family: 'zylumlight';font-size:26px;border-radius: 0;color:#ffffff;}
 
-#cboxOverlay.login-to-zylum{background-color:#588822;}
-#cboxContent #login-to-zylum{padding:25px;}
-#cboxContent #login-to-zylum h2{color:#6da430;margin:25px 0 25px 0;font-size:36px;}
-#cboxContent #login-to-zylum input{color:#6c526e;border:1px solid #958497;padding:10px;font-size:24px;font-weight: 300;margin-bottom:25px;text-align: center;height:55px;}
-#cboxContent #login-to-zylum button{font-weight: 300;font-size:26px;border-radius: 0;margin-top:35px;color:#ffffff;}
-#cboxContent #login-to-zylum a{color:#6c526e;font-weight: 300;font-size:24px;vertical-align: top;}
+#cboxOverlay.login{background-color:#588822;}
+#cboxContent #login{padding:25px;}
+#cboxContent #login h2{color:#6da430;margin:25px 0 25px 0;font-size:36px;}
+#cboxContent #login input{color:#6c526e;border:1px solid #958497;padding:10px;font-size:24px;font-weight: 300;margin-bottom:25px;text-align: center;height:55px;}
+#cboxContent #login button{font-weight: 300;font-size:26px;border-radius: 0;margin-top:35px;color:#ffffff;}
+#cboxContent #login a{color:#6c526e;font-weight: 300;font-size:24px;vertical-align: top;}
 
-#cboxContent #login-to-zylum .save-password, #cboxContent #login-to-zylum .forgot-password{text-align: left;margin-bottom:25px;}
-#cboxContent #login-to-zylum .box{height:45px;width:45px;border:1px solid #958497;display:inline-block;margin-top: -5px;margin-right:20px;}
+#cboxContent #login .save-password, #cboxContent #login .forgot-password{text-align: left;margin-bottom:25px;}
+#cboxContent #login .box{height:45px;width:45px;border:1px solid #958497;display:inline-block;margin-top: -5px;margin-right:20px;}
 
 /** registration ajax responses **/
 .home .registration-response{padding: 20px;background-color: #6da430;margin-bottom: 20px;color:#ffffff;}
