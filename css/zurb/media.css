@@ -32,7 +32,7 @@ You should have received a copy of the GNU Affero General Public License along w
     .home #homepage-arrow{display:none;}
     .home .row.content .large-5{text-align: center;}
 
-    #cboxContent #register-for-zylum{padding:20px;}
+    #cboxContent #register{padding:20px;}
 
     /** about page **/
     .about .row.content.first{background:transparent;background-color:#ffffff;padding-top:0;}
