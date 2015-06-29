@@ -14,7 +14,7 @@ You should have received a copy of the GNU Affero General Public License along w
 
 $(document).ready(function() {
     //$('.home #register-button').colorbox({inline:true,width:'60%',height:'75%',className: 'register'});
-    //$('.home #login-to-zylum-button').colorbox({inline:true,width:'40%',height:'60%', className: 'login-to-zylum'});
+    //$('.home #login-button').colorbox({inline:true,width:'40%',height:'60%', className: 'login'});
 
     if($(document).width() > 700) {
         $('.home #register-button').colorbox({
@@ -24,7 +24,7 @@ $(document).ready(function() {
             className: 'register'
         });
 
-        $('.home #login-to-zylum-button').colorbox({
+        $('.home #login-button').colorbox({
             width:'40%',
             height:'60%',
             inline: true,
