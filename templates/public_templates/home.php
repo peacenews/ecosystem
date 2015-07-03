@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License along w
 <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed donim ad minim veniam. -->
 
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>title</title>
@@ -27,24 +27,24 @@ You should have received a copy of the GNU Affero General Public License along w
     <link rel="stylesheet" href="/../css/colorbox/colorbox.css" />
     <!--<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>-->
     <script src="/../js/zurb/js/vendor/modernizr.js"></script>
-  </head>
+</head>
 
-  <body class="home">
+<body class="home">
     <section id="homepage-slide">
         <div class="row">
-        <div class="large-6 columns logo">
-            <img src="/../img/logo.png" id="logo" />
-        </div>
-        <div class="large-6 columns">
-            <nav class="top-bar" data-topbar role="navigation">
-            <ul class="inline-list right">
-                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="" class="active last">Login</a></li>
-            </ul>
-            </nav>
-        </div>
+            <div class="large-6 columns logo">
+                <img src="/../img/logo.png" id="logo" />
+            </div>
+            <div class="large-6 columns">
+                <nav class="top-bar" data-topbar role="navigation">
+                    <ul class="inline-list right">
+                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Contact</a></li>
+                        <li><a href="" class="active last">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
         <div class="row content first-slide">
@@ -90,14 +90,14 @@ You should have received a copy of the GNU Affero General Public License along w
                             <form action="" method="post">
                                 <input type="text" placeholder="Login" />
                                 <input type="password" placeholder="" />
-                            <div class="save-password">
-                                <div class="box"></div>
-                                <a href="" class="light">Save my password</a>
-                            </div>
-                            <div class="forgot-password">
-                                <div class="box"></div>
-                                <a href="" class="light">Forgot your password?</a>
-                            </div>
+                                <div class="save-password">
+                                    <div class="box"></div>
+                                    <a href="" class="light">Save my password</a>
+                                </div>
+                                <div class="forgot-password">
+                                    <div class="box"></div>
+                                    <a href="" class="light">Forgot your password?</a>
+                                </div>
                                 <button class="purple">Sign In</button>
                             </form>
                         </div>
@@ -189,7 +189,7 @@ You should have received a copy of the GNU Affero General Public License along w
     <script src="/../js/colorbox/jquery.colorbox-min.js"></script>
     <script src="/../js/zurb/custom.js"></script>
     <script>
-      $(document).foundation();
+        $(document).foundation();
     </script>
-  </body>
+</body>
 </html>

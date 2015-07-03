@@ -19,7 +19,7 @@ $body_class = ($body_class == '') ? $body_class = 'home' : $body_class;
 
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>title</title> <!-- Title -->
@@ -37,11 +37,11 @@ $body_class = ($body_class == '') ? $body_class = 'home' : $body_class;
     <script src="/../js/alertify-js-shim-03/alertify.min.js"></script>
     <script src="/../js/ecosystem.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-  </head>
+</head>
 
-  <body class="<?php echo $body_class; ?>">
-      <? echo $page_control->content?>
-      <section class="footer">
+<body class="<?php echo $body_class; ?>">
+    <? echo $page_control->content?>
+    <section class="footer">
         <div class="row">
             <div class="large-2 columns">
                 <a href="/"><img src="logo.png" /></a> <!-- Logo -->
@@ -65,7 +65,7 @@ $body_class = ($body_class == '') ? $body_class = 'home' : $body_class;
     <script src="/../js/zurb/custom.js"></script>
     <script src="/js/ecosystem2.js"></script>
     <script>
-      $(document).foundation();
+        $(document).foundation();
     </script>
-  </body>
+</body>
 </html>

@@ -24,12 +24,12 @@ You should have received a copy of the GNU Affero General Public License along w
             // process items from the sign up form (non ajax)
             if (isset ($_POST[invitename]) ){
                 $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`, `why`, `type`, `valid`, `site_id`)
-                VALUES (NULL, :name , :email, :why, 'Superuser', 'No', '0')");
+                    VALUES (NULL, :name , :email, :why, 'Superuser', 'No', '0')");
                 $stmt->execute(array(
                     ':name' => $_POST[invitename],
                     ':email' => $_POST[email],
                     ':why' => $_POST[reason]
-                ));
+                    ));
             }
             ?>
         </div>

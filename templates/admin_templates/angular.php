@@ -16,15 +16,15 @@ You should have received a copy of the GNU Affero General Public License along w
 ini_set('display_errors', 1);
 
 if (isset($_GET[delete_user])){
-  delete_user($_GET[delete_user]);
+    delete_user($_GET[delete_user]);
 }
 if (isset($_GET[approve_user])){
-  $rnd_pass=approve_user($_GET[approve_user]);
-  echo md5($rnd_pass);
-  send_approval_email($_GET[approve_user],$rnd_pass);
+    $rnd_pass=approve_user($_GET[approve_user]);
+    echo md5($rnd_pass);
+    send_approval_email($_GET[approve_user],$rnd_pass);
 }
 if (isset($_POST[update_email])){
-  update_email($_POST[update_email],$_POST[app_subject],$_POST[app_content]);
+    update_email($_POST[update_email],$_POST[app_subject],$_POST[app_content]);
 }
 
 echo '<h1>New users</h1>';
@@ -55,18 +55,18 @@ echo '<h1>New users</h1>';
     }
 </script>
 <div  ng-controller="NewSignUPCntl">
-<pre ng-model="result" style="color: black;">
-{{result}}
-</pre>
-<?
-echo '<table class="control">
-  <tr>
-    <th>Name</th>
-    <th>email</th>
-    <th>Reason for joining</th>
-    <th>Delete</th>
-    <th>Approve</th>
-  </tr>';
+    <pre ng-model="result" style="color: black;">
+        {{result}}
+    </pre>
+    <?
+    echo '<table class="control">
+    <tr>
+        <th>Name</th>
+        <th>email</th>
+        <th>Reason for joining</th>
+        <th>Delete</th>
+        <th>Approve</th>
+    </tr>';
 
     $query = "SELECT * FROM `users` WHERE `valid`='No' AND `type`='Superuser'  ";
     //echo $query;
@@ -78,16 +78,16 @@ echo '<table class="control">
         <td>'.$r[why].'</td>
         <td class="delete"><a href="#" ng-click="deleted('.$r[id].')">{{dname}}</a></td>
         <td class="approve"><a href="#" ng-click="approve('.$r[id].')">{{aname}}</a></td>
-        </tr>';
-    }
-    echo '</table>';
+    </tr>';
+}
+echo '</table>';
 
-    $query = "SELECT * FROM `emails` WHERE name='approval'  ";
-        $result = $dbpdo->query($query);
-        while($r = $result->fetch(PDO::FETCH_BOTH)) {
-            $app_subject = $r[subject];
-            $app_message= $r[content];
-        }
+$query = "SELECT * FROM `emails` WHERE name='approval'  ";
+$result = $dbpdo->query($query);
+while($r = $result->fetch(PDO::FETCH_BOTH)) {
+    $app_subject = $r[subject];
+    $app_message= $r[content];
+}
 ?>
 </div>
 <h4>Update welcome email:</h4>

@@ -18,81 +18,81 @@ You should have received a copy of the GNU Affero General Public License along w
     </div>
     <div class="large-9 small-6 medium-9 columns">
         <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-            <li class="name"></li>
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-        <section class="top-bar-section">
-            <? echo  $page_control->public_navigation ?>
-        </section>
+            <ul class="title-area">
+                <li class="name"></li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+                <? echo  $page_control->public_navigation ?>
+            </section>
+        </div>
     </div>
-</div>
 
-<!-- Begin About text -->
-<div class="row content first">
-    <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
-    <div class="large-8 columns">
-        <h1 class="bold green">About</h1>
-        <h2 class="light purple">Body text</h2>
-        <h3 class="bold purple">List heading</h3>
-        <ul>
-            <li>List item</li>
-        </ul>
-        <h3 class="bold purple">Read more...</h3>
-        <p>Some text</p>
-    </div><!--large-8 columns-->
-    <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
-</div><!--row content first-->
+    <!-- Begin About text -->
+    <div class="row content first">
+        <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
+        <div class="large-8 columns">
+            <h1 class="bold green">About</h1>
+            <h2 class="light purple">Body text</h2>
+            <h3 class="bold purple">List heading</h3>
+            <ul>
+                <li>List item</li>
+            </ul>
+            <h3 class="bold purple">Read more...</h3>
+            <p>Some text</p>
+        </div><!--large-8 columns-->
+        <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
+    </div><!--row content first-->
 
-<div class="row">
-    <div class="large-12 columns testimonial text-center">
-        <p>&ldquo;Quote text&rdquo; Attributed to.</p>
-    </div><!--large-12 columns testimonial text-center-->
-</div><!--row-->
+    <div class="row">
+        <div class="large-12 columns testimonial text-center">
+            <p>&ldquo;Quote text&rdquo; Attributed to.</p>
+        </div><!--large-12 columns testimonial text-center-->
+    </div><!--row-->
 
-<div class="row content">
-    <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
-    <div class="large-8 columns">
+    <div class="row content">
+        <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
+        <div class="large-8 columns">
 
-        <h3 class="bold purple"><a name="background">Background</a></h3>
-        <p>Some text</p>
+            <h3 class="bold purple"><a name="background">Background</a></h3>
+            <p>Some text</p>
 
-        <h3 class="bold purple"><a name="who_for">Who is it for?</a></h3>
+            <h3 class="bold purple"><a name="who_for">Who is it for?</a></h3>
 
-        <ul>
-            <li>List item</li>
-        </ul>
+            <ul>
+                <li>List item</li>
+            </ul>
 
-        <h3 class="bold purple"><a name="what_it_is_not">What it is not</a></h3>
-        <p class="bold">Bla bla, but a catch. </p>
-        <p>For that reason</p>
-        <ul>
-            <li>List item</li>
-        </ul>
+            <h3 class="bold purple"><a name="what_it_is_not">What it is not</a></h3>
+            <p class="bold">Bla bla, but a catch. </p>
+            <p>For that reason</p>
+            <ul>
+                <li>List item</li>
+            </ul>
 
-        <h3 class="bold purple"><a name="why">Why?</a></h3>
-        <p>Body text</p>
+            <h3 class="bold purple"><a name="why">Why?</a></h3>
+            <p>Body text</p>
 
-        <h3 class="bold purple"><a name="how_is_it_funded">How is the service funded?</a></h3>
-        <p>Body text</p>
-        <ul>
-            <li>List item</li>
-        </ul>
+            <h3 class="bold purple"><a name="how_is_it_funded">How is the service funded?</a></h3>
+            <p>Body text</p>
+            <ul>
+                <li>List item</li>
+            </ul>
 
-        <h3 class="bold purple"><a name="need_more_help">Need more help?</a></h3>
-        <p>Body text</p>
+            <h3 class="bold purple"><a name="need_more_help">Need more help?</a></h3>
+            <p>Body text</p>
 
             <div class="leaf-bg text-center">
                 <img src="backbround.jpg"> <!-- Background image -->
             </div><!--leaf-bg text-center-->
             <div class="back-to-top text-center">
                 <div class="text-center"><img src="/img/back-to-top.png"><!-- Back to top image --></div><!--text-center-->
-            <a href="" class="back-to-top">
-                back to top
-            </a>
+                <a href="" class="back-to-top">
+                    back to top
+                </a>
             </div><!--back-to-top text-center-->
 
-    </div><!--large-8 columns-->
-    <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
-</div><!--row content-->
-<!-- End about text -->
+        </div><!--large-8 columns-->
+        <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
+    </div><!--row content-->
+    <!-- End about text -->

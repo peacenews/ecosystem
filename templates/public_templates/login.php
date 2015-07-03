@@ -23,13 +23,13 @@ You should have received a copy of the GNU Affero General Public License along w
         <div class="large-12 columns">
             <form method="post" action="/login" >
                 <p> <label for="email">Email Address: <span class="required">*</span></label>
-                <input type="email" id="email" name="login_email" value="" placeholder="example@example.com" required /></p>
-                <p> <label for="email">Password: <span class="required">*</span></label>
-                <input type="password" id="email" name="login_password" value="" placeholder="password" required /></p>
-                <p> <input type="submit" value="Login" id="submit-button" /></p>
-                <p> <a href="/forgotten_password">Forgotten your password?</a></p>
-                <p> <a href="/logout">Logout</a></p>
-            </form> 
-        </div>
-    </div>
-</section>
+                    <input type="email" id="email" name="login_email" value="" placeholder="example@example.com" required /></p>
+                    <p> <label for="email">Password: <span class="required">*</span></label>
+                        <input type="password" id="email" name="login_password" value="" placeholder="password" required /></p>
+                        <p> <input type="submit" value="Login" id="submit-button" /></p>
+                        <p> <a href="/forgotten_password">Forgotten your password?</a></p>
+                        <p> <a href="/logout">Logout</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>

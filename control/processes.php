@@ -24,56 +24,56 @@ if (isset($_FILES)) {
 }
 
 // sign up confirmation email return
-    if (isset ($_GET[email_id]) ) {
+if (isset ($_GET[email_id]) ) {
         //see if the id and password pair exists
-        $stmt = $dbpdo->prepare("SELECT * from sign_ups where id=:id and pass=:pass " );
-        $stmt->execute(array(
-            ":id" =>$_GET[email_id],
-            ":pass"=>$_GET[pass]
+    $stmt = $dbpdo->prepare("SELECT * from sign_ups where id=:id and pass=:pass " );
+    $stmt->execute(array(
+        ":id" =>$_GET[email_id],
+        ":pass"=>$_GET[pass]
         ));
-        $num_rows = $stmt->rowCount(); 
+    $num_rows = $stmt->rowCount();
         // if it does add them into the mailing list
-        if ($num_rows==1) {
-            $data = $stmt->fetch(PDO::FETCH_BOTH);
-            $pass=makeRandomPassword();
-            $stmt = $dbpdo->prepare(" INSERT INTO `mailing_list` (`id`, `site_id`, `email`, `active`, `pass`) VALUES (NULL, :web , :email  , '1', :pass); ");
-            $stmt->execute(array(
+    if ($num_rows==1) {
+        $data = $stmt->fetch(PDO::FETCH_BOTH);
+        $pass=makeRandomPassword();
+        $stmt = $dbpdo->prepare(" INSERT INTO `mailing_list` (`id`, `site_id`, `email`, `active`, `pass`) VALUES (NULL, :web , :email  , '1', :pass); ");
+        $stmt->execute(array(
                 ':email' => $data[email], // email  from sign_ups table
                 ':pass' => $pass, //new password
                 ':web' => $data[site_id] // the site_id the email is associated with
-            ));    
-            $_SESSION[message]='You have been added to the mailing list';
-        }
+                ));
+        $_SESSION[message]='You have been added to the mailing list';
+    }
 }
 
 // if you are allowed - prepare the  top navigation in admin area
 if (isset($_SESSION[manager][user_id])) {
     $page_control->navigation='
     <ul class="inline-list right">
-    <li><a href="/manage">Home</a></li>
-    <li><a href="/manage/new">New sign ups</a></li>
-    <li><a href="/manage/users">Existing users</a></li>
-    <li><a href="/manage/emails">Edit emails</a></li>
-    <li><a href="/logout">logout</a></li>
+        <li><a href="/manage">Home</a></li>
+        <li><a href="/manage/new">New sign ups</a></li>
+        <li><a href="/manage/users">Existing users</a></li>
+        <li><a href="/manage/emails">Edit emails</a></li>
+        <li><a href="/logout">logout</a></li>
     </ul>';
 }
 
 // not implemented yet
 $cms_nav=cms_nav();
-// add a dashboard link if yoiu are the right level of user    
+// add a dashboard link if yoiu are the right level of user
 if (isset($_SESSION[public_user][level]) && $_SESSION[public_user][level]!='Participant') {
     $logged_in_nav='<li><a href="/dashboard">Dashboard</a></li>';
 }
 
-// the top navigation     
+// the top navigation
 $page_control->public_navigation='
 <ul class="inline-list right">
-<li><a href="/about">About</a></li>
-<li><a href="/contact">Contact</a></li>
-<li><a href="/help">Help</a></li>
-<li><a href="/login">login/logout</a></li>
-'.$cms_nav.'
-'.$logged_in_nav.' 
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/help">Help</a></li>
+    <li><a href="/login">login/logout</a></li>
+    '.$cms_nav.'
+    '.$logged_in_nav.'
 </ul>';
 
 // if the template is any of thses files
@@ -103,7 +103,7 @@ if ($page_control->file=='new_sign_ups.php' || $page_control->file=='users.php' 
             update_email($_POST[update_email],$_POST[app_subject],$_POST[app_content]);
         }
         // for updating current form
-        $query = "SELECT * FROM `emails` WHERE name='approval'  "; 
+        $query = "SELECT * FROM `emails` WHERE name='approval'  ";
         $result = $dbpdo->query($query);
         while($r = $result->fetch(PDO::FETCH_BOTH)) {
             $app_subject = $r[subject];
@@ -125,10 +125,10 @@ if (isset ($_POST[add_doc]) ) {
             ':site_id' => $_SESSION[public_user][site_id],  //the site it is from
             ':title' => $_POST[add_doc][title], //title
             ':content' => $_POST[add_doc][content] // title
-        ));
+            ));
         // add this documents id as the original
-        $this_id=$dbpdo->lastInsertId(); 
-        $query = " update documents set original=$this_id where id=$this_id "; 
+        $this_id=$dbpdo->lastInsertId();
+        $query = " update documents set original=$this_id where id=$this_id ";
         $result = $dbpdo->query($query);
     }
 }
@@ -147,14 +147,14 @@ if (isset ($_POST[edit_doc]) ) {
             ':title' => $_POST[edit_doc][title],
             ':content' => $_POST[edit_doc][content],
             ':original' => $_SESSION[this_edit] //the original document id
-        ));
+            ));
         // make this page the current one
-        $goto = "Location: /document_sharing?edit_doc=".$dbpdo->lastInsertId(); 
-        // change he original to archived              
+        $goto = "Location: /document_sharing?edit_doc=".$dbpdo->lastInsertId();
+        // change he original to archived
         $stmt = $dbpdo->prepare("update `documents` set archive = 'Yes' where id=:id ");
         $stmt->execute(array(
             ':id' => $_GET[edit_doc]
-        ));
+            ));
         //  goto the url
         header ($goto);
     }
@@ -168,15 +168,15 @@ if (isset ($_GET[reinstate_doc]) ) {
         $stmt->execute(array(
             ':id' => $_GET[edit_doc],
             ':site_id' => $_SESSION[public_user][site_id],
-        ));
+            ));
         // make archived  current
         $stmt = $dbpdo->prepare("update `documents` set archive = 'No' where id=:id and  web_id=:site_id ");
         $stmt->execute(array(
             ':id' => $_GET[reinstate_doc],
             ':site_id' => $_SESSION[public_user][site_id],
-        ));
+            ));
         // goto current doc
-        $goto = "Location: /document_sharing?edit_doc=".$_GET[reinstate_doc];  
+        $goto = "Location: /document_sharing?edit_doc=".$_GET[reinstate_doc];
         header ($goto);
     }
 }
@@ -189,7 +189,7 @@ if ($page_control->file=='document_sharing.php') {
             $stmt->execute(array(
                 ':id' => $_GET[delete_doc],
                 ':site_id' => $_SESSION[public_user][site_id]
-            ));        
+                ));
         }
     }
 }
@@ -197,7 +197,7 @@ if ($page_control->file=='document_sharing.php') {
 // swap template if editing
 if ($page_control->file=='document_sharing.php') {
     if (isset ($_GET[edit_doc]) ) {
-        $page_control->file='edit_document.php';    
+        $page_control->file='edit_document.php';
     }
 }
 
@@ -216,16 +216,16 @@ if (isset ($_POST[invitename]) ) {
             // if the google is a success
             if($res['success']) {
                 // insert user into users table
-                $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`,`deputies`, `why`, `title`, `url`, `type`, `valid`, `site_id`) 
-                VALUES (NULL, :name , :email, :deps, :why, :title, :url,  'Superuser', 'No', '0')");
+                $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`,`deputies`, `why`, `title`, `url`, `type`, `valid`, `site_id`)
+                    VALUES (NULL, :name , :email, :deps, :why, :title, :url,  'Superuser', 'No', '0')");
                 $url=ltrim($_POST[url],'/');
-                // sanitise the url 
+                // sanitise the url
                 $url=toAscii($url);
                 // add a forward slash
                 $url='/'.$url;
                 // clean up alittle
-                foreach($_POST as $key=>$val){ 
-                    $_POST[$key]=strip_tags($_POST[$key]);               
+                foreach($_POST as $key=>$val){
+                    $_POST[$key]=strip_tags($_POST[$key]);
                 }
                 // serialize th deputies to fit into one field - this is an afterthought so not planned well
                 $deps=serialize($_POST['email-deputy']);
@@ -236,7 +236,7 @@ if (isset ($_POST[invitename]) ) {
                     ':title' => $_POST[title],
                     ':url' => $url,
                     ':why' => $_POST[reason]
-                ));
+                    ));
             }
         }
     }
@@ -267,7 +267,7 @@ if (isset ($_POST[contact]) ) {
                 $mail->From = $_POST[contact][email];
                 $mail->FromName = $_POST[name];
                 $mail->addAddress($site_email);
-                $mail->isHTML(true);   
+                $mail->isHTML(true);
                 $mail->Subject = 'Contact from Zylum site';
                 $mail->Body    = $message;
                 if(!$mail->send()) {
@@ -285,14 +285,14 @@ if (isset ($_POST[contact]) ) {
 if (isset($_POST[invite_contrib]) ) {
     //if the user is an owner
     if ($_SESSION[public_user][level]=='Superuser') {
-        $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`, `type`, `valid`, `site_id`) 
-        VALUES (NULL, :name , :email,  'Contributor', 'Yes', '".$_SESSION[public_user][site_id]."')" );
+        $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`, `type`, `valid`, `site_id`)
+            VALUES (NULL, :name , :email,  'Contributor', 'Yes', '".$_SESSION[public_user][site_id]."')" );
         $stmt->execute(array(
             ':name' =>$_POST[invite_contrib][name],
             ':email' =>$_POST[invite_contrib][email]
-        ));
+            ));
         // get this users id
-        $user_id= $dbpdo->lastInsertId(); 
+        $user_id= $dbpdo->lastInsertId();
         // send an email to them with their password
         $_SESSION[temp][message]=$_POST[invite_contrib][message];
         $rnd_pass=set_password($user_id);
@@ -306,7 +306,7 @@ if (isset($_POST[invite_contrib]) ) {
 if (isset($_GET[delete_contributor]) ) {
     if ($_SESSION[public_user][level]=='Superuser') {
         $stmt = $dbpdo->prepare('DELETE from users WHERE id = :id and `site_id`= \''.$_SESSION[public_user][site_id].'\'' );
-        $stmt->execute(array(':id' => $_GET[delete_contributor]));    
+        $stmt->execute(array(':id' => $_GET[delete_contributor]));
     }
 }
 
@@ -316,19 +316,19 @@ if (isset($_POST[add_lister]) ) {
         // split the list apart
         $lines = preg_split ('/$\R?^/m', $_POST[add_lister]);
         // move throgh  emails
-        foreach($lines as $key=>$val) { 
+        foreach($lines as $key=>$val) {
             $lines[$key]=trim($lines[$key]);
             // is it an email?
-            if(filter_var($lines[$key], FILTER_VALIDATE_EMAIL)) {      
+            if(filter_var($lines[$key], FILTER_VALIDATE_EMAIL)) {
                 // insert it
                 $stmt = $dbpdo->prepare(" INSERT INTO `mailing_list` (`id`, `site_id`, `email`, `active`, `pass`) VALUES (NULL, :web , :email  , '1', :pass); ");
                 $stmt->execute(array(
                     ':email' => $lines[$key],
                     ':pass' => $pass,
                     ':web' => $_SESSION[public_user][site_id]
-                ));    
-             }
-         }
+                    ));
+            }
+        }
     }
 }
 
@@ -342,14 +342,14 @@ if (isset($_POST[add_disc]) ) {
         foreach($lines as $key=>$val) {
             $lines[$key]=trim($lines[$key]);
             // is it an email?
-            if(filter_var($lines[$key], FILTER_VALIDATE_EMAIL)) {      
+            if(filter_var($lines[$key], FILTER_VALIDATE_EMAIL)) {
                 //insert it
                 $stmt = $dbpdo->prepare(" INSERT INTO `disc_groups` (`id`, `site_id`, `email`, `active`, `pass`) VALUES (NULL, :web , :email  , '1', :pass); ");
-                   $stmt->execute(array(
-                       ':email' => $lines[$key],
-                       ':pass' => $pass,
-                       ':web' => $_SESSION[public_user][site_id]
-                   ));
+                $stmt->execute(array(
+                    ':email' => $lines[$key],
+                    ':pass' => $pass,
+                    ':web' => $_SESSION[public_user][site_id]
+                    ));
             }
         }
     }
@@ -361,7 +361,7 @@ if (isset($_GET[delete_lister]) ) {
     if ($_SESSION[public_user][level]=='Superuser') {
         // delete
         $stmt = $dbpdo->prepare('DELETE from mailing_list WHERE id = :id and `site_id`= '.$_SESSION[public_user][site_id] );
-        $stmt->execute(array(':id' => $_GET[delete_lister]));    
+        $stmt->execute(array(':id' => $_GET[delete_lister]));
     }
 }
 
@@ -369,7 +369,7 @@ if (isset($_GET[delete_lister]) ) {
 if (isset($_GET[delete_dlister]) ) {
     if ($_SESSION[public_user][level]=='Superuser') {
         $stmt = $dbpdo->prepare('DELETE from disc_groups WHERE id = :id and `site_id`= '.$_SESSION[public_user][site_id] );
-        $stmt->execute(array(':id' => $_GET[delete_dlister]));    
+        $stmt->execute(array(':id' => $_GET[delete_dlister]));
     }
 }
 
@@ -377,7 +377,7 @@ if (isset($_GET[delete_dlister]) ) {
 if (isset($_POST[send_mailing_list]) ) {
     if ($_SESSION[public_user][level]=='Superuser') {
         send_mailing_list($_POST[send_mailing_list]);
-    }    
+    }
 }
 
 //invite a participant
@@ -385,14 +385,14 @@ if (isset($_POST[invite_part]) ) {
     // is it an owner
     if ($_SESSION[public_user][level]=='Superuser') {
         //insert the  participant
-        $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`, `type`, `valid`, `site_id`) 
-        VALUES (NULL, :name , :email,  'Participant', 'Yes', '".$_SESSION[public_user][site_id]."')" );
+        $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`, `type`, `valid`, `site_id`)
+            VALUES (NULL, :name , :email,  'Participant', 'Yes', '".$_SESSION[public_user][site_id]."')" );
         $stmt->execute(array(
             ':name' =>$_POST[invite_part][name],
             ':email' =>$_POST[invite_part][email]
-        ));
+            ));
         // send them an email telling them
-        $user_id= $dbpdo->lastInsertId(); 
+        $user_id= $dbpdo->lastInsertId();
         $_SESSION[temp][message]=$_POST[invite_part][message];
         $rnd_pass=set_password($user_id);
         // call the function
@@ -409,8 +409,8 @@ if (isset($_POST[resetemail]) || isset($_GET[resetemail]) ) {
         $stmt = $dbpdo->prepare(" SELECT * FROM `users` WHERE `email`=:email   ");
         $stmt->execute(array(
             ':email' => $_POST[resetemail]
-        ));
-        $num_rows = $stmt->rowCount(); 
+            ));
+        $num_rows = $stmt->rowCount();
     }
     //If it is from an email that has been sent from below
     if (isset($_GET[resetemail]) ) {
@@ -419,16 +419,16 @@ if (isset($_POST[resetemail]) || isset($_GET[resetemail]) ) {
         $stmtx->execute(array(
             ":id" =>$_GET[resetemail],
             ":pass"=>$_GET[pass]
-        ));
+            ));
         // if it is select the email
         if ($stmtx->rowCount()!=0) {
             $stmt = $dbpdo->prepare(" SELECT * FROM `users` WHERE `id`=:id   ");
             $stmt->execute(array(
                 ':id' => $_GET[resetemail]
-            ));
-        } 
-        $num_rows = $stmtx->rowCount(); 
-    } 
+                ));
+        }
+        $num_rows = $stmtx->rowCount();
+    }
     // counts the results from above - if it is one result an email is sent out with a new password
     // send a reset
     if ($num_rows==1) {
@@ -436,7 +436,7 @@ if (isset($_POST[resetemail]) || isset($_GET[resetemail]) ) {
         $rnd_pass=set_password($data[id]);
         send_email($data[id],$rnd_pass,'reset');
         $_SESSION[message].='A new pasword has been sent to you.';
-        header( "Location: /login" );                              
+        header( "Location: /login" );
         exit;
     }
     // cant find the email
@@ -450,15 +450,16 @@ if (isset($_POST[resetemail]) || isset($_GET[resetemail]) ) {
         <p>Please select a password to reset:</p>';
         $data = $stmt->fetchAll(PDO::FETCH_BOTH);
         // move through the email
-        foreach($data as $key=>$val) { 
+        foreach($data as $key=>$val) {
             $rnd_pass=makeRandomPassword();
             //  insert an id - password key to varify callback
             $query = "INSERT INTO `resets` (`id` ,`pass`) VALUES ('".$data[$key][id]."', '$rnd_pass') ON DUPLICATE KEY UPDATE   `pass`=VALUES(pass) ";
             $result = $dbpdo->query($query);
             // if it is an owner we need to get the name of the site
             if ($data[$key][type]=='Superuser') $data[$key][type]='Owner';
+            # @TODO: $r is not (likely) to be defined at this point!!
             if ($r[type]!='Superuser') {
-                $queryx = "select * from users where id=".$data[$key][site_id]." "; 
+                $queryx = "select * from users where id=".$data[$key][site_id]." ";
                 $resultx = $dbpdo->query($queryx);
                 while($rx = $resultx->fetch(PDO::FETCH_BOTH)) {
                     $title=$rx[title];
@@ -475,15 +476,15 @@ if (isset($_POST[resetemail]) || isset($_GET[resetemail]) ) {
         //send an email
         send_reset_email($data[0][id],$rnd_pass,$reset_list);
         // then redirct them
-        header( "Location: /login" );  
+        header( "Location: /login" );
         exit;
     }
 }
 
 // logout
 if ($_SERVER["REQUEST_URI"]=='/logout') {
-    session_destroy();    
-    header( "Location: /login" );      
+    session_destroy();
+    header( "Location: /login" );
 }
 
 // the login process
@@ -493,15 +494,15 @@ if (isset ($_POST[login_email]) ) {
         foreach($placeholders as $k => $v) {
             $sql = preg_replace('/:'.$k.'/',"'".$v."'",$sql);
         }
-    return $sql;
+        return $sql;
     }
     // see if the email password pair are there
     $stmt = $dbpdo->prepare(" SELECT * FROM `users` WHERE `email`=:email AND `password`=:pass  ");
     $stmt->execute(array(
         ':email' => $_POST[login_email],
         ':pass' => md5($salt.$_POST[login_password])
-    ));
-    $num_rows = $stmt->rowCount(); 
+        ));
+    $num_rows = $stmt->rowCount();
     // if they are there set up session variables which underpin the flow of a logged in user
     if ($num_rows==1) {
         $data = $stmt->fetch(PDO::FETCH_BOTH);
@@ -511,7 +512,7 @@ if (isset ($_POST[login_email]) ) {
         $_SESSION[public_user][level] = $data[type]; // type of user
         $_SESSION[public_user][site_id] = $data[site_id]; // id of the site they are logged into
         // get the name and the url of the site
-        $query = "select * from users where id=".$_SESSION[public_user][site_id]." "; 
+        $query = "select * from users where id=".$_SESSION[public_user][site_id]." ";
         $result = $dbpdo->query($query);
         while($r = $result->fetch(PDO::FETCH_BOTH)) {
             $_SESSION[public_user][site_title] = $r[title]; // site name
@@ -519,8 +520,8 @@ if (isset ($_POST[login_email]) ) {
         }
         // if they are a participant send them to the website
         if  ($_SESSION[public_user][level]=='Participant') {
-            $url=$_SESSION[public_user][site_url];                     
-            header( "Location: $url " );                               
+            $url=$_SESSION[public_user][site_url];
+            header( "Location: $url " );
         }
         // if not to the dashboard
         else {
@@ -535,14 +536,14 @@ if (isset ($_POST[admin_email]) ) {
     $stmt->execute(array(
         ':email' => $_POST[admin_email],
         ':pass' => md5($salt.$_POST[admin_pass])
-    ));
-    $num_rows = $stmt->rowCount(); 
+        ));
+    $num_rows = $stmt->rowCount();
     // if varified set up a session
     if ($num_rows==1) {
         $data = $stmt->fetch(PDO::FETCH_BOTH);
         $_SESSION[manager][user_id] = $data[id];
-        $_SESSION[manager][email] = $data[email];        
-        header ("location: /manage/new");                    
+        $_SESSION[manager][email] = $data[email];
+        header ("location: /manage/new");
     }
 }
 
@@ -555,7 +556,7 @@ if (isset($_SESSION[public_user][user_id])) {
             ':fb' => $_POST[facebook],
             ':twitter' => $_POST[twitter],
             ':web' => $_SESSION[public_user][site_id]
-        ));
+            ));
     }
 }
 
@@ -580,8 +581,8 @@ if ($page_control->template=='website') {
                         ':email' => $_POST[newsletter_email],
                         ':pass' => $pass,
                         ':web' => $page_control->web_id
-                    ));    
-                    $this_id=$dbpdo->lastInsertId(); 
+                        ));
+                    $this_id=$dbpdo->lastInsertId();
                     // send a confirmation eamil
                     send_email($this_id,$pass,'Check sign up');
                 }
@@ -592,7 +593,7 @@ if ($page_control->template=='website') {
     // I think this redundant - but I am reluctant to remove it unless vari
     $num_rows=is_site_live($page_control->web_id);
     if ($num_rows==1) {
-    } else {   
+    } else {
         //$page_control->template='public';
         // $page_control->file= 'login.php';
     }
@@ -600,25 +601,25 @@ if ($page_control->template=='website') {
 
 // make site public
 if (isset($_GET[turn_it_on])) {
-    $query = "update website set `on`=1 where id=".$_SESSION[public_user][site_id];   
+    $query = "update website set `on`=1 where id=".$_SESSION[public_user][site_id];
     $result = $dbpdo->query($query);
 }
 
 // make site private
 if (isset($_GET[turn_it_off])) {
-    $query = "update website set `on`=0 where id=".$_SESSION[public_user][site_id];  
+    $query = "update website set `on`=0 where id=".$_SESSION[public_user][site_id];
     $result = $dbpdo->query($query);
 }
 
 // turn email sign up on
 if (isset($_GET[turn_email_on])) {
-    $query = "update website set `email`=1 where id=".$_SESSION[public_user][site_id];  
+    $query = "update website set `email`=1 where id=".$_SESSION[public_user][site_id];
     $result = $dbpdo->query($query);
 }
 
 // turn email sign up off
 if (isset($_GET[turn_email_off])) {
-    $query = "update website set `email`=0 where id=".$_SESSION[public_user][site_id];  
+    $query = "update website set `email`=0 where id=".$_SESSION[public_user][site_id];
     $result = $dbpdo->query($query);
 }
 
@@ -630,7 +631,7 @@ if (isset($_POST[page])) {
         // check if the page exists
         $page_control->error=check_page($page_url);
         if ($page_control->error==0){
-            add_page($_POST[page][name],$_POST[page][news],$page_url);              
+            add_page($_POST[page][name],$_POST[page][news],$page_url);
         } else {
             $page_control->error='<p class="error">Sorry that page already exists</p>';
         }
@@ -649,7 +650,7 @@ if (isset($_POST[news])) {
             ':web_id' => $_SESSION[public_user][site_id],
             ':media_id' => $media_id,
             ':content' => $_POST[news][content],
-        ));    
+            ));
     }
 }
 
@@ -660,7 +661,7 @@ if (isset($_GET[delete_page])) {
         $stmt->execute(array(
             ':page_id' => $_GET[delete_page],
             ':web_id' => $_SESSION[public_user][site_id]
-        ));
+            ));
     }
 }
 
@@ -671,7 +672,7 @@ if (isset($_GET[dn])) {
         $stmt->execute(array(
             ':news_id' => $_GET[dn],
             ':web_id' => $_SESSION[public_user][site_id]
-        ));
+            ));
     }
 }
 ?>

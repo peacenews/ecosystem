@@ -28,7 +28,7 @@ if (isset ($_POST[site_title]) ){
         ':name' => $_POST[site_title],
         ':url' => $_POST[site_address],
         ':descr' => $_POST[site_descr]
-    ));
+        ));
     $last_insert=$dbpdo->lastInsertId();
     $query = "UPDATE `users` set site_id=$last_insert WHERE id=$_SESSION[user_id]  ";
     $result = $dbpdo->query($query);

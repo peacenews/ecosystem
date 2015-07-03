@@ -12,52 +12,52 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 -->
 
-          <div class="row content">
-              <div class="large-2 columns">&nbsp;<? if  ($page_control->error!='')  echo '<h3 style="color: red !important;">'.$page_control->error,'</h3>'; ?></div>
-                  <div class="large-8 columns changeh" id="content">
-                      <? echo $page_control->page_content ?>
-                  </div>
-                  <div class="large-2 columns">&nbsp;</div>
-              </div>
+<div class="row content">
+    <div class="large-2 columns">&nbsp;<? if  ($page_control->error!='')  echo '<h3 style="color: red !important;">'.$page_control->error,'</h3>'; ?></div>
+    <div class="large-8 columns changeh" id="content">
+        <? echo $page_control->page_content ?>
+    </div>
+    <div class="large-2 columns">&nbsp;</div>
+</div>
 
-              <? if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2){?>
-              <div class="row content">
-                  <div class="large-2 columns">&nbsp;</div>
-                      <div class="large-8 columns changeh" id="content">
-                          <input name="" type="button" value="Save" id="csave">
-                          <div id="cresult"></div>
-                      </div>
-                      <div class="large-2 columns">&nbsp;</div>
-                  </div>
-                  <? }?>
+<? if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2){?>
+<div class="row content">
+    <div class="large-2 columns">&nbsp;</div>
+    <div class="large-8 columns changeh" id="content">
+        <input name="" type="button" value="Save" id="csave">
+        <div id="cresult"></div>
+    </div>
+    <div class="large-2 columns">&nbsp;</div>
+</div>
+<? }?>
 
-                  <?  if ($page_control->media_id!='0') {?>
-                  <div class="row" id="content-image">
-                      <div class="large-2 columns">&nbsp;</div>
-                          <div class="large-8 columns website-image">
-                              <? echo '<img src="/img/'.$page_control->media_id.'/722" />'; ?>
-                          </div>
-                          <div class="large-2 columns">
-                              <div class="website-image-caption">
-                                  <div class="caption-break"></div>
-                                  <p class="caption-content"><? echo $page_control->page_caption?></p>
-                                  <? if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2){?>
-                                  add your caption above<br />
-                                  <input name="" type="button" value="Save" id="capsave">
-                                  <div id="capresult"></div>
-                                  <? }?>
-                                  <div class="caption-break"></div>
-                              </div>
-                          </div>
-                      </div>
-                      <? }?>
-                      <? if ($page_control->page_type=='Home'){?>
-                      <div class="row" id="latest-news-home">
-                          <div class="large-2 columns">&nbsp;</div>
-                              <div class="large-8 columns">
-                                  <h1 class="change">Latest news</h1>
-                                  <?  page_news($page_control->web_id, $page_control->page_type);?>
-                              </div>
-                              <div class="large-2 columns"></div>
-                          </div>
-                          <? }?>
+<?  if ($page_control->media_id!='0') {?>
+<div class="row" id="content-image">
+    <div class="large-2 columns">&nbsp;</div>
+    <div class="large-8 columns website-image">
+        <? echo '<img src="/img/'.$page_control->media_id.'/722" />'; ?>
+    </div>
+    <div class="large-2 columns">
+        <div class="website-image-caption">
+            <div class="caption-break"></div>
+            <p class="caption-content"><? echo $page_control->page_caption?></p>
+            <? if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2){?>
+            add your caption above<br />
+            <input name="" type="button" value="Save" id="capsave">
+            <div id="capresult"></div>
+            <? }?>
+            <div class="caption-break"></div>
+        </div>
+    </div>
+</div>
+<? }?>
+<? if ($page_control->page_type=='Home'){?>
+<div class="row" id="latest-news-home">
+    <div class="large-2 columns">&nbsp;</div>
+    <div class="large-8 columns">
+        <h1 class="change">Latest news</h1>
+        <?  page_news($page_control->web_id, $page_control->page_type);?>
+    </div>
+    <div class="large-2 columns"></div>
+</div>
+<? }?>

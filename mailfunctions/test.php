@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
 </head>
 <?
 /*
@@ -51,27 +51,27 @@ function getpart($mbox,$mid,$p,$partno) {
         imap_fetchbody($mbox,$mid,$partno):  // multipart
         imap_body($mbox,$mid);  // simple
     // Any part may be encoded, even plain text messages, so check everything.
-    if ($p->encoding==4)
-        $data = quoted_printable_decode($data);
-    elseif ($p->encoding==3)
-        $data = base64_decode($data);
+        if ($p->encoding==4)
+            $data = quoted_printable_decode($data);
+        elseif ($p->encoding==3)
+            $data = base64_decode($data);
 
     // PARAMETERS
     // get all parameters, like charset, filenames of attachments, etc.
-    $params = array();
-    if ($p->parameters)
-        foreach ($p->parameters as $x)
-            $params[strtolower($x->attribute)] = $x->value;
-    if ($p->dparameters)
-        foreach ($p->dparameters as $x)
-            $params[strtolower($x->attribute)] = $x->value;
+        $params = array();
+        if ($p->parameters)
+            foreach ($p->parameters as $x)
+                $params[strtolower($x->attribute)] = $x->value;
+            if ($p->dparameters)
+                foreach ($p->dparameters as $x)
+                    $params[strtolower($x->attribute)] = $x->value;
 
     // ATTACHMENT
     // Any part with a filename is an attachment,
     // so an attached text file (type 0) is not mistaken as the message.
-    if ($params['filename'] || $params['name']) {
+                if ($params['filename'] || $params['name']) {
         // filename may be given as 'Filename' or 'Name' or both
-        $filename = ($params['filename'])? $params['filename'] : $params['name'];
+                    $filename = ($params['filename'])? $params['filename'] : $params['name'];
         // filename may be encoded, so see imap_mime_header_decode()
         $attachments[$filename] = $data;  // this is a problem if two files have same name
     }
@@ -123,7 +123,7 @@ foreach($EmailHeaders as $key=>$val) {
     echo '<pre>';
     print_r($EmailHeaders[$key]);
     echo '</pre>';
-    /* ?> <textarea name="" cols="" rows=""><? print_r($Body[$key]); ?></textarea> <? */ 
+    /* ?> <textarea name="" cols="" rows=""><? print_r($Body[$key]); ?></textarea> <? */
 }
 ?>
 <body>

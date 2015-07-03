@@ -20,14 +20,14 @@ You should have received a copy of the GNU Affero General Public License along w
     </div>
     <div class="row">
         <div class="large-9 columns">
-        <? //echo $reset_list;?>
+            <? //echo $reset_list;?>
 
-        <form method="post" action="">
-            <p>Enter you email address and we will send you a new one.</p>
-            <p> <label for="email" style="margin-bottom:10px;color:#000;">Email Address: <span class="required">*</span></label>
-            <input type="resetemail" id="resetemail" name="resetemail" value="" placeholder="example@domain.com" required style="padding:10px;width:100%;" /></p>        
-            <p> <input type="submit" value="Send it" id="submit-button" class="button" /></p>        
-        </form>
+            <form method="post" action="">
+                <p>Enter you email address and we will send you a new one.</p>
+                <p> <label for="email" style="margin-bottom:10px;color:#000;">Email Address: <span class="required">*</span></label>
+                    <input type="resetemail" id="resetemail" name="resetemail" value="" placeholder="example@domain.com" required style="padding:10px;width:100%;" /></p>
+                    <p> <input type="submit" value="Send it" id="submit-button" class="button" /></p>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
+    </section>

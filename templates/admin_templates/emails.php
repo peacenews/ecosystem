@@ -20,13 +20,13 @@ You should have received a copy of the GNU Affero General Public License along w
             <h2 class="bold">Manage emails</h2>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="large-12 columns">
             <ul>
                 <? email_lists();?>
             </ul>
-            
+
             <?  edit_email(); ?>
         </div>
     </div>

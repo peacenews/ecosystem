@@ -23,43 +23,43 @@ You should have received a copy of the GNU Affero General Public License along w
     <div class="row" id="dashboard-boxes">
         <!-- Website composer link -->
         <a href="<? echo $_SESSION[public_user][site_url]; ?>">
-        <div class="large-3 medium-4 columns text-center">
-            <div class="text-center"><img src="/img/dashboard/box-1.png" /></div> <!-- Website composer icon -->
-            <h4 class="bold">website</h4>
-            <p>create and manage your website and blog</p>
-            <a class="button green bold" href="<? echo $_SESSION[public_user][site_url]; ?>">Do it!</a>
-        </div>
+            <div class="large-3 medium-4 columns text-center">
+                <div class="text-center"><img src="/img/dashboard/box-1.png" /></div> <!-- Website composer icon -->
+                <h4 class="bold">website</h4>
+                <p>create and manage your website and blog</p>
+                <a class="button green bold" href="<? echo $_SESSION[public_user][site_url]; ?>">Do it!</a>
+            </div>
         </a>
 
         <!-- Manage mailing list link -->
         <a href="/mailing_list">
-        <div class="large-3 medium-4 columns text-center">
-            <div class="text-center"><img src="/img/dashboard/box-2.png" /></div> <!-- Manage mailing list icon -->
-            <h4 class="bold">e-newsletters</h4>
-            <p>manage your email list and send e-newsletters</p>
-            <a class="button green bold" href="/mailing_list">Do it!</a>
-        </div>
+            <div class="large-3 medium-4 columns text-center">
+                <div class="text-center"><img src="/img/dashboard/box-2.png" /></div> <!-- Manage mailing list icon -->
+                <h4 class="bold">e-newsletters</h4>
+                <p>manage your email list and send e-newsletters</p>
+                <a class="button green bold" href="/mailing_list">Do it!</a>
+            </div>
         </a>
 
-       <!-- Shared documents -->
+        <!-- Shared documents -->
         <a href="/document_sharing">
-        <div class="large-3 medium-4 columns text-center" id="share-documents">
-            <div class="text-center"><img src="/img/dashboard/box-3.png" /></div> <!-- Shared documents icon -->
-            <h4 class="bold">documents</h4>
-            <p>create and share documents with key participants</p>
-            <a class="button green bold" href="/document_sharing">Do it!</a>
-        </div>
+            <div class="large-3 medium-4 columns text-center" id="share-documents">
+                <div class="text-center"><img src="/img/dashboard/box-3.png" /></div> <!-- Shared documents icon -->
+                <h4 class="bold">documents</h4>
+                <p>create and share documents with key participants</p>
+                <a class="button green bold" href="/document_sharing">Do it!</a>
+            </div>
         </a>
 
         <!-- Manage discussion group: Owners /Contributors /Participants see different content here -->
         <? if ( $user_level>=3 ){ ?>
         <a href="/contributors">
-        <div class="large-3 medium-4 columns text-center" id="discussions">
-            <div class="text-center"><img src="/img/dashboard/box-4.png" /></div> <!-- Manage discussion group icon -->
-            <h4 class="bold">manage group</h4>
-            <p>manage participants and your email discussion group</p>
-            <a class="button green bold" href="/contributors">Do it!</a>
-        </div>
+            <div class="large-3 medium-4 columns text-center" id="discussions">
+                <div class="text-center"><img src="/img/dashboard/box-4.png" /></div> <!-- Manage discussion group icon -->
+                <h4 class="bold">manage group</h4>
+                <p>manage participants and your email discussion group</p>
+                <a class="button green bold" href="/contributors">Do it!</a>
+            </div>
         </a>
         <? }?>
     </div>

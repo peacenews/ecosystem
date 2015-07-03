@@ -14,11 +14,11 @@ You should have received a copy of the GNU Affero General Public License along w
 
 <div class="row content" id="latest-news-home">
     <div class="large-2 columns">&nbsp;</div>
-        <div class="large-8 columns">
-            <h1 class="change">Latest news</h1>
-            <? if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2){?>
-            <button class="light green" id="add-news-button">Add news post</button>
-            <div class="add-news">
+    <div class="large-8 columns">
+        <h1 class="change">Latest news</h1>
+        <? if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2){?>
+        <button class="light green" id="add-news-button">Add news post</button>
+        <div class="add-news">
             <form action="" method="post" enctype="multipart/form-data">
                 <? if  ($page_control->error!='')  echo '<h3 style="color: red !important;">'.$page_control->error,'</h3>'; ?>
                 <p>Title: <input name="news[title]" type="text"><br><input type="file"  name="graphic[news]"/></p>

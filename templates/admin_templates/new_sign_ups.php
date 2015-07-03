@@ -15,14 +15,14 @@ You should have received a copy of the GNU Affero General Public License along w
 <h1>New users</h1>
 
 <table class="control">
-  <tr>
-    <th>Name</th>
-    <th>email</th>
-    <th>Reason for joining</th>
-    <th>Delete</th>
-    <th>Approve</th>
-  </tr>
-  <? echo  new_sign_ups()?>
+    <tr>
+        <th>Name</th>
+        <th>email</th>
+        <th>Reason for joining</th>
+        <th>Delete</th>
+        <th>Approve</th>
+    </tr>
+    <? echo  new_sign_ups()?>
 </table>
 
 <h4>Update welcome email:</h4>

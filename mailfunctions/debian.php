@@ -33,25 +33,25 @@ if ($mailboxheaders == false) {
         //doSomething( $EmailHeaders, $Body );
     }
 
-foreach($EmailHeaders as $key=>$val) {
-    $to=$EmailHeaders[$key]->to[0]->mailbox;
-    $from=$EmailHeaders[$key]->from[0]->mailbox.'@'.$EmailHeaders[$key]->from[0]->host;
-    $sent=$EmailHeaders[$key]->date;
-    $structure = imap_fetchstructure($mbox,$key);
-    echo '<pre>';
-    print_r($EmailHeaders[$key]);
-    print_r($structure);
-    echo '</pre>';
+    foreach($EmailHeaders as $key=>$val) {
+        $to=$EmailHeaders[$key]->to[0]->mailbox;
+        $from=$EmailHeaders[$key]->from[0]->mailbox.'@'.$EmailHeaders[$key]->from[0]->host;
+        $sent=$EmailHeaders[$key]->date;
+        $structure = imap_fetchstructure($mbox,$key);
+        echo '<pre>';
+        print_r($EmailHeaders[$key]);
+        print_r($structure);
+        echo '</pre>';
 
-    if ($EmailHeaders[$key]->Deleted!= 'D') {
-        $query = "INSERT INTO `to_be_sent` (`id`, `from`, `to`, `body`, `date`, `sent_date`, `sent`)
-        VALUES ('NULL', '".addslashes($from )."', '".addslashes($to )."', '".addslashes($Body[$key] )."', CURRENT_TIMESTAMP, '$sent', '0'); ";
-        $result = $dbpdo->query($query);
-    }
+        if ($EmailHeaders[$key]->Deleted!= 'D') {
+            $query = "INSERT INTO `to_be_sent` (`id`, `from`, `to`, `body`, `date`, `sent_date`, `sent`)
+            VALUES ('NULL', '".addslashes($from )."', '".addslashes($to )."', '".addslashes($Body[$key] )."', CURRENT_TIMESTAMP, '$sent', '0'); ";
+            $result = $dbpdo->query($query);
+        }
 
-    /* ?> <textarea name="" cols="30" rows="30"><? print_r($Body[$key]); ?></textarea> <? */
+        /* ?> <textarea name="" cols="30" rows="30"><? print_r($Body[$key]); ?></textarea> <? */
 
-    imap_delete($mbox, $key);
+        imap_delete($mbox, $key);
     }
 }
 

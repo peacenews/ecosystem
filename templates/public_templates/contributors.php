@@ -26,7 +26,7 @@ You should have received a copy of the GNU Affero General Public License along w
         </div>
     </div>
 
-<!-- Contributors -->
+    <!-- Contributors -->
     <div class="row" id="participate-form">
         <div class="large-6 columns">
             <h3>Your contributors:</h3>
@@ -46,7 +46,7 @@ You should have received a copy of the GNU Affero General Public License along w
         </div>
     </div>
 
-<!-- Participants -->
+    <!-- Participants -->
     <div class="row" id="participate-form">
         <div class="large-6 columns">
             <h3>Your participants:</h3>
@@ -66,7 +66,7 @@ You should have received a copy of the GNU Affero General Public License along w
         </div>
     </div>
 
-<!-- Discussion group -->
+    <!-- Discussion group -->
     <div class="row">
         <div class="large-6 columns">
             <h3>Discussion group:</h3>
@@ -79,9 +79,9 @@ You should have received a copy of the GNU Affero General Public License along w
             <h3>Add to the list</h3>
             <form action="" method="post">
                 <p>(place each email on a seperate line):
-                <textarea name="add_disc" cols="40" rows="10" ></textarea></p>
-                <p><input name="" type="submit" value="Add" class="button green"/></p>
-            </form>
+                    <textarea name="add_disc" cols="40" rows="10" ></textarea></p>
+                    <p><input name="" type="submit" value="Add" class="button green"/></p>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
+    </section>

@@ -18,7 +18,7 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
 
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>title</title> <!-- Title -->
@@ -31,23 +31,23 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
     <script src="/../js/zurb/js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
-    tinymce.init({
-        selector: "textarea.sendx",
-        plugins: [
+        tinymce.init({
+            selector: "textarea.sendx",
+            plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
             "insertdatetime  table contextmenu paste print"
-        ],
-        toolbar: "undo redo |  bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent print"
-    });
+            ],
+            toolbar: "undo redo |  bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent print"
+        });
     </script>
-  </head>
+</head>
 
-  <body class="website <?php echo $body_class; ?>">
-  <style>
-  #confirmx {position: absolute; background-color: white; border: 3px solid red; padding: 10px; margin: auto; max-width: 300px; width: 20%; text-align: center; top: 20%; min-height: 50px; left:40%; z-index: 99;}
-  </style>
-  <? messages();?>
+<body class="website <?php echo $body_class; ?>">
+    <style>
+        #confirmx {position: absolute; background-color: white; border: 3px solid red; padding: 10px; margin: auto; max-width: 300px; width: 20%; text-align: center; top: 20%; min-height: 50px; left:40%; z-index: 99;}
+    </style>
+    <? messages();?>
     <div class="logged-in-menu website">
         <div class="row">
             <div class="large-2 small-4 medium-3 columns">
@@ -91,9 +91,9 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
     <script src="/../js/zurb/js/foundation/foundation.topbar.js"></script>
     <script src="/../js/colorbox/jquery.colorbox-min.js"></script>
     <script src="/../js/zurb/custom.js"></script>
- <script src="/js/ecosystem2.js"></script>
+    <script src="/js/ecosystem2.js"></script>
     <script>
-      $(document).foundation();
+        $(document).foundation();
     </script>
-  </body>
+</body>
 </html>
