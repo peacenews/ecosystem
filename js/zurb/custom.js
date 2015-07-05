@@ -13,36 +13,36 @@ You should have received a copy of the GNU Affero General Public License along w
 */
 
 $(document).ready(function() {
-    //$('.home #register-for-zylum-button').colorbox({inline:true,width:'60%',height:'75%',className: 'register-for-zylum'});
-    //$('.home #login-to-zylum-button').colorbox({inline:true,width:'40%',height:'60%', className: 'login-to-zylum'});
+    //$('.home #register-button').colorbox({inline:true,width:'60%',height:'75%',className: 'register'});
+    //$('.home #login-button').colorbox({inline:true,width:'40%',height:'60%', className: 'login'});
 
     if($(document).width() > 700) {
-        $('.home #register-for-zylum-button').colorbox({
+        $('.home #register-button').colorbox({
             width:'60%',
             height:'75%',
             inline: true,
-            className: 'register-for-zylum'
+            className: 'register'
         });
 
-        $('.home #login-to-zylum-button').colorbox({
+        $('.home #login-button').colorbox({
             width:'40%',
             height:'60%',
             inline: true,
-            className: 'login-to-zylum'
+            className: 'login'
         });
     } else {
-        jQuery('.home #register-for-zylum-button').colorbox({
+        jQuery('.home #register-button').colorbox({
             width:'90%',
             height:'90%',
             inline: true,
-            className: 'register-for-zylum'
+            className: 'register'
         });
 
-        $('.home #login-to-zylum-button').colorbox({
+        $('.home #login-button').colorbox({
             width:'90%',
             height:'90%',
             inline: true,
-            className: 'login-to-zylum'
+            className: 'login'
         });
     }
 

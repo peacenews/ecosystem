@@ -64,7 +64,7 @@ You should have received a copy of the GNU Affero General Public License along w
                 </div>
 
                 <div style="display:none;">
-                    <div id="register-for-zylum">
+                    <div id="register">
                         <h2 class="text-center bold">Request an invite</h2>
                         <form action="" method="post">
                             <label for="name">Name</label>
