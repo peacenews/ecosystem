@@ -17,7 +17,7 @@ if (count($_FILES["graphic"])!=0) {
     foreach($_POST["graphic"]["delete"]  as $key=>$val) {
         if ($_SESSION[news_id]!=0) {
             //echo 'deleting '.$key;
-            $media_id=delete_image('news',$_SESSION[news_id]);    
+            $media_id=delete_image('news',$_SESSION[news_id]);
         }
         else {
             //echo 'deleting '.$key;
@@ -27,14 +27,14 @@ if (count($_FILES["graphic"])!=0) {
     foreach($_FILES["graphic"]["name"]  as $key=>$val) {
         if ($_FILES["graphic"]["name"][$key]!='') {
             if ($_FILES["graphic"]["type"][$key]=='image/jpeg' && $_FILES["graphic"]["size"][$key]<='3000000' ) {
-            $image_file=$_FILES['graphic']['tmp_name'][$key];        
-            $return=scaleImageFileToBlob($image_file);
-            $blob = $return[0];
-            $media_id=save_image($key,$blob);
-        }
-        else {
-            $page_control->error='Sorry, you are only allowed to upload .jpg pictures of less than 3Mb';
-        }
+                $image_file=$_FILES['graphic']['tmp_name'][$key];
+                $return=scaleImageFileToBlob($image_file);
+                $blob = $return[0];
+                $media_id=save_image($key,$blob);
+            }
+            else {
+                $page_control->error='Sorry, you are only allowed to upload .jpg pictures of less than 3Mb';
+            }
         }
     }
 }

@@ -23,13 +23,13 @@ You should have received a copy of the GNU Affero General Public License along w
             <? edit_document($_GET[edit_doc]);?>
             <h2>Revisions</h2>
             <table >
-            <tr>
-                <th>Title</th>
-                <th>Last updated</th>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-            </tr>
-            <? get_revisions($_GET[edit_doc])?>
+                <tr>
+                    <th>Title</th>
+                    <th>Last updated</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <? get_revisions($_GET[edit_doc])?>
             </table>
 
             <div class="">

@@ -50,8 +50,8 @@ if ($mailboxheaders == false) {
             $result = $dbpdo->query($query);
         }
 
-    /* ?> <textarea name="" cols="30" rows="30"><? print_r($Body[$key]); ?></textarea> <? */
-    imap_delete($mbox, $key);
+        /* ?> <textarea name="" cols="30" rows="30"><? print_r($Body[$key]); ?></textarea> <? */
+        imap_delete($mbox, $key);
     }
 }
 //imap_expunge($mbox);

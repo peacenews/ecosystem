@@ -84,46 +84,46 @@ if($emails) {
         $attachments = array();
         if(isset($structure->parts) && count($structure->parts)) {
             for($i = 0; $i < count($structure->parts); $i++) {
-            $attachments[$i] = array(
-                'is_attachment' => false,
-                'filename' => '', 'name' => '',
-                'attachment' => ''
-            );
+                $attachments[$i] = array(
+                    'is_attachment' => false,
+                    'filename' => '', 'name' => '',
+                    'attachment' => ''
+                    );
 
-            if($structure->parts[$i]->ifparameters) {
-                foreach($structure->parts[$i]->parameters as $object) {
-                    if(strtolower($object->attribute) == 'name') {
-                        $attachments[$i]['is_attachment'] = true;
-                        $attachments[$i]['name'] = $object->value;
+                if($structure->parts[$i]->ifparameters) {
+                    foreach($structure->parts[$i]->parameters as $object) {
+                        if(strtolower($object->attribute) == 'name') {
+                            $attachments[$i]['is_attachment'] = true;
+                            $attachments[$i]['name'] = $object->value;
+                        }
+                        if($object->type == 'HTML') {
+                            $message='g';
+                        }
                     }
-                    if($object->type == 'HTML') {
-                        $message='g';
+                }
+                if($attachments[$i]['is_attachment']) {
+                    $attachments[$i]['attachment'] = imap_fetchbody($inbox, $email_number, $i+1);
+                    if($structure->parts[$i]->encoding == 3) {
+                        $attachments[$i]['attachment'] = base64_decode($attachments[$i]['attachment']);
+                    } elseif($structure->parts[$i]->encoding == 4) {
+                        $attachments[$i]['attachment'] = quoted_printable_decode($attachments[$i]['attachment']);
                     }
                 }
             }
-            if($attachments[$i]['is_attachment']) {
-                $attachments[$i]['attachment'] = imap_fetchbody($inbox, $email_number, $i+1);
-                if($structure->parts[$i]->encoding == 3) {
-                    $attachments[$i]['attachment'] = base64_decode($attachments[$i]['attachment']);
-                } elseif($structure->parts[$i]->encoding == 4) {
-                    $attachments[$i]['attachment'] = quoted_printable_decode($attachments[$i]['attachment']);
+        }
+
+        $file_attachments = array();
+        if(count($attachments) != 0) {
+            foreach($attachments as $at) {
+                if($at[is_attachment]==1) {
+                    $fname = $at['name'];
+                    $file_attachments[] = "attachments/$fname";
+                    $fp = fopen("attachments/$fname","w"); fwrite($fp, $at['attachment']); fclose($fp);
                 }
             }
         }
-    }
 
-    $file_attachments = array();
-    if(count($attachments) != 0) {
-        foreach($attachments as $at) {
-            if($at[is_attachment]==1) {
-                $fname = $at['name'];
-                $file_attachments[] = "attachments/$fname";
-                $fp = fopen("attachments/$fname","w"); fwrite($fp, $at['attachment']); fclose($fp);
-            }
-        }
-    }
-
-    $mail = new PHPMailer();
+        $mail = new PHPMailer();
 
     $recepeint_email_address = 'example@domain.com'; // eMail
     $recepeint_name = 'Firstname Lastname'; // Name
@@ -155,7 +155,7 @@ if($emails) {
 
     $status = imap_setflag_full($inbox, $email_number, "\\Seen");
 
-    }
+}
 }
 imap_close($inbox);
 ?>

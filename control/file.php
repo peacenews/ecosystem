@@ -30,34 +30,34 @@ function Image($image, $crop = null, $size = null) {
 
         else {
             $crop = array_filter(explode(':', $crop));
-                if (empty($crop) === true) {
-                    $crop = array($width, $height);
-                }
+            if (empty($crop) === true) {
+                $crop = array($width, $height);
+            }
 
-                else {
-                    if ((empty($crop[0]) === true) || (is_numeric($crop[0]) === false))
-                    {
+            else {
+                if ((empty($crop[0]) === true) || (is_numeric($crop[0]) === false))
+                {
                     $crop[0] = $crop[1];
-                    }
-                        else if ((empty($crop[1]) === true) || (is_numeric($crop[1]) === false)) {
-                            $crop[1] = $crop[0];
-                        }
                 }
+                else if ((empty($crop[1]) === true) || (is_numeric($crop[1]) === false)) {
+                    $crop[1] = $crop[0];
+                }
+            }
 
-                $ratio = array (
-                    0 => $width / $height,
-                    1 => $crop[0] / $crop[1],
+            $ratio = array (
+                0 => $width / $height,
+                1 => $crop[0] / $crop[1],
                 );
 
-                if ($ratio[0] > $ratio[1]) {
-                    $width = $height * $ratio[1];
-                    $x = (imagesx($image) - $width) / 2;
-                }
+            if ($ratio[0] > $ratio[1]) {
+                $width = $height * $ratio[1];
+                $x = (imagesx($image) - $width) / 2;
+            }
 
-                else if ($ratio[0] < $ratio[1]) {
-                        $height = $width / $ratio[1];
-                        $y = (imagesy($image) - $height) / 2;
-                }
+            else if ($ratio[0] < $ratio[1]) {
+                $height = $width / $ratio[1];
+                $y = (imagesy($image) - $height) / 2;
+            }
 
                 /*
                 How can I skip (join) this operation
@@ -74,56 +74,56 @@ function Image($image, $crop = null, $size = null) {
 
                     $image = $result;
                 }
-        }
+            }
 
-        /* Resize Section */
-        if (is_null($size) === true) {
-            $size = array(imagesx($image), imagesy($image));
-        }
-
-        else {
-            $size = array_filter(explode('x', $size));
-            if (empty($size) === true) {
+            /* Resize Section */
+            if (is_null($size) === true) {
                 $size = array(imagesx($image), imagesy($image));
             }
 
             else {
-                if ((empty($size[0]) === true) || (is_numeric($size[0]) === false)) {
-                    $size[0] = round($size[1] * imagesx($image) / imagesy($image));
+                $size = array_filter(explode('x', $size));
+                if (empty($size) === true) {
+                    $size = array(imagesx($image), imagesy($image));
                 }
-                
-                else if ((empty($size[1]) === true) || (is_numeric($size[1]) === false)) {
-                    $size[1] = round($size[0] * imagesy($image) / imagesx($image));
+
+                else {
+                    if ((empty($size[0]) === true) || (is_numeric($size[0]) === false)) {
+                        $size[0] = round($size[1] * imagesx($image) / imagesy($image));
+                    }
+
+                    else if ((empty($size[1]) === true) || (is_numeric($size[1]) === false)) {
+                        $size[1] = round($size[0] * imagesy($image) / imagesx($image));
+                    }
                 }
+            }
+
+            $result = ImageCreateTrueColor($size[0], $size[1]);
+
+            if (is_resource($result) === true) {
+                ImageSaveAlpha($result, true);
+                ImageAlphaBlending($result, true);
+                ImageFill($result, 0, 0, ImageColorAllocate($result, 255, 255, 255));
+                ImageCopyResampled($result, $image, 0, 0, 0, 0, $size[0], $size[1], imagesx($image), imagesy($image));
+                header('Content-Type: image/jpeg');
+                ImageInterlace($result, true);
+                ImageJPEG($result, null, 90);
             }
         }
 
-        $result = ImageCreateTrueColor($size[0], $size[1]);
-
-        if (is_resource($result) === true) {
-            ImageSaveAlpha($result, true);
-            ImageAlphaBlending($result, true);
-            ImageFill($result, 0, 0, ImageColorAllocate($result, 255, 255, 255));
-            ImageCopyResampled($result, $image, 0, 0, 0, 0, $size[0], $size[1], imagesx($image), imagesy($image));
-            header('Content-Type: image/jpeg');
-            ImageInterlace($result, true);
-            ImageJPEG($result, null, 90);
-        }
+        return false;
     }
 
-    return false;
-}
+    ini_set('display_errors', 1);
 
-ini_set('display_errors', 1); 
-
-$id=$_GET["id"];
-$table=$_GET["table"];
-$field=$_GET["field"];
-$width=$_GET["width"];
-$height=$_GET["height"];
-$action=$_GET["action"];
-$ratio=$_GET["ratio"];
-   $Types = array(
+    $id=$_GET["id"];
+    $table=$_GET["table"];
+    $field=$_GET["field"];
+    $width=$_GET["width"];
+    $height=$_GET["height"];
+    $action=$_GET["action"];
+    $ratio=$_GET["ratio"];
+    $Types = array(
     "474946383761"=>"image/gif",                        //GIF87a type gif
     "474946383961"=>"image/gif",                        //GIF89a type gif
     "89504E470D0A1A0A"=>"image/png",
@@ -140,62 +140,62 @@ $ratio=$_GET["ratio"];
 //echo $query;
 //$result = $dbpdo->query($query);
 
-$stmt = $dbpdo->prepare("select `media` from `media` where id=:id ");
+    $stmt = $dbpdo->prepare("select `media` from `media` where id=:id ");
 // echo "select id from users WHERE title = '$_GET[site_title]'  ";
-$stmt->execute(array(':id' => $id));    
-$mysql_result = $stmt->fetch(PDO::FETCH_BOTH);
+    $stmt->execute(array(':id' => $id));
+    $mysql_result = $stmt->fetch(PDO::FETCH_BOTH);
 
 //$mysql_result = $result->fetch(PDO::FETCH_BOTH);
 //$mysql_result = (array) $mysql_result;
 
 $Signature = substr($mysql_result[0],0,6); //get first 60 bytes shouldnt need more then that to determine signature
-$Signature = array_shift(unpack("H*",$Signature)); 
+$Signature = array_shift(unpack("H*",$Signature));
 //if( stripos($Signature,$MagicNumber) === 0 )   echo $Mime;
 if ($Signature=='89504e470d0a') {
-header("Content-type: image/png");
-echo  $mysql_result[0];    
+    header("Content-type: image/png");
+    echo  $mysql_result[0];
 }
 else {
-header("Content-type: image/jpeg");
-$im =  imagecreatefromstring($mysql_result[0]);
+    header("Content-type: image/jpeg");
+    $im =  imagecreatefromstring($mysql_result[0]);
 // list( $uploadWidth, $uploadHeight, $uploadType ) = getimagesize( $mysql_result[0]);
-$ex=imagesx($im);
+    $ex=imagesx($im);
 // echo exif_imagetype($mysql_result[0]);
-$ey=imagesy($im);
+    $ey=imagesy($im);
 
-if ($width<=$ex && $action=='thumb') {
-    $ratio=$ex/$width;
-    $nw=$width;
-    $nh=$ey/$ratio;
-    // echo $exaize; echo $eyaize;
-    $image_p = imagecreatetruecolor($nw,$nh);
-    imagecopyresampled($image_p, $im, 0, 0, 0, 0, $nw, $nh, $ex, $ey);
-    imagejpeg($image_p);
-}
-else if ($width<=$ex && $action=='const') {
-    // echo $ex.'<br />';
-    // echo $ey.'<br />';
-    if ($ex>=$ey){
+    if ($width<=$ex && $action=='thumb') {
         $ratio=$ex/$width;
         $nw=$width;
         $nh=$ey/$ratio;
+    // echo $exaize; echo $eyaize;
+        $image_p = imagecreatetruecolor($nw,$nh);
+        imagecopyresampled($image_p, $im, 0, 0, 0, 0, $nw, $nh, $ex, $ey);
+        imagejpeg($image_p);
     }
+    else if ($width<=$ex && $action=='const') {
+    // echo $ex.'<br />';
+    // echo $ey.'<br />';
+        if ($ex>=$ey){
+            $ratio=$ex/$width;
+            $nw=$width;
+            $nh=$ey/$ratio;
+        }
 
-    if ($ey>=$ex){
-        $ratio=$ey/$width;
-        $nh=$width;
-        $nw=$ex/$ratio;
-    }
+        if ($ey>=$ex){
+            $ratio=$ey/$width;
+            $nh=$width;
+            $nw=$ex/$ratio;
+        }
 
     // echo $exaize; echo $eyaize;
-    $image_p = imagecreatetruecolor($nw,$nh);
-    imagecopyresampled($image_p, $im, 0, 0, 0, 0, $nw, $nh, $ex, $ey);
-    imagejpeg($image_p);
-}
-else if ($width<=$ex && $action=='crop'){
-    $nh=$width.'x'.$height;
-    Image(  $im , $ratio, $nh);
-    /* 
+        $image_p = imagecreatetruecolor($nw,$nh);
+        imagecopyresampled($image_p, $im, 0, 0, 0, 0, $nw, $nh, $ex, $ey);
+        imagejpeg($image_p);
+    }
+    else if ($width<=$ex && $action=='crop'){
+        $nh=$width.'x'.$height;
+        Image(  $im , $ratio, $nh);
+    /*
     $original_aspect = $ex / $ey;
     $thumb_aspect = $width / $height;
     if($original_aspect >= $thumb_aspect) {
@@ -219,10 +219,10 @@ else if ($width<=$ex && $action=='crop'){
     imagejpeg($thumb);
     */
 }
-  else{
-       imagejpeg($im);
-  }
+else{
+    imagejpeg($im);
+}
   // imagejpeg($im);
-  imagedestroy($im);
+imagedestroy($im);
 }
 ?>

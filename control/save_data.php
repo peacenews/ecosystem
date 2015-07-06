@@ -1,4 +1,4 @@
-<? 
+<?
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -23,7 +23,7 @@ if (isset($_SESSION[public_user][user_id])) {
         $stmt->execute(array(
             ':color' => $_POST[cw],
             ':web' => $_SESSION[public_user][site_id]
-        ));    
+            ));
     }
     // social
     if (isset($_POST[twitter])) {
@@ -32,7 +32,7 @@ if (isset($_SESSION[public_user][user_id])) {
             ':fb' => $_POST[facebook],
             ':twitter' => $_POST[twitter],
             ':web' => $_SESSION[public_user][site_id]
-        ));    
+            ));
     }
     // page save
     if (isset($_POST[pcontent])) {
@@ -41,7 +41,7 @@ if (isset($_SESSION[public_user][user_id])) {
             $stmt->execute(array(
                 ':content' => $_POST[pcontent],
                 ':pid' => $_SESSION[page_id]
-            ));    
+                ));
         }
         if ($_SESSION[news_id]!=0) {
             $stmt = $dbpdo->prepare(" UPDATE `news` set  `content`= :content  where id= :nid and page_id=:pid ");
@@ -49,7 +49,7 @@ if (isset($_SESSION[public_user][user_id])) {
                 ':content' => $_POST[pcontent],
                 ':nid' => $_SESSION[news_id],
                 ':pid' => $_SESSION[page_id]
-            ));    
+                ));
         }
         echo 'content saved';
     }
@@ -58,7 +58,7 @@ if (isset($_SESSION[public_user][user_id])) {
         $stmt->execute(array(
             ':content' => $_POST[ccontent],
             ':pid' => $_SESSION[page_id]
-        ));    
+            ));
         echo 'caption saved';
     }
 }

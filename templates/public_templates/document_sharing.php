@@ -19,30 +19,30 @@ You should have received a copy of the GNU Affero General Public License along w
         </div>
     </div>
     <div class="row">
-    <div class="large-9 columns">
-        <p class="regular" style="font-size:21px;">Write and format your text in collaboration with others. The document can then be exported (downloaded to your own computer). To compare the current text with, or go back to, previous versions, just click on the links at the bottom of the page.</p>
-    </div>
-    <div class="large-2 columns right">
-        <img src="mailing-list-icon.png" alt="" id="dashboard-icon" /> <!-- Mailing list icon -->
-    </div>
-    <div class="large-12 columns" style="margin-top:40px;">
-        <h3>Your shared documents</h3>
-        <table style="width:100%;">
-        <tr>
-            <th>Title</th>
-            <th>Last updated</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-        </tr> 
-        <? list_docs(); ?>
-        </table>
+        <div class="large-9 columns">
+            <p class="regular" style="font-size:21px;">Write and format your text in collaboration with others. The document can then be exported (downloaded to your own computer). To compare the current text with, or go back to, previous versions, just click on the links at the bottom of the page.</p>
+        </div>
+        <div class="large-2 columns right">
+            <img src="mailing-list-icon.png" alt="" id="dashboard-icon" /> <!-- Mailing list icon -->
+        </div>
+        <div class="large-12 columns" style="margin-top:40px;">
+            <h3>Your shared documents</h3>
+            <table style="width:100%;">
+                <tr>
+                    <th>Title</th>
+                    <th>Last updated</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <? list_docs(); ?>
+            </table>
 
-    <h3 style="margin-top:100px;">Create a document:</h3>
-    <form action="" method="post">
-        <p>Title: <input name="add_doc[title]" type="text" required></p>
-        <p><textarea  style="width: 500px; height: 600px;" class="sendx" name="add_doc[content]"> </textarea> </p>
-        <p><input name="" type="submit" value="Add" class="button green bold"></p>
-    </form>
-    </div>
+            <h3 style="margin-top:100px;">Create a document:</h3>
+            <form action="" method="post">
+                <p>Title: <input name="add_doc[title]" type="text" required></p>
+                <p><textarea  style="width: 500px; height: 600px;" class="sendx" name="add_doc[content]"> </textarea> </p>
+                <p><input name="" type="submit" value="Add" class="button green bold"></p>
+            </form>
+        </div>
     </div>
 </section>

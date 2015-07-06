@@ -18,7 +18,7 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
 
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>title</title> <!-- Title -->
@@ -31,19 +31,19 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
     <script src="/../js/zurb/js/vendor/modernizr.js"></script>
     <script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
-    tinymce.init({
-        selector: "textarea.tinymce",
-        plugins: [
+        tinymce.init({
+            selector: "textarea.tinymce",
+            plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
             "insertdatetime media table contextmenu paste"
-        ],
-        toolbar: "undo redo |  bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent "
-    });
+            ],
+            toolbar: "undo redo |  bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent "
+        });
     </script>
-  </head>
+</head>
 
-  <body class="website <?php echo $body_class; ?>">
+<body class="website <?php echo $body_class; ?>">
     <div class="logged-in-menu">
         <div class="row">
             <div class="large-2 columns">
@@ -57,14 +57,14 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
                         <li class="toggle-topbar menu-icon"><a href="#"><span>Website Navigation</span></a></li>
                     </ul>
 
-                <section class="top-bar-section">
-                    <? echo  $page_control->navigation ?>
-                </section>
+                    <section class="top-bar-section">
+                        <? echo  $page_control->navigation ?>
+                    </section>
                 </nav>
             </div>
         </div>
     </div>
-    
+
     <div style="width:1000px; margin: auto;"> <? echo $page_control->content?></div>
     <section id="footer">
         <div class="row">
@@ -88,7 +88,7 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
     <script src="/../js/zurb/custom.js"></script>
     <script src="/js/ecosystem2.js"></script>
     <script>
-      $(document).foundation();
+        $(document).foundation();
     </script>
-  </body>
+</body>
 </html>

@@ -14,56 +14,56 @@ You should have received a copy of the GNU Affero General Public License along w
 
 <div class="about">
 
-<div class="row">
-    <div class="large-3 small-6 medium-3 columns logo">
-        <a href="/"><img src="/../img/logo.png" id="logo" /></a> <!-- Logo -->
-    </div>
-    <div class="large-9 small-6 medium-9 columns">
-                <nav class="top-bar" data-topbar role="navigation">
+    <div class="row">
+        <div class="large-3 small-6 medium-3 columns logo">
+            <a href="/"><img src="/../img/logo.png" id="logo" /></a> <!-- Logo -->
+        </div>
+        <div class="large-9 small-6 medium-9 columns">
+            <nav class="top-bar" data-topbar role="navigation">
 
-                    <ul class="title-area">
-                        <li class="name"></li>
-                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-                    </ul>
+                <ul class="title-area">
+                    <li class="name"></li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                </ul>
 
                 <section class="top-bar-section">
                     <? echo  $page_control->public_navigation ?>
                 </section>
+            </div>
+        </div>
+
+        <div class="row content first">
+            <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
+
+            <div class="large-8 columns">
+                <h1 class="bold green">Managing and using Zylum</h1>
+
+                <p><a href="#logging_in">Logging in</a>
+                    <br /><a href="#forgotten_password">Forgotten your password</a>
+                    <br /><a href="#how_do_i_sign_up">How do I sign up?</a>
+                </p>
+
+                <h3 class="bold purple" id="logging_in">Logging in</h3>
+                <p><a href="/login">login</a></p>
+                <p>Body text</p>
+
+                <h3 class="bold purple" id="forgotten_password">Forgotten your password</h3>
+                <p><a href="/forgotten_password">forgotten password</a></p>
+                <p>Body text</p>
+
+                <h3 class="bold purple" id="how_do_i_sign_up">How do I sign up?</h3>
+                <p>Body text</p>
+
+                <div class="leaf-bg text-center">
+                    <img src="/img/about-leaf-bg-faded.jpg">
+                </div><!--leaf-bg text-center-->
+                <div class="back-to-top text-center">
+                    <div class="text-center"><img src="/img/back-to-top.png"></div><!--text-center-->
+                    <a href="" class="back-to-top">
+                        back to top
+                    </a>
+                </div><!--back-to-top text-center-->
+            </div>
+            <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
+        </div><!--row content-->
     </div>
-</div>
-
-<div class="row content first">
-       <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
-
-       <div class="large-8 columns">
-           <h1 class="bold green">Managing and using Zylum</h1>
-
-                   <p><a href="#logging_in">Logging in</a>
-                   <br /><a href="#forgotten_password">Forgotten your password</a>
-                   <br /><a href="#how_do_i_sign_up">How do I sign up?</a>
-                   </p>
-
-                   <h3 class="bold purple" id="logging_in">Logging in</h3>
-                   <p><a href="/login">login</a></p>
-                   <p>Body text</p>
-
-                   <h3 class="bold purple" id="forgotten_password">Forgotten your password</h3>
-                   <p><a href="/forgotten_password">forgotten password</a></p>
-                   <p>Body text</p>
-
-                   <h3 class="bold purple" id="how_do_i_sign_up">How do I sign up?</h3>
-                   <p>Body text</p>
-
-            <div class="leaf-bg text-center">
-                <img src="/img/about-leaf-bg-faded.jpg">
-            </div><!--leaf-bg text-center-->
-            <div class="back-to-top text-center">
-                <div class="text-center"><img src="/img/back-to-top.png"></div><!--text-center-->
-            <a href="" class="back-to-top">
-                back to top
-            </a>
-            </div><!--back-to-top text-center-->
-       </div>
-       <div class="large-2 columns">&nbsp;</div><!--large-2 columns-->
-</div><!--row content-->
-</div>

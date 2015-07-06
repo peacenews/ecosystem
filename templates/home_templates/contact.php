@@ -10,42 +10,42 @@
         This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
         You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
-        -->
+    -->
 
-        <div class="row">
+    <div class="row">
         <div class="large-3 small-6 medium-3 columns logo">
             <a href="/"><img src="/../img/logo.png" id="logo" /></a> <!-- Logo -->
         </div>
         <div class="large-9 small-6 medium-9 columns">
-                <nav class="top-bar" data-topbar role="navigation">
+            <nav class="top-bar" data-topbar role="navigation">
 
-                    <ul class="title-area">
-                        <li class="name"></li>
-                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-                    </ul>
+                <ul class="title-area">
+                    <li class="name"></li>
+                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+                </ul>
 
                 <section class="top-bar-section columns">
                     <? echo  $page_control->public_navigation ?>
                 </section>
-        </div>
+            </div>
         </div>
 
-    <div class="row content">
-        <div class="large-2 columns">&nbsp;</div>
-        <div class="large-8 columns">
-            <h1 class="bold green">Contact us</h1>
+        <div class="row content">
+            <div class="large-2 columns">&nbsp;</div>
+            <div class="large-8 columns">
+                <h1 class="bold green">Contact us</h1>
 
-            <form method="post">
-                <label class="bold">Name:</label>
-                <input name="contact[name]" type="text" placeholder="Please enter your name"/>
-                <label class="bold">Email:</label>
-                <input name="contact[email]" type="text" placeholder="Please enter your email"/>
-                <label class="bold">Your message:</label>
-                <textarea name="contact[message]" style="width:100%;height:200px;"></textarea>
-                <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey=""></div> <!-- Sitekey -->
-                <input type="submit" value="Send" class="button" />
-            </form>
+                <form method="post">
+                    <label class="bold">Name:</label>
+                    <input name="contact[name]" type="text" placeholder="Please enter your name"/>
+                    <label class="bold">Email:</label>
+                    <input name="contact[email]" type="text" placeholder="Please enter your email"/>
+                    <label class="bold">Your message:</label>
+                    <textarea name="contact[message]" style="width:100%;height:200px;"></textarea>
+                    <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey=""></div> <!-- Sitekey -->
+                    <input type="submit" value="Send" class="button" />
+                </form>
 
+            </div>
+            <div class="large-2 columns">&nbsp;</div>
         </div>
-        <div class="large-2 columns">&nbsp;</div>
-    </div>

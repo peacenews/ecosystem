@@ -1,4 +1,4 @@
-<? 
+<?
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -21,8 +21,8 @@ include("functions.php");
 session_start();
 $page_control->module_list=array(
     "sign_up"
-);
-foreach ($page_control->module_list as $key=>$val) { 
+    );
+foreach ($page_control->module_list as $key=>$val) {
     $file='modules/'.$val.'.php';
     include($file);
     unset ($file);
@@ -35,7 +35,7 @@ get_template ($page_control->uri);
 ob_start(save_buffer);
 $content_file="modules/".$page_control->file;
 include ($content_file);
-ob_end_flush(); 
+ob_end_flush();
 unset($content_file);
 //end content
 ?>

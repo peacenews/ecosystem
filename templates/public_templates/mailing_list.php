@@ -27,33 +27,33 @@ You should have received a copy of the GNU Affero General Public License along w
             <img src="" alt="" id="dashboard-icon" /> <!-- Mailing list icon -->
         </div>
 
-    <div class="large-12 columns">
-    <form action="" method="post">
-        <input name="send_mailing_list[sublect]" type="text" placeholder="Subject" value="<? echo $_POST[send_mailing_list][sublect]?>"/>
-        <textarea  style="width: 500px; height: 600px;" class="sendx" name="send_mailing_list[content]"><? echo $_POST[send_mailing_list][content]?></textarea>
-    </div>
-    <div class="large-3 columns right">
-    <div class="form-controls">
-        <label>send as test:</label> <input name="send_mailing_list[test]" type="checkbox" value="test" checked style="margin-right:20px">
-        <input name="" type="submit" value="Send" class="button green bold">
-    </form>
-    </div>
-    </div>
-
-    <div class="large-12 columns email-list-intro">
-        <h3>Email List</h3>
-        <p>These are the email addresses which you have added, or people who have joined the list using the Email Sign up at the bottom of your Zylum webpages.</p>
-
-        <div class="email-list">
-            <? echo mailing_list();?>
+        <div class="large-12 columns">
+            <form action="" method="post">
+                <input name="send_mailing_list[sublect]" type="text" placeholder="Subject" value="<? echo $_POST[send_mailing_list][sublect]?>"/>
+                <textarea  style="width: 500px; height: 600px;" class="sendx" name="send_mailing_list[content]"><? echo $_POST[send_mailing_list][content]?></textarea>
+            </div>
+            <div class="large-3 columns right">
+                <div class="form-controls">
+                    <label>send as test:</label> <input name="send_mailing_list[test]" type="checkbox" value="test" checked style="margin-right:20px">
+                    <input name="" type="submit" value="Send" class="button green bold">
+                </form>
+            </div>
         </div>
 
-        <h3 style="margin-top:30px;">Add emails</h3>
-        <form action="" method="post">
-            <p>(place each email on a seperate line):
-            <textarea name="add_lister" cols="40" rows="10" ></textarea></p>
-            <p><input name="" type="submit" value="Add" class="button green"/></p>
-        </form>
-    </div>
-    </div>
-</section>
+        <div class="large-12 columns email-list-intro">
+            <h3>Email List</h3>
+            <p>These are the email addresses which you have added, or people who have joined the list using the Email Sign up at the bottom of your Zylum webpages.</p>
+
+            <div class="email-list">
+                <? echo mailing_list();?>
+            </div>
+
+            <h3 style="margin-top:30px;">Add emails</h3>
+            <form action="" method="post">
+                <p>(place each email on a seperate line):
+                    <textarea name="add_lister" cols="40" rows="10" ></textarea></p>
+                    <p><input name="" type="submit" value="Add" class="button green"/></p>
+                </form>
+            </div>
+        </div>
+    </section>
