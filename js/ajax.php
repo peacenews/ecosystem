@@ -23,10 +23,10 @@ function toAscii($str) {
     return $clean;
 }
 
-if (isset($_GET[site_title])) {
+if (isset($_GET['site_title'])) {
     $stmt = $dbpdo->prepare("select id from users WHERE title = :name ");
-    // echo "select id from users WHERE title = '$_GET[site_title]'  ";
-    $stmt->execute(array(':name' => $_GET[site_title]));
+    // echo "select id from users WHERE title = '$_GET['site_title']'  ";
+    $stmt->execute(array(':name' => $_GET['site_title']));
     $num_rows = $stmt->rowCount();
     if ($num_rows>=1) {
         //echo '<img src="/img/kill.png" width="20" height="20">';
@@ -37,18 +37,18 @@ if (isset($_GET[site_title])) {
     }
 }
 
-if (isset($_GET[site_titlec])) {
-    echo toAscii($_GET[site_titlec]);
+if (isset($_GET['site_titlec'])) {
+    echo toAscii($_GET['site_titlec']);
 }
 
-if (isset($_GET[site_address])) {
+if (isset($_GET['site_address'])) {
     $preg_str_check="#[^][ A-Za-z0-9-]#";
-    if( preg_match( $preg_str_check, $_GET[site_address] )) {
+    if( preg_match( $preg_str_check, $_GET['site_address'] )) {
         echo 'x';
     } else {
-        $_GET[site_address]='/'.$_GET[site_address];
+        $_GET['site_address']='/'.$_GET['site_address'];
         $stmt = $dbpdo->prepare("select id from users WHERE url = :url ");
-        $stmt->execute(array(':url' => $_GET[site_address]));
+        $stmt->execute(array(':url' => $_GET['site_address']));
         $num_rows = $stmt->rowCount();
         if ($num_rows>=1) {
             //echo '<img src="/img/kill.png" width="20" height="20">';

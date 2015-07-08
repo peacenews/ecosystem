@@ -116,13 +116,13 @@ function Image($image, $crop = null, $size = null) {
 
     ini_set('display_errors', 1);
 
-    $id=$_GET["id"];
-    $table=$_GET["table"];
-    $field=$_GET["field"];
-    $width=$_GET["width"];
-    $height=$_GET["height"];
-    $action=$_GET["action"];
-    $ratio=$_GET["ratio"];
+    $id=$_GET['id'];
+    $table=$_GET['table'];
+    $field=$_GET['field'];
+    $width=$_GET['width'];
+    $height=$_GET['height'];
+    $action=$_GET['action'];
+    $ratio=$_GET['ratio'];
     $Types = array(
     "474946383761"=>"image/gif",                        //GIF87a type gif
     "474946383961"=>"image/gif",                        //GIF89a type gif
@@ -141,7 +141,7 @@ function Image($image, $crop = null, $size = null) {
 //$result = $dbpdo->query($query);
 
     $stmt = $dbpdo->prepare("select `media` from `media` where id=:id ");
-// echo "select id from users WHERE title = '$_GET[site_title]'  ";
+// echo "select id from users WHERE title = '$_GET['site_title']'  ";
     $stmt->execute(array(':id' => $id));
     $mysql_result = $stmt->fetch(PDO::FETCH_BOTH);
 

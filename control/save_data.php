@@ -16,48 +16,48 @@ You should have received a copy of the GNU Affero General Public License along w
 session_start();
 include ("config.php");
 
-if (isset($_SESSION[public_user][user_id])) {
+if (isset($_SESSION['public_user']['user_id'])) {
     // cahnge color
-    if (isset($_POST[cw])) {
+    if (isset($_POST['cw'])) {
         $stmt = $dbpdo->prepare(" UPDATE `website` set  `color`= :color where id= :web ");
         $stmt->execute(array(
-            ':color' => $_POST[cw],
-            ':web' => $_SESSION[public_user][site_id]
+            ':color' => $_POST['cw'],
+            ':web' => $_SESSION['public_user']['site_id']
             ));
     }
     // social
-    if (isset($_POST[twitter])) {
+    if (isset($_POST['twitter'])) {
         $stmt = $dbpdo->prepare(" UPDATE `website` set  `fb`= :fb, twitter= :twitter where id= :web ");
         $stmt->execute(array(
-            ':fb' => $_POST[facebook],
-            ':twitter' => $_POST[twitter],
-            ':web' => $_SESSION[public_user][site_id]
+            ':fb' => $_POST['facebook'],
+            ':twitter' => $_POST['twitter'],
+            ':web' => $_SESSION['public_user']['site_id']
             ));
     }
     // page save
-    if (isset($_POST[pcontent])) {
-        if ($_SESSION[news_id]==0) {
+    if (isset($_POST['pcontent'])) {
+        if ($_SESSION['news_id']==0) {
             $stmt = $dbpdo->prepare(" UPDATE `pages` set  `content`= :content  where id= :pid ");
             $stmt->execute(array(
-                ':content' => $_POST[pcontent],
-                ':pid' => $_SESSION[page_id]
+                ':content' => $_POST['pcontent'],
+                ':pid' => $_SESSION['page_id']
                 ));
         }
-        if ($_SESSION[news_id]!=0) {
+        if ($_SESSION['news_id']!=0) {
             $stmt = $dbpdo->prepare(" UPDATE `news` set  `content`= :content  where id= :nid and page_id=:pid ");
             $stmt->execute(array(
-                ':content' => $_POST[pcontent],
-                ':nid' => $_SESSION[news_id],
-                ':pid' => $_SESSION[page_id]
+                ':content' => $_POST['pcontent'],
+                ':nid' => $_SESSION['news_id'],
+                ':pid' => $_SESSION['page_id']
                 ));
         }
         echo 'content saved';
     }
-    if (isset($_POST[ccontent])) {
+    if (isset($_POST['ccontent'])) {
         $stmt = $dbpdo->prepare(" UPDATE `pages` set  `caption`= :content  where id= :pid ");
         $stmt->execute(array(
-            ':content' => $_POST[ccontent],
-            ':pid' => $_SESSION[page_id]
+            ':content' => $_POST['ccontent'],
+            ':pid' => $_SESSION['page_id']
             ));
         echo 'caption saved';
     }

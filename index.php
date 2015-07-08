@@ -57,7 +57,7 @@ function get_template($uri) {
 }
 
 //get the url for redirects
-$page_control->uri=strtok($_SERVER["REQUEST_URI"],'?');
+$page_control->uri=strtok($_SERVER['REQUEST_URI'],'?');
 $page_control->breakdown=explode("/",$page_control->uri);
 
 get_template($page_control->uri);
@@ -70,7 +70,7 @@ if ($page_control->template== 'website') {
 }
 
 //start buffering content
-ob_start(save_buffer);
+ob_start('save_buffer');
 $content_file="templates/".$page_control->template."_templates/".$page_control->file;
 // echo $content_file;
 include ($content_file);

@@ -22,14 +22,14 @@ function new_sign_ups() {
     $query = "SELECT * FROM `users` WHERE `valid`='No' AND `type`='Superuser'  ";
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        $url=ltrim($r[url],'/');
+        $url=ltrim($r['url'],'/');
         echo '<tr>
-        <td>'.$r[name].'</td>
-        <td>'.$r[email].'</td>
-        <td>'.$r[why].'</td>
+        <td>'.$r['name'].'</td>
+        <td>'.$r['email'].'</td>
+        <td>'.$r['why'].'</td>
         <td><input name="url" type="text" class="uurl" value="'.$url.'"/></td>
-        <td class="delete"><a href="?delete_user='.$r[id].'" class="confirm">delete</a></td>
-        <td class="approve"><a href="?approve_user='.$r[id].'" class="confirm">approve and send email</a></td>
+        <td class="delete"><a href="?delete_user='.$r['id'].'" class="confirm">delete</a></td>
+        <td class="approve"><a href="?approve_user='.$r['id'].'" class="confirm">approve and send email</a></td>
     </tr>';
     }
 }
@@ -49,28 +49,28 @@ function list_docs() {
     global $page_control;
     global $dbpdo;
     global $_SESSION;
-    $query = "SELECT * FROM `documents` where web_id=".$_SESSION[public_user][site_id]." and `archive`='No' ";
+    $query = "SELECT * FROM `documents` where web_id=".$_SESSION['public_user']['site_id']." and `archive`='No' ";
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
         echo '<tr>
-        <td>'.$r[title].'</td>
-        <td>'.$r[timestamp].'</td>
-        <td><a href="?edit_doc='.$r[id].'">edit</a></td>
-        <td><a href="?delete_doc='.$r[id].'" class="confirm ">delete</a></td>
+        <td>'.$r['title'].'</td>
+        <td>'.$r['timestamp'].'</td>
+        <td><a href="?edit_doc='.$r['id'].'">edit</a></td>
+        <td><a href="?delete_doc='.$r['id'].'" class="confirm ">delete</a></td>
     </tr>';
     }
 }
 
 function edit_document($id, $original=0) {
     global $dbpdo;
-    $query = "select * from documents where id=$id and archive='No' AND  web_id=".$_SESSION[public_user][site_id]." ";
+    $query = "select * from documents where id=$id and archive='No' AND  web_id=".$_SESSION['public_user']['site_id']." ";
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        $_SESSION[this_edit]=$r[original];
+        $_SESSION['this_edit']=$r['original'];
         ?>
         <form action="" method="post">
-            <p>Title: <input name="edit_doc[title]" type="text" value="<?php echo $r[title] ?>" required></p>
-            <p><textarea  style="width: 500px; height: 600px;" class="sendx" name="edit_doc[content]"><?php echo $r[content] ?></textarea> </p>
+            <p>Title: <input name="edit_doc[title]" type="text" value="<?php echo $r['title'] ?>" required></p>
+            <p><textarea  style="width: 500px; height: 600px;" class="sendx" name="edit_doc[content]"><?php echo $r['content'] ?></textarea> </p>
             <p><input name="" type="submit" value="Save revision"></p>
         </form>
         <?php }
@@ -80,16 +80,16 @@ function edit_document($id, $original=0) {
         global $page_control;
         global $dbpdo;
         global $_SESSION;
-        $query = "SELECT * FROM `documents` where web_id=".$_SESSION[public_user][site_id]." and `archive`='Yes'  and `original`=".$_SESSION[this_edit]." order by `timestamp` desc ";
+        $query = "SELECT * FROM `documents` where web_id=".$_SESSION['public_user']['site_id']." and `archive`='Yes'  and `original`=".$_SESSION['this_edit']." order by `timestamp` desc ";
     // echo $query;
         $result = $dbpdo->query($query);
         while($r = $result->fetch(PDO::FETCH_BOTH)) {
             echo '<tr>
-            <td>'.$r[title].'</td>
-            <td>'.$r[timestamp].'</td>
-            <td><a href="'.$_SESSION[public_user][site_url].'/documents/'.$r[id].'" target="_blank">preview</a></td>
-            <td><a href="?delete_doc='.$r[id].'">delete</a></td>
-            <td><a href="/document_sharing?edit_doc='.$_GET[edit_doc].'&reinstate_doc='.$r[id].'">reinstate</a></td>
+            <td>'.$r['title'].'</td>
+            <td>'.$r['timestamp'].'</td>
+            <td><a href="'.$_SESSION['public_user']['site_url'].'/documents/'.$r['id'].'" target="_blank">preview</a></td>
+            <td><a href="?delete_doc='.$r['id'].'">delete</a></td>
+            <td><a href="/document_sharing?edit_doc='.$_GET['edit_doc'].'&reinstate_doc='.$r['id'].'">reinstate</a></td>
         </tr>';
     }
 }
@@ -105,33 +105,33 @@ function existing_users($page_control) {
     if ($page_control->uri=='/manage/users/all') $sql="`valid`='Yes'  ";
     if ($page_control->uri=='/manage/users') $sql="`valid`='Yes'  ";
     if ($page_control->uri=='/manage/users/suspended')  $sql="`valid`='No'  ";
-    if (isset($_POST[usearch]))  $sql="  `email` like '%$_POST[usearch]%' ";
+    if (isset($_POST['usearch']))  $sql="  `email` like '%".$_POST['usearch']."%' ";
     $query = "SELECT * FROM `users` WHERE   $sql  order by `email` ";
     //echo $query;
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        if ($r[valid]=='Yes')  $drop = '<td class="delete"><a href="?suspend_user='.$r[id].'" class="confirm">suspend</a></td>';
-        if ($r[valid]=='No')  $drop = '<td class="delete"><a href="?restate_user='.$r[id].'" class="confirm">re-instate</a></td>';
-        if ($r[type]=='Superuser') $r[type]='Owner';
-        if ($r[type]!='Superuser') {
-            $queryx = "select * from users where id=$r[site_id] ";
+        if ($r['valid']=='Yes')  $drop = '<td class="delete"><a href="?suspend_user='.$r['id'].'" class="confirm">suspend</a></td>';
+        if ($r['valid']=='No')  $drop = '<td class="delete"><a href="?restate_user='.$r['id'].'" class="confirm">re-instate</a></td>';
+        if ($r['type']=='Superuser') $r['type']='Owner';
+        if ($r['type']!='Superuser') {
+            $queryx = "select * from users where id=".$r['site_id']." ";
             $resultx = $dbpdo->query($queryx);
             while($rx = $resultx->fetch(PDO::FETCH_BOTH)) {
-                $r[title]=$rx[title];
-                $r[url]=$rx[url];
+                $r['title']=$rx['title'];
+                $r['url']=$rx['url'];
             }
         }
-        $deps=implode(', ',unserialize($r[deputies]));
+        $deps=implode(', ',unserialize($r['deputies']));
         echo '<form ><tr>
-        <td>'.$r[name].'</td>
-        <td>'.$r[email].'</td>
+        <td>'.$r['name'].'</td>
+        <td>'.$r['email'].'</td>
         <td>'.$deps.'</td>
-        <td>'.$r[why].'</td>
-        <td>'.$r[title].'</td>
-        <td>'.$r[url].'</td>
-        <td>'.$r[type].'</td>
+        <td>'.$r['why'].'</td>
+        <td>'.$r['title'].'</td>
+        <td>'.$r['url'].'</td>
+        <td>'.$r['type'].'</td>
         '.$drop.'
-        <td class="delete confirm"><a href="?delete_user='.$r[id].'">delete</a></td>
+        <td class="delete confirm"><a href="?delete_user='.$r['id'].'">delete</a></td>
     </tr></form >';
     }
 }
@@ -139,44 +139,44 @@ function existing_users($page_control) {
 function contributors() {
     global $page_control;
     global $dbpdo;
-    $query = "SELECT * FROM `users` WHERE `valid`='yes' AND `type`='Contributor' and `site_id`='".$_SESSION[public_user][site_id]."' order by email  ";
+    $query = "SELECT * FROM `users` WHERE `valid`='yes' AND `type`='Contributor' and `site_id`='".$_SESSION['public_user']['site_id']."' order by email  ";
     //echo $query;
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        echo '<p><a href="/contributors?delete_contributor='.$r[id].'" class="confirm">Delete</a> '.$r[email].'</p>';
+        echo '<p><a href="/contributors?delete_contributor='.$r['id'].'" class="confirm">Delete</a> '.$r['email'].'</p>';
     }
 }
 
 function participants() {
     global $page_control;
     global $dbpdo;
-    $query = "SELECT * FROM `users` WHERE `valid`='yes' AND `type`='Participant' and `site_id`='".$_SESSION[public_user][site_id]."'  order by email ";
+    $query = "SELECT * FROM `users` WHERE `valid`='yes' AND `type`='Participant' and `site_id`='".$_SESSION['public_user']['site_id']."'  order by email ";
     //echo $query;
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        echo '<p><a href="/contributors?delete_contributor='.$r[id].'" class="confirm">Delete</a> '.$r[email].'</p>';
+        echo '<p><a href="/contributors?delete_contributor='.$r['id'].'" class="confirm">Delete</a> '.$r['email'].'</p>';
     }
 }
 
 function mailing_list() {
     global $page_control;
     global $dbpdo;
-    $query = "SELECT * FROM `mailing_list` WHERE  `site_id`='".$_SESSION[public_user][site_id]."'  ";
+    $query = "SELECT * FROM `mailing_list` WHERE  `site_id`='".$_SESSION['public_user']['site_id']."'  ";
     //echo $query;
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        echo '<p><a href="/mailing_list?delete_lister='.$r[id].'"  class="confirm">Delete</a> '.$r[email].'</p>';
+        echo '<p><a href="/mailing_list?delete_lister='.$r['id'].'"  class="confirm">Delete</a> '.$r['email'].'</p>';
     }
 }
 
 function mailing_disc() {
     global $page_control;
     global $dbpdo;
-    $query = "SELECT * FROM `disc_groups` WHERE  `site_id`='".$_SESSION[public_user][site_id]."'  ";
+    $query = "SELECT * FROM `disc_groups` WHERE  `site_id`='".$_SESSION['public_user']['site_id']."'  ";
     //echo $query;
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        echo '<p><a href="/mailing_list?delete_dlister='.$r[id].'" class="confirm">Delete</a> '.$r[email].'</p>';
+        echo '<p><a href="/mailing_list?delete_dlister='.$r['id'].'" class="confirm">Delete</a> '.$r['email'].'</p>';
     }
 }
 
@@ -191,32 +191,32 @@ function send_mailing_list($send_data) {
     global $dbpdo;
     require 'PHPMailerAutoload.php';
     require 'html2text.php';
-    $text = convert_html_to_text($send_data[content]);
+    $text = convert_html_to_text($send_data['content']);
     $mail = new PHPMailer;
     $mail->From = 'noreply@zylum.org';
     $mail->FromName = 'No reply @ Zylum';
     $mail->addAddress( 'noreply@zylum.org', 'noreply@zylum.org');
-    if ($send_data[content]!='test') {
-        $query = "SELECT * FROM `mailing_list` WHERE  `site_id`='".$_SESSION[public_user][site_id]."'  ";
+    if ($send_data['content']!='test') {
+        $query = "SELECT * FROM `mailing_list` WHERE  `site_id`='".$_SESSION['public_user']['site_id']."'  ";
         $result = $dbpdo->query($query);
         while($r = $result->fetch(PDO::FETCH_BOTH)) {
-            $mail->addBCC($r[email]);
+            $mail->addBCC($r['email']);
         }
-        $mail->addBCC($_SESSION[public_user][email]);
+        $mail->addBCC($_SESSION['public_user']['email']);
     }
     //$unsubscribe='<p><a href="https://zylum.org/unsub?">Click here to unsubscribe to this list</a></p>';
-    //$send_data[content].=$unsubscribe;
+    //$send_data['content'].=$unsubscribe;
     $mail->addReplyTo('noreply@zylum.org', 'noreply@zylum.org');
     $mail->isHTML(true);
-    $mail->Subject = $send_data[sublect];
-    $mail->Body    = $send_data[content];
+    $mail->Subject = $send_data['sublect'];
+    $mail->Body    = $send_data['content'];
     $mail->AltBody = $text;
 
     if(!$mail->send()) {
-        $_SESSION[message]= 'Message could not be sent.';
+        $_SESSION['message']= 'Message could not be sent.';
         //echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-        $_SESSION[message]= 'Message has been sent';
+        $_SESSION['message']= 'Message has been sent';
     }
 }
 
@@ -291,8 +291,8 @@ function send_email($user_id,$rnd_pass,$email) {
     $query = "SELECT * FROM `emails` WHERE name='$email'  ";
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        $subject = $r[subject];
-        $message= $r[content];
+        $subject = $r['subject'];
+        $message= $r['content'];
     }
     if ($email=='Check sign up') {
         $stmt = $dbpdo->prepare("SELECT email from sign_ups  WHERE id = :id");
@@ -300,8 +300,8 @@ function send_email($user_id,$rnd_pass,$email) {
             ':id' => $user_id
             ));
         while($r = $stmt->fetch(PDO::FETCH_BOTH)) {
-            $to_email = $r[email];
-            $to_name = $r[email];
+            $to_email = $r['email'];
+            $to_name = $r['email'];
         }
         $link= 'https://zylum.org/?email_id='.$user_id.'&pass='.$rnd_pass.'';
     } else {
@@ -310,19 +310,19 @@ function send_email($user_id,$rnd_pass,$email) {
             ':id' => $user_id
             ));
         while($r = $stmt->fetch(PDO::FETCH_BOTH)) {
-            $to_email = $r[email];
-            $to_name = $r[name];
+            $to_email = $r['email'];
+            $to_name = $r['name'];
         }
     }
 
-    $site=$site_vars[this_domain].$_SESSION[public_user][site_url];
+    $site=$site_vars['this_domain'].$_SESSION['public_user']['site_url'];
     $message= str_replace("||pass||", $rnd_pass, $message);
     $message= str_replace("||name||", $to_name, $message);
     $message= str_replace("||site name||", $site_name, $message);
     $message= str_replace("||site url||", $site, $message);
-    $message= str_replace("||sub site name||", $_SESSION[public_user][site_title], $message);
-    $message= str_replace("||inviter||", $_SESSION[public_user][name], $message);
-    $message= str_replace("||message||", $_SESSION[temp][message], $message);
+    $message= str_replace("||sub site name||", $_SESSION['public_user']['site_title'], $message);
+    $message= str_replace("||inviter||", $_SESSION['public_user']['name'], $message);
+    $message= str_replace("||message||", $_SESSION['temp']['message'], $message);
     $message= str_replace("||link||", $link, $message);
     //echo $message;
 
@@ -348,8 +348,8 @@ function send_reset_email($user_id,$rnd_pass,$message) {
         ':id' => $user_id
         ));
     while($r = $stmt->fetch(PDO::FETCH_BOTH)) {
-        $to_email = $r[email];
-        $to_name = $r[name];
+        $to_email = $r['email'];
+        $to_name = $r['name'];
     }
 
     $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -407,7 +407,7 @@ function is_site_live($id) {
     //echo  "select * from  users where  id=$id and site_id!=0 ";
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        $on=$r[on];
+        $on=$r['on'];
     }
     return $on;
 }
@@ -418,7 +418,7 @@ function is_email_on($id) {
     //echo  "select * from  users where  id=$id and site_id!=0 ";
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        $on=$r[email];
+        $on=$r['email'];
     }
     return $on;
 }
@@ -427,25 +427,25 @@ function site_info() {
     // echo '<pre>';
     // print_r($_SESSION);
     //echo '</pre>';  */
-    $num_rows=is_site_live($_SESSION[public_user][site_id]);
-    //echo '<p>Name: '.$_SESSION[public_user][site_title].'</p>';
-    //echo '<p>url: <a href="http://zylum.org'.$_SESSION[public_user][site_url].'" target="_blank">http://zylum.org'.$_SESSION[public_user][site_url].'</a></p>';
-    if ($_SESSION[public_user][level]=='Superuser') {
+    $num_rows=is_site_live($_SESSION['public_user']['site_id']);
+    //echo '<p>Name: '.$_SESSION['public_user']['site_title'].'</p>';
+    //echo '<p>url: <a href="http://zylum.org'.$_SESSION['public_user']['site_url'].'" target="_blank">http://zylum.org'.$_SESSION['public_user']['site_url'].'</a></p>';
+    if ($_SESSION['public_user']['level']=='Superuser') {
         if ( $num_rows!=1) {
-            echo '<a href="'.$this_domain.$_SESSION[public_user][site_url].'?turn_it_on">Make your site public</a>';
+            echo '<a href="'.$this_domain.$_SESSION['public_user']['site_url'].'?turn_it_on">Make your site public</a>';
         } else {
-            echo '<a href="'.$this_domain.$_SESSION[public_user][site_url].'?turn_it_off">Make your site private</a>    ';
+            echo '<a href="'.$this_domain.$_SESSION['public_user']['site_url'].'?turn_it_off">Make your site private</a>    ';
         }
     }
 }
 
 function email_info() {
-    $num_rows=is_email_on($_SESSION[public_user][site_id]);
-    if ($_SESSION[public_user][level]=='Superuser') {
+    $num_rows=is_email_on($_SESSION['public_user']['site_id']);
+    if ($_SESSION['public_user']['level']=='Superuser') {
         if ( $num_rows==1) {
-            echo '<a href="'.$this_domain.$_SESSION[public_user][site_url].'?turn_email_off">Remove Email Sign up</a>';
+            echo '<a href="'.$this_domain.$_SESSION['public_user']['site_url'].'?turn_email_off">Remove Email Sign up</a>';
         } else {
-            echo '<a href="'.$this_domain.$_SESSION[public_user][site_url].'?turn_email_on">Add Email Sign up</a>    ';
+            echo '<a href="'.$this_domain.$_SESSION['public_user']['site_url'].'?turn_email_on">Add Email Sign up</a>    ';
         }
     }
 }
@@ -460,7 +460,7 @@ function toAscii($str) {
 function check_page($page_name) {
     global $dbpdo;
     if ($page_name!='documents') {
-        $query = "select * from pages where web_id=".$_SESSION[public_user][site_id]." and `url`='$page_name'  ";
+        $query = "select * from pages where web_id=".$_SESSION['public_user']['site_id']." and `url`='$page_name'  ";
         $result = $dbpdo->query($query);
         $num_rows = $result->rowCount();
         return $num_rows;
@@ -472,7 +472,7 @@ function check_page($page_name) {
 function add_page($page_name, $type, $page_url) {
     global $dbpdo;
     if ($type=='') $type='Page';
-    $stmt = $dbpdo->prepare("INSERT INTO .`pages` (`id`, `name`, `url`, `type`, `web_id`, `content`, `pic`, `caption`) VALUES (NULL, :page, :url, :type, ".$_SESSION[public_user][site_id].",
+    $stmt = $dbpdo->prepare("INSERT INTO .`pages` (`id`, `name`, `url`, `type`, `web_id`, `content`, `pic`, `caption`) VALUES (NULL, :page, :url, :type, ".$_SESSION['public_user']['site_id'].",
         '<h1>Add your Heading for your introduction here</h1><h2>Add your introduction to your first story here. Join us if you also believe that imagination and fun can change the world for the better!</h2>
         <p>Start typing or insert your copy here…</p>', '', ''); ");
     // echo "UPDATE emails set `subject`= $subject, content= $content WHERE name = $which";
@@ -552,28 +552,28 @@ function scaleImageFileToBlob($file) {
 
 function save_image($type,$blob) {
     global $dbpdo;
-    $page_id=$_SESSION[page_id];
-    $news_id=$_SESSION[news_id];
+    $page_id=$_SESSION['page_id'];
+    $news_id=$_SESSION['news_id'];
     $blob= addslashes($blob);
     $query = "insert into media (`id`, `media`) values (NULL, '$blob') ";
     $result = $dbpdo->query($query);
     $media_id=$dbpdo->lastInsertId();
     if ($type=='cimage') {
-        if ($_SESSION[news_id]==0) {
+        if ($_SESSION['news_id']==0) {
             $query = "update pages set pic=$media_id where id=$page_id ";
             $result = $dbpdo->query($query);
         }
-        if ($_SESSION[news_id]!=0) {
+        if ($_SESSION['news_id']!=0) {
             $query = "update news set media_id=$media_id where page_id=$page_id and id=$news_id ";
             $result = $dbpdo->query($query);
         }
     }
     if ($type=='logo') {
-        $query = "update `website` set `logo`=$media_id where id=".$_SESSION[public_user][site_id]." ";
+        $query = "update `website` set `logo`=$media_id where id=".$_SESSION['public_user']['site_id']." ";
         $result = $dbpdo->query($query);
     }
     if ($type=='banner') {
-        $query = "update `website` set `title_pic`=$media_id where id=".$_SESSION[public_user][site_id]." ";
+        $query = "update `website` set `title_pic`=$media_id where id=".$_SESSION['public_user']['site_id']." ";
         $result = $dbpdo->query($query);
     }
     return $media_id;
@@ -590,11 +590,11 @@ function delete_image($type,$page_id) {
         $result = $dbpdo->query($query);
     }
     if ($type=='logo') {
-        $query = "update `website` set `logo`=0 where id=".$_SESSION[public_user][site_id]." ";
+        $query = "update `website` set `logo`=0 where id=".$_SESSION['public_user']['site_id']." ";
         $result = $dbpdo->query($query);
     }
     if ($type=='banner') {
-        $query = "update `website` set `title_pic`=0 where id=".$_SESSION[public_user][site_id]." ";
+        $query = "update `website` set `title_pic`=0 where id=".$_SESSION['public_user']['site_id']." ";
         $result = $dbpdo->query($query);
     }
 }
@@ -624,17 +624,17 @@ function page_news($page_id, $type, $news_id='') {
         if ($news_id!='') {
             $float='  style="float: unset;" ';
         }
-        if ($r[media_id]!=0) {
-            echo '<p><img src="/img/'.$r[media_id].'/772" '.$float.'/></p>';
+        if ($r['media_id']!=0) {
+            echo '<p><img src="/img/'.$r['media_id'].'/772" '.$float.'/></p>';
         }
-        echo "<h2 id=\"news_header\" style=\"margin-top: 20px;\">$r[title]</h2>";
+        echo "<h2 id=\"news_header\" style=\"margin-top: 20px;\">".$r['title']."</h2>";
         echo "<p><strong>$date</strong></p>";
         if ($news_id!='') {
-            echo '<div id="content">'.$r[content].'</div>';
+            echo '<div id="content">'.$r['content'].'</div>';
         } else {
             echo '<p>';
-            echo shorten($r[content], 100);
-            echo ' . . . . <a href="'.$page_control->extension.'/news/'.$r[id].'">read more &gt</a><p>';
+            echo shorten($r['content'], 100);
+            echo ' . . . . <a href="'.$page_control->extension.'/news/'.$r['id'].'">read more &gt</a><p>';
         }
         echo '</div>';
     }
@@ -646,23 +646,23 @@ function docs() {
     global $doc_id;
     global $user_level;
     //echo '|'.$doc_id.'|';
-    if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=1) {
+    if ($_SESSION['public_user']['site_id']==$page_control->web_id && $user_level>=1) {
         if ($doc_id!='') {
-            $query = "select * from documents where web_id=".$_SESSION[public_user][site_id]."   and id=$doc_id ";
+            $query = "select * from documents where web_id=".$_SESSION['public_user']['site_id']."   and id=$doc_id ";
             $result = $dbpdo->query($query);
             while ($r = $result->fetch(PDO::FETCH_BOTH)) {
-                echo $r[content];
-                $_SESSION[rtf_web]=$page_control->web_id;
+                echo $r['content'];
+                $_SESSION['rtf_web']=$page_control->web_id;
                 echo '
                 <p class="print" onclick="window.print()">Print</p>
                 <!-- <a href="/doc/'.$doc_id.'" target="_blank"><p class="rtf">Download as RTF</p></a> -->
                 ';
             }
         } else {
-            $query = "select * from documents where web_id=".$_SESSION[public_user][site_id]."  and archive='No' ";
+            $query = "select * from documents where web_id=".$_SESSION['public_user']['site_id']."  and archive='No' ";
             $result = $dbpdo->query($query);
             while ($r = $result->fetch(PDO::FETCH_BOTH)) {
-                echo '<p><a href="'.$page_control->extension.'/documents/'.$r[id].'">'.$r[title].'  read >> </a></p>';
+                echo '<p><a href="'.$page_control->extension.'/documents/'.$r['id'].'">'.$r['title'].'  read >> </a></p>';
             }
         }
     }
@@ -673,21 +673,21 @@ function email_lists() {
     $query = "select * from emails ";
     $result = $dbpdo->query($query);
     while($r = $result->fetch(PDO::FETCH_BOTH)) {
-        echo '<li><a href="/manage/emails?m='.$r[id].'">'.$r[name].'</a></li>';
+        echo '<li><a href="/manage/emails?m='.$r['id'].'">'.$r['name'].'</a></li>';
     }
 }
 
 function edit_email() {
     global $_GET;
     global $dbpdo;
-    if (isset ($_GET[m])) {
-        $query = "select * from emails where id=$_GET[m] ";
+    if (isset ($_GET['m'])) {
+        $query = "select * from emails where id=".$_GET['m']." ";
         $result = $dbpdo->query($query);
         while($r = $result->fetch(PDO::FETCH_BOTH)) { ?>
         <form action="" method="post">
-            <input name="app_subject" type="text" value="<?php echo $r[subject] ?>" /><br />
-            <textarea name="app_content" cols="" rows="" class="tinymce ta"><?php echo $r[content] ?></textarea><br />
-            <input name="update_email" type="hidden" value="<?php echo $r[name] ?>"/>
+            <input name="app_subject" type="text" value="<?php echo $r['subject'] ?>" /><br />
+            <textarea name="app_content" cols="" rows="" class="tinymce ta"><?php echo $r['content'] ?></textarea><br />
+            <input name="update_email" type="hidden" value="<?php echo $r['name'] ?>"/>
             <input name="update" type="submit" value="Update" />
         </form>
         <?php }
@@ -695,9 +695,9 @@ function edit_email() {
 }
 
 function messages() {
-    if ($_SESSION[message]!='') {
-        echo '<div id="confirmx">'.$_SESSION[message].'</div>';
-        $_SESSION[message]='';
+    if ($_SESSION['message']!='') {
+        echo '<div id="confirmx">'.$_SESSION['message'].'</div>';
+        $_SESSION['message']='';
     }
 }
 ?>

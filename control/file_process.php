@@ -13,20 +13,20 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 */
 
-if (count($_FILES["graphic"])!=0) {
-    foreach($_POST["graphic"]["delete"]  as $key=>$val) {
-        if ($_SESSION[news_id]!=0) {
+if (count($_FILES['graphic'])!=0) {
+    foreach($_POST['graphic']['delete']  as $key=>$val) {
+        if ($_SESSION['news_id']!=0) {
             //echo 'deleting '.$key;
-            $media_id=delete_image('news',$_SESSION[news_id]);
+            $media_id=delete_image('news',$_SESSION['news_id']);
         }
         else {
             //echo 'deleting '.$key;
-            $media_id=delete_image($key,$_SESSION[page_id]);
+            $media_id=delete_image($key,$_SESSION['page_id']);
         }
     }
-    foreach($_FILES["graphic"]["name"]  as $key=>$val) {
-        if ($_FILES["graphic"]["name"][$key]!='') {
-            if ($_FILES["graphic"]["type"][$key]=='image/jpeg' && $_FILES["graphic"]["size"][$key]<='3000000' ) {
+    foreach($_FILES['graphic']['name']  as $key=>$val) {
+        if ($_FILES['graphic']['name'][$key]!='') {
+            if ($_FILES['graphic']['type'][$key]=='image/jpeg' && $_FILES['graphic']['size'][$key]<='3000000' ) {
                 $image_file=$_FILES['graphic']['tmp_name'][$key];
                 $return=scaleImageFileToBlob($image_file);
                 $blob = $return[0];
