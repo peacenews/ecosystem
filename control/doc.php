@@ -18,7 +18,7 @@ include ("config.php");
 include ("security.php");
 // include ("rtf.php");
 
-if ($_SESSION[public_user][site_id]==$_SESSION[rtf_web] && $user_level>=1) {
+if ($_SESSION['public_user']['site_id']==$_SESSION['rtf_web'] && $user_level>=1) {
     $rtf='<h1>dddddddddddddddddd</h1>';
     //header('Content-type: application/rtf');
     //header('Content-Disposition: attachment; filename=doc.rtf');

@@ -21,18 +21,18 @@ print_r($_GET);
 print_r($_SESSION);
 echo '</pre>';
 
-access_control($_SESSION[user_type],'Superuser');
-if (isset ($_POST[site_title]) ) {
+access_control($_SESSION['user_type'],'Superuser');
+if (isset ($_POST['site_title']) ) {
     $stmt = $dbpdo->prepare(" INSERT INTO `website` (`id`, `name`, `url`, `descr`, `title_pic`) VALUES (NULL, :name, :url, :descr, ''); ");
     $stmt->execute(array(
-        ':name' => $_POST[site_title],
-        ':url' => $_POST[site_address],
-        ':descr' => $_POST[site_descr]
+        ':name' => $_POST['site_title'],
+        ':url' => $_POST['site_address'],
+        ':descr' => $_POST['site_descr']
         ));
     $last_insert=$dbpdo->lastInsertId();
-    $query = "UPDATE `users` set site_id=$last_insert WHERE id=$_SESSION[user_id]  ";
+    $query = "UPDATE `users` set site_id=$last_insert WHERE id=$_SESSION['user_id']  ";
     $result = $dbpdo->query($query);
-    $_SESSION[site_id] = $last_insert;
+    $_SESSION['site_id'] = $last_insert;
     header( "Location: /dashboard" );
 }
 ?>

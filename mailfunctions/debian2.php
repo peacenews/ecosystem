@@ -26,14 +26,14 @@ $tos=array();
 $query = "select id,source from forwardings ";
 $result = $dbpdo->query($query);
 while($r = $result->fetch(PDO::FETCH_BOTH)) {
-    $tos[$r[id]]=$r[source];
+    $tos[$r['id']]=$r['source'];
 }
 
 $froms=array();
 $query = "select disc_groups.id, disc_groups.site_id, disc_groups.email from disc_groups , users where disc_groups.site_id=users.id and users.valid='Yes' ";
 $result = $dbpdo->query($query);
 while($r = $result->fetch(PDO::FETCH_BOTH)) {
-    $froms[$r[site_id]][$r[id]]=$r[email];
+    $froms[$r['site_id']][$r['id']]=$r['email'];
 }
 
 $inbox= imap_open("{".$mail_server.":".$mail_port."}".$mail_folder, $mail_username, $mail_password) or die("Error opening mailbox: ".imap_last_error());
@@ -115,7 +115,7 @@ if($emails) {
         $file_attachments = array();
         if(count($attachments) != 0) {
             foreach($attachments as $at) {
-                if($at[is_attachment]==1) {
+                if($at['is_attachment']==1) {
                     $fname = $at['name'];
                     $file_attachments[] = "attachments/$fname";
                     $fp = fopen("attachments/$fname","w"); fwrite($fp, $at['attachment']); fclose($fp);

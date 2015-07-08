@@ -20,7 +20,7 @@ You should have received a copy of the GNU Affero General Public License along w
     <div class="large-2 columns">&nbsp;</div>
 </div>
 
-<?php if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2) { ?>
+<?php if ($_SESSION['public_user']['site_id']==$page_control->web_id  && $user_level>=2) { ?>
 <div class="row content">
     <div class="large-2 columns">&nbsp;</div>
     <div class="large-8 columns changeh" id="content">
@@ -41,7 +41,7 @@ You should have received a copy of the GNU Affero General Public License along w
         <div class="website-image-caption">
             <div class="caption-break"></div>
             <p class="caption-content"><?php echo $page_control->page_caption ?></p>
-            <?php if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2) { ?>
+            <?php if ($_SESSION['public_user']['site_id']==$page_control->web_id && $user_level>=2) { ?>
             add your caption above<br />
             <input name="" type="button" value="Save" id="capsave">
             <div id="capresult"></div>

@@ -53,7 +53,7 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
             <div class="large-2 small-4 medium-3 columns">
                 <a href="/"><img src="logo.png" /></a> <!-- Logo -->
             </div>
-            <div class="large-4 small-8 medium-2 columns"><p class="regular-zylum"><?php echo $_SESSION[public_user][site_title] ?></p></div>
+            <div class="large-4 small-8 medium-2 columns"><p class="regular-zylum"><?php echo $_SESSION['public_user']['site_title'] ?></p></div>
             <div class="large-6 medium-7 columns">
                 <nav class="top-bar" data-topbar role="navigation">
                     <ul class="title-area">

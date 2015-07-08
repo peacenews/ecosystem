@@ -29,8 +29,8 @@ You should have received a copy of the GNU Affero General Public License along w
 
         <div class="large-12 columns">
             <form action="" method="post">
-                <input name="send_mailing_list[sublect]" type="text" placeholder="Subject" value="<?php echo $_POST[send_mailing_list][sublect] ?>"/>
-                <textarea  style="width: 500px; height: 600px;" class="sendx" name="send_mailing_list[content]"><?php echo $_POST[send_mailing_list][content] ?></textarea>
+                <input name="send_mailing_list[sublect]" type="text" placeholder="Subject" value="<?php echo $_POST['send_mailing_list']['sublect'] ?>"/>
+                <textarea  style="width: 500px; height: 600px;" class="sendx" name="send_mailing_list[content]"><?php echo $_POST['send_mailing_list']['content'] ?></textarea>
             </div>
             <div class="large-3 columns right">
                 <div class="form-controls">

@@ -19,7 +19,7 @@ $existing=array();
 $query = "select * from forwardings ";
 $result = $dbpdo->query($query);
 while($r = $result->fetch(PDO::FETCH_BOTH)) {
-    $existing[$r[id]]=$r[source];
+    $existing[$r['id']]=$r['source'];
 }
 
 echo '<pre>';
@@ -31,7 +31,7 @@ $sites=array();
 $query = "select * from website where active='Yes' ";
 $result = $dbpdo->query($query);
 while($r = $result->fetch(PDO::FETCH_BOTH)) {
-    $sites[$r[id]]=$r[name];
+    $sites[$r['id']]=$r['name'];
 }
 
 echo '<pre>';

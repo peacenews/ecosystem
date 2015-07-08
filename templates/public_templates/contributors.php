@@ -70,7 +70,7 @@ You should have received a copy of the GNU Affero General Public License along w
     <div class="row">
         <div class="large-6 columns">
             <h3>Discussion group:</h3>
-            <p>Your discussion group email address is <a href="mailto:<?php echo ltrim($_SESSION[public_user][site_url],'/') ?>@zylum.org"><?php echo ltrim($_SESSION[public_user][site_url],'/') ?>@zylum.org</a> <br />Emails sent to this address will be distributed to the email addresses below. Only messages sent from the email addresses below will be distributed to the discussion group.</p>
+            <p>Your discussion group email address is <a href="mailto:<?php echo ltrim($_SESSION['public_user']['site_url'],'/') ?>@zylum.org"><?php echo ltrim($_SESSION['public_user']['site_url'],'/') ?>@zylum.org</a> <br />Emails sent to this address will be distributed to the email addresses below. Only messages sent from the email addresses below will be distributed to the discussion group.</p>
             <div class="email-list">
                 <?php echo mailing_disc() ?>
             </div>
