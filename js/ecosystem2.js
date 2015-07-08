@@ -65,12 +65,12 @@ $(document).ready(function() {
             data: data,
             success: function(data) {
                 // alert(data);
-                if (data==0){
+                if (data==0) {
                     $('#check_site_title').html('<div class="registration-response error"><img src="/img/kill.png" width="20" height="20"></div>');
                     //$( '#create' ).attr('disabled','disabled');
                     $('#check_site_title').removeClass('ok');
                 }
-                if (data==1){
+                if (data==1) {
                     $('#check_site_title').html('<div class="registration-response success"><img src="/img/tick.gif" width="20" height="20"></div>');
                     //$( '#create' ).removeAttr('disabled');
                     $('#check_site_title').addClass('ok');
@@ -89,17 +89,17 @@ $(document).ready(function() {
             data: data,
             success: function(data) {
             //  alert (data);
-                if (data==0){
+                if (data==0) {
                     $('#check_site_address').html('<div class="registration-response error"><img src="/img/kill.png" width="20" height="20"></div>');
                     //$( '#create' ).attr('disabled','disabled');
                     $('#check_site_address').removeClass('ok');
                 }
-                if (data==1){
+                if (data==1) {
                     $('#check_site_address').html('<div class="registration-response success"><img src="/img/tick.gif" width="20" height="20"></div>');
                     //$( '#create' ).removeAttr('disabled');
                     $('#check_site_address').addClass('ok');
                 }
-                if (data=='x'){
+                if (data=='x') {
                     $('#check_site_address').html('<div class="registration-response error">Your url contains an invalid character</div>');
                     //$( '#create' ).attr('disabled','disabled');
                     $('#check_site_address').removeClass('ok');
@@ -174,7 +174,7 @@ $(document).ready(function() {
         return window.confirm("Are you sure?");
     });
 });
-    function change_color(color){
+    function change_color(color) {
     $('.change').css( "background-color", color);
     $('.changeh h1, .changeh h2, .changeh h3, .changeh h4, .changeh h5, .changeh a').css( "color",color);
     var data = 'cw=' +color;

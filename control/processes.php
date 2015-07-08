@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -224,7 +224,7 @@ if (isset ($_POST[invitename]) ) {
                 // add a forward slash
                 $url='/'.$url;
                 // clean up alittle
-                foreach($_POST as $key=>$val){
+                foreach($_POST as $key=>$val) {
                     $_POST[$key]=strip_tags($_POST[$key]);
                 }
                 // serialize th deputies to fit into one field - this is an afterthought so not planned well
@@ -550,7 +550,7 @@ if (isset ($_POST[admin_email]) ) {
 // website controls
 // change twitter variable on website
 if (isset($_SESSION[public_user][user_id])) {
-    if (isset($_POST[twitter])){
+    if (isset($_POST[twitter])) {
         $stmt = $dbpdo->prepare(" UPDATE `website` set  `fb`= :fb, twitter= :twitter where id= :web ");
         $stmt->execute(array(
             ':fb' => $_POST[facebook],
@@ -630,7 +630,7 @@ if (isset($_POST[page])) {
         $page_url=toAscii($_POST[page][name]);
         // check if the page exists
         $page_control->error=check_page($page_url);
-        if ($page_control->error==0){
+        if ($page_control->error==0) {
             add_page($_POST[page][name],$_POST[page][news],$page_url);
         } else {
             $page_control->error='<p class="error">Sorry that page already exists</p>';
@@ -667,7 +667,7 @@ if (isset($_GET[delete_page])) {
 
 // delete a news item
 if (isset($_GET[dn])) {
-    if (isset($_SESSION[public_user][user_id]) && $_SESSION[public_user][level]=='Superuser' ){
+    if (isset($_SESSION[public_user][user_id]) && $_SESSION[public_user][level]=='Superuser' ) {
         $stmt = $dbpdo->prepare("delete from news where id=:news_id and web_id=:web_id ");
         $stmt->execute(array(
             ':news_id' => $_GET[dn],

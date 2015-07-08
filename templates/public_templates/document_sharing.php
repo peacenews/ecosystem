@@ -34,7 +34,7 @@ You should have received a copy of the GNU Affero General Public License along w
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                 </tr>
-                <? list_docs(); ?>
+                <?php list_docs() ?>
             </table>
 
             <h3 style="margin-top:100px;">Create a document:</h3>

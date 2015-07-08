@@ -14,4 +14,4 @@ You should have received a copy of the GNU Affero General Public License along w
 
 <h1>Your website</h1>
 
-<? site_info();?>
+<?php site_info() ?>

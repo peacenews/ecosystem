@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -45,7 +45,7 @@ if($emails) {
         $overview = imap_fetch_overview($inbox,$email_number,0);
         $plain_message = imap_fetchbody($inbox,$email_number,1.1);
         $message = imap_fetchbody($inbox,$email_number,1.2);
-        if ($message==''){
+        if ($message=='') {
             $plain_message = imap_fetchbody($inbox,$email_number,1);
             $message = imap_fetchbody($inbox,$email_number,2);
         }

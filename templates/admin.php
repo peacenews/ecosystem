@@ -43,7 +43,7 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
     </script>
 </head>
 
-<body class="website <?php echo $body_class; ?>">
+<body class="website <?php echo $body_class ?>">
     <div class="logged-in-menu">
         <div class="row">
             <div class="large-2 columns">
@@ -58,14 +58,14 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
                     </ul>
 
                     <section class="top-bar-section">
-                        <? echo  $page_control->navigation ?>
+                        <?php echo $page_control->navigation ?>
                     </section>
                 </nav>
             </div>
         </div>
     </div>
 
-    <div style="width:1000px; margin: auto;"> <? echo $page_control->content?></div>
+    <div style="width:1000px; margin: auto;"> <?php echo $page_control->content ?></div>
     <section id="footer">
         <div class="row">
             <div class="large-4 columns">

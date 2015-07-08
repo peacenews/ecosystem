@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -175,13 +175,13 @@ else {
     else if ($width<=$ex && $action=='const') {
     // echo $ex.'<br />';
     // echo $ey.'<br />';
-        if ($ex>=$ey){
+        if ($ex>=$ey) {
             $ratio=$ex/$width;
             $nw=$width;
             $nh=$ey/$ratio;
         }
 
-        if ($ey>=$ex){
+        if ($ey>=$ex) {
             $ratio=$ey/$width;
             $nh=$width;
             $nw=$ex/$ratio;
@@ -192,7 +192,7 @@ else {
         imagecopyresampled($image_p, $im, 0, 0, 0, 0, $nw, $nh, $ex, $ey);
         imagejpeg($image_p);
     }
-    else if ($width<=$ex && $action=='crop'){
+    else if ($width<=$ex && $action=='crop') {
         $nh=$width.'x'.$height;
         Image(  $im , $ratio, $nh);
     /*

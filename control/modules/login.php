@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -14,7 +14,7 @@ You should have received a copy of the GNU Affero General Public License along w
 */
 
 // forgotten password
-if ($_SERVER["REQUEST_URI"]=='/forgotten_password'){
+if ($_SERVER["REQUEST_URI"]=='/forgotten_password') {
     if (isset($_POST[resetemail]) ) {
         $stmt = $dbpdo->prepare(" SELECT * FROM `users` WHERE `email`=:email  ");
         $stmt->execute(array(
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_URI"]=='/forgotten_password'){
         <input type="resetemail" id="resetemail" name="resetemail" value="" placeholder="johndoe@example.com" required />
         <input type="submit" value="Send it" id="submit-button" />
     </form>
-    <?
+    <?php
 } else {
     // if not password
     if (isset ($_POST[login_email]) ) {
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_URI"]=='/forgotten_password'){
             <p><a href="/forgotten_password">Forgotten your password?</a></p>
             <p><a href="/logout">Logout</a></p>
         </form>
-        <?
+        <?php
     }
 }
 ?>

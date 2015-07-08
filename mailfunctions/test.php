@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Untitled Document</title>
 </head>
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -80,7 +80,7 @@ function getpart($mbox,$mid,$p,$partno) {
     if ($p->type==0 && $data) {
         // Messages may be split in different parts because of inline attachments,
         // so append parts together with blank row.
-        if (strtolower($p->subtype)=='plain'){
+        if (strtolower($p->subtype)=='plain') {
             $plainmsg.= trim($data) ."\n\n";
         } else {
             $htmlmsg.= $data ."<br><br>";
@@ -123,7 +123,7 @@ foreach($EmailHeaders as $key=>$val) {
     echo '<pre>';
     print_r($EmailHeaders[$key]);
     echo '</pre>';
-    /* ?> <textarea name="" cols="" rows=""><? print_r($Body[$key]); ?></textarea> <? */
+    /* ?> <textarea name="" cols="" rows=""><?php print_r($Body[$key]); ?></textarea> <?php */
 }
 ?>
 <body>

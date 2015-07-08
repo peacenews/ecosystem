@@ -39,8 +39,8 @@ $body_class = ($body_class == '') ? $body_class = 'home' : $body_class;
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
-<body class="<?php echo $body_class; ?>">
-    <? echo $page_control->content?>
+<body class="<?php echo $body_class ?>">
+    <?php echo $page_control->content ?>
     <section class="footer">
         <div class="row">
             <div class="large-2 columns">

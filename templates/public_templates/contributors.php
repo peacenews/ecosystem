@@ -32,7 +32,7 @@ You should have received a copy of the GNU Affero General Public License along w
             <h3>Your contributors:</h3>
             <p>a contributor can edit your group website and blog, send e-newsletters and manage your email list in addition to the privileges of a participant.</p>
             <div style="height: 300px; width: 500px; overflow: auto;">
-                <? echo  contributors()?>
+                <?php echo  contributors() ?>
             </div>
         </div>
         <div class="large-6 columns">
@@ -52,7 +52,7 @@ You should have received a copy of the GNU Affero General Public License along w
             <h3>Your participants:</h3>
             <p>a participant can create and share documents and take part in the discussion email group.</p>
             <div style="height: 300px; width: 500px; overflow: auto;">
-                <?  echo  participants()?>
+                <?php echo  participants() ?>
             </div>
         </div>
         <div class="large-6 columns">
@@ -70,9 +70,9 @@ You should have received a copy of the GNU Affero General Public License along w
     <div class="row">
         <div class="large-6 columns">
             <h3>Discussion group:</h3>
-            <p>Your discussion group email address is <a href="mailto:<? echo ltrim($_SESSION[public_user][site_url],'/'); ?>@zylum.org"><? echo ltrim($_SESSION[public_user][site_url],'/'); ?>@zylum.org</a> <br />Emails sent to this address will be distributed to the email addresses below. Only messages sent from the email addresses below will be distributed to the discussion group.</p>
+            <p>Your discussion group email address is <a href="mailto:<?php echo ltrim($_SESSION[public_user][site_url],'/') ?>@zylum.org"><?php echo ltrim($_SESSION[public_user][site_url],'/') ?>@zylum.org</a> <br />Emails sent to this address will be distributed to the email addresses below. Only messages sent from the email addresses below will be distributed to the discussion group.</p>
             <div class="email-list">
-                <? echo mailing_disc();?>
+                <?php echo mailing_disc() ?>
             </div>
         </div>
         <div class="large-6 columns">
