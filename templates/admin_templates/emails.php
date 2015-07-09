@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -24,10 +24,10 @@ You should have received a copy of the GNU Affero General Public License along w
     <div class="row">
         <div class="large-12 columns">
             <ul>
-                <? email_lists();?>
+                <?php email_lists() ?>
             </ul>
 
-            <?  edit_email(); ?>
+            <?php edit_email() ?>
         </div>
     </div>
 </section>

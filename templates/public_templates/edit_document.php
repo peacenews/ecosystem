@@ -20,7 +20,7 @@ You should have received a copy of the GNU Affero General Public License along w
     </div>
     <div class="row">
         <div class="large-12 columns">
-            <? edit_document($_GET[edit_doc]);?>
+            <?php edit_document($_GET[edit_doc]) ?>
             <h2>Revisions</h2>
             <table >
                 <tr>
@@ -29,7 +29,7 @@ You should have received a copy of the GNU Affero General Public License along w
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                 </tr>
-                <? get_revisions($_GET[edit_doc])?>
+                <?php get_revisions($_GET[edit_doc]) ?>
             </table>
 
             <div class="">

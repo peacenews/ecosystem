@@ -43,17 +43,17 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
     </script>
 </head>
 
-<body class="website <?php echo $body_class; ?>">
+<body class="website <?php echo $body_class ?>">
     <style>
         #confirmx {position: absolute; background-color: white; border: 3px solid red; padding: 10px; margin: auto; max-width: 300px; width: 20%; text-align: center; top: 20%; min-height: 50px; left:40%; z-index: 99;}
     </style>
-    <? messages();?>
+    <?php messages() ?>
     <div class="logged-in-menu website">
         <div class="row">
             <div class="large-2 small-4 medium-3 columns">
                 <a href="/"><img src="logo.png" /></a> <!-- Logo -->
             </div>
-            <div class="large-4 small-8 medium-2 columns"><p class="regular-zylum"><? echo $_SESSION[public_user][site_title]?></p></div>
+            <div class="large-4 small-8 medium-2 columns"><p class="regular-zylum"><?php echo $_SESSION[public_user][site_title] ?></p></div>
             <div class="large-6 medium-7 columns">
                 <nav class="top-bar" data-topbar role="navigation">
                     <ul class="title-area">
@@ -62,14 +62,14 @@ $body_class = (isset($_SERVER['REQUEST_URI'])) ? strtolower(str_replace('/', '',
                     </ul>
 
                     <section class="top-bar-section">
-                        <? echo  $page_control->public_navigation ?>
+                        <?php echo  $page_control->public_navigation ?>
                     </section>
                 </nav>
             </div>
         </div>
     </div>
 
-    <? echo $page_control->content ?>
+    <?php echo $page_control->content ?>
 
     <section id="footer">
         <div class="row">

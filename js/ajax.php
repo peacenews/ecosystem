@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -13,8 +13,8 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 */
 
-include ("../control/config.php"); 
-ini_set('display_errors', 1); 
+include ("../control/config.php");
+ini_set('display_errors', 1);
 
 function toAscii($str) {
     $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $str);
@@ -23,39 +23,39 @@ function toAscii($str) {
     return $clean;
 }
 
-if (isset($_GET[site_title])){
+if (isset($_GET[site_title])) {
     $stmt = $dbpdo->prepare("select id from users WHERE title = :name ");
     // echo "select id from users WHERE title = '$_GET[site_title]'  ";
-    $stmt->execute(array(':name' => $_GET[site_title]));        
-    $num_rows = $stmt->rowCount(); 
-    if ($num_rows>=1){
-        //echo '<img src="/img/kill.png" width="20" height="20">';  
-        echo '0'; 
+    $stmt->execute(array(':name' => $_GET[site_title]));
+    $num_rows = $stmt->rowCount();
+    if ($num_rows>=1) {
+        //echo '<img src="/img/kill.png" width="20" height="20">';
+        echo '0';
     } else {
-        //echo '<img src="/img/tick.gif" width="20" height="20">'; 
-        echo '1'; 
+        //echo '<img src="/img/tick.gif" width="20" height="20">';
+        echo '1';
     }
 }
 
-if (isset($_GET[site_titlec])){
+if (isset($_GET[site_titlec])) {
     echo toAscii($_GET[site_titlec]);
 }
 
-if (isset($_GET[site_address])){
+if (isset($_GET[site_address])) {
     $preg_str_check="#[^][ A-Za-z0-9-]#";
     if( preg_match( $preg_str_check, $_GET[site_address] )) {
         echo 'x';
     } else {
         $_GET[site_address]='/'.$_GET[site_address];
         $stmt = $dbpdo->prepare("select id from users WHERE url = :url ");
-        $stmt->execute(array(':url' => $_GET[site_address]));        
-        $num_rows = $stmt->rowCount(); 
-        if ($num_rows>=1){
-            //echo '<img src="/img/kill.png" width="20" height="20">';  
-            echo '0';  
+        $stmt->execute(array(':url' => $_GET[site_address]));
+        $num_rows = $stmt->rowCount();
+        if ($num_rows>=1) {
+            //echo '<img src="/img/kill.png" width="20" height="20">';
+            echo '0';
         } else {
-            //echo '<img src="/img/tick.gif" width="20" height="20">'; 
-            echo '1'; 
+            //echo '<img src="/img/tick.gif" width="20" height="20">';
+            echo '1';
         }
     }
 }

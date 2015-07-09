@@ -15,14 +15,14 @@ You should have received a copy of the GNU Affero General Public License along w
 <div class="row">
     <div class="large-12 columns">
         <div id="signup-form" >
-            <?
+            <?php
             echo '<pre>';
             print_r($_POST);
             print_r($_GET);
             print_r($_FILES);
             echo '</pre>';
             // process items from the sign up form (non ajax)
-            if (isset ($_POST[invitename]) ){
+            if (isset ($_POST[invitename]) ) {
                 $stmt = $dbpdo->prepare(" INSERT INTO `users` (`id`, `name`, `email`, `why`, `type`, `valid`, `site_id`)
                     VALUES (NULL, :name , :email, :why, 'Superuser', 'No', '0')");
                 $stmt->execute(array(

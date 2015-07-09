@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -22,7 +22,7 @@ print_r($_SESSION);
 echo '</pre>';
 
 access_control($_SESSION[user_type],'Superuser');
-if (isset ($_POST[site_title]) ){
+if (isset ($_POST[site_title]) ) {
     $stmt = $dbpdo->prepare(" INSERT INTO `website` (`id`, `name`, `url`, `descr`, `title_pic`) VALUES (NULL, :name, :url, :descr, ''); ");
     $stmt->execute(array(
         ':name' => $_POST[site_title],

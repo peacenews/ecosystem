@@ -19,7 +19,7 @@ include ("control/config.php");
 
 $page_control = new stdClass();
 
-function get_template($uri){
+function get_template($uri) {
     global $page_control;
     global $dbpdo;
     $stmt = $dbpdo->prepare(" SELECT * FROM `redirects` WHERE `url`=:url   ");
@@ -27,7 +27,7 @@ function get_template($uri){
         ':url' => $uri
         ));
     $num_rows = $stmt->rowCount();
-    if ($num_rows==1){
+    if ($num_rows==1) {
         $data = $stmt->fetch(PDO::FETCH_BOTH);
         $page_control->file= $data[2];
         $page_control->security= $data[4];
@@ -41,7 +41,7 @@ function get_template($uri){
             ));
       //      echo $bits[1];
         $num_rows = $stmt->rowCount();
-        if ($num_rows==1){
+        if ($num_rows==1) {
             $data = $stmt->fetch(PDO::FETCH_BOTH);
             $page_control->file= 'website_home.php';
             $page_control->security= 'Public';
@@ -65,7 +65,7 @@ get_template($page_control->uri);
 include ("control/security.php");
 include("control/functions.php");
 include("control/processes.php");
-if ($page_control->template== 'website'){
+if ($page_control->template== 'website') {
     include ("control/website.php");
 }
 
@@ -78,7 +78,7 @@ ob_end_flush();
 unset($content_file);
 //end content
 
-if ($debug=='yes'){
+if ($debug=='yes') {
     $page_control->content.='
     <fieldset style="margin: 20px; font-family: Courier New, Courier, monospace ; background-color: MistyRose  ">
         <legend><strong>Page and debugging information:</strong></legend>

@@ -25,7 +25,7 @@
                 </ul>
 
                 <section class="top-bar-section columns">
-                    <? echo  $page_control->public_navigation ?>
+                    <?php echo $page_control->public_navigation ?>
                 </section>
             </div>
         </div>

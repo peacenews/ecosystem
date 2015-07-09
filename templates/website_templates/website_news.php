@@ -16,25 +16,25 @@ You should have received a copy of the GNU Affero General Public License along w
     <div class="large-2 columns">&nbsp;</div>
     <div class="large-8 columns">
         <h1 class="change">Latest news</h1>
-        <? if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2){?>
+        <?php if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2) { ?>
         <button class="light green" id="add-news-button">Add news post</button>
         <div class="add-news">
             <form action="" method="post" enctype="multipart/form-data">
-                <? if  ($page_control->error!='')  echo '<h3 style="color: red !important;">'.$page_control->error,'</h3>'; ?>
+                <?php if ($page_control->error!='') echo '<h3 style="color: red !important;">'.$page_control->error,'</h3>' ?>
                 <p>Title: <input name="news[title]" type="text"><br><input type="file"  name="graphic[news]"/></p>
                 <textarea name="news[content]" cols="" rows="" id="id_news"></textarea>
                 <p><input name="" type="submit" value="Save post"></p>
             </form>
         </div>
-        <? }?>
+        <?php } ?>
 
-        <? page_news($_SESSION[page_id],$page_control->page_type, $news_id);?>
-        <? if ($_SESSION[public_user][site_id]==$page_control->web_id && $news_id!=''  && $user_level>=2){?>
+        <?php page_news($_SESSION[page_id],$page_control->page_type, $news_id) ?>
+        <?php if ($_SESSION[public_user][site_id]==$page_control->web_id && $news_id!='' && $user_level>=2) { ?>
 
-        <input name="" type="button" value="Save" id="csave"> <a href="<? echo $_SESSION[public_user][site_url]; ?>?dn=<? echo $_SESSION[news_id]?>" class="confirm">Delete</a>
+        <input name="" type="button" value="Save" id="csave"> <a href="<?php echo $_SESSION[public_user][site_url] ?>?dn=<?php echo $_SESSION[news_id] ?>" class="confirm">Delete</a>
         <div id="cresult"></div>
 
-        <? }?>
+        <?php } ?>
     </div>
     <div class="large-2 columns">&nbsp;</div>
 </div>

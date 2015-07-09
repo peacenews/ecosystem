@@ -20,7 +20,7 @@ You should have received a copy of the GNU Affero General Public License along w
     </div>
     <div class="row">
         <div class="large-9 columns">
-            <? //echo $reset_list;?>
+            <?php //echo $reset_list ?>
 
             <form method="post" action="">
                 <p>Enter you email address and we will send you a new one.</p>

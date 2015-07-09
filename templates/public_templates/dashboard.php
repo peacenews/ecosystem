@@ -17,17 +17,17 @@ You should have received a copy of the GNU Affero General Public License along w
         <div class="large-12 columns">
             <h2 class="bold">Dashboard</h2>
             <h3 class="bold text-center">What would you like to do?</h3>
-            <p style="text-align: center">Your website address is : http://zylum.org<? echo $_SESSION[public_user][site_url]; ?></p>
+            <p style="text-align: center">Your website address is : http://zylum.org<?php echo $_SESSION[public_user][site_url] ?></p>
         </div>
     </div>
     <div class="row" id="dashboard-boxes">
         <!-- Website composer link -->
-        <a href="<? echo $_SESSION[public_user][site_url]; ?>">
+        <a href="<?php echo $_SESSION[public_user][site_url] ?>">
             <div class="large-3 medium-4 columns text-center">
                 <div class="text-center"><img src="/img/dashboard/box-1.png" /></div> <!-- Website composer icon -->
                 <h4 class="bold">website</h4>
                 <p>create and manage your website and blog</p>
-                <a class="button green bold" href="<? echo $_SESSION[public_user][site_url]; ?>">Do it!</a>
+                <a class="button green bold" href="<?php echo $_SESSION[public_user][site_url] ?>">Do it!</a>
             </div>
         </a>
 
@@ -52,7 +52,7 @@ You should have received a copy of the GNU Affero General Public License along w
         </a>
 
         <!-- Manage discussion group: Owners /Contributors /Participants see different content here -->
-        <? if ( $user_level>=3 ){ ?>
+        <?php if ( $user_level>=3 ) { ?>
         <a href="/contributors">
             <div class="large-3 medium-4 columns text-center" id="discussions">
                 <div class="text-center"><img src="/img/dashboard/box-4.png" /></div> <!-- Manage discussion group icon -->
@@ -61,6 +61,6 @@ You should have received a copy of the GNU Affero General Public License along w
                 <a class="button green bold" href="/contributors">Do it!</a>
             </div>
         </a>
-        <? }?>
+        <?php } ?>
     </div>
 </section>

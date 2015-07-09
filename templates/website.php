@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -19,7 +19,7 @@ You should have received a copy of the GNU Affero General Public License along w
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><? echo $page_control->web_name?></title>
+        <title><?php echo $page_control->web_name ?></title>
         <link rel="stylesheet" href="/css/zurb/css/foundation.css" />
         <!-- <link rel="stylesheet" href="/css/zurb/css/jquery.fullPage.css" /> -->
         <link rel="stylesheet" href="/css/zurb/fonts.css" />
@@ -33,7 +33,7 @@ You should have received a copy of the GNU Affero General Public License along w
         <script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
 
-            <? if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2){?>
+            <?php if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2) { ?>
                 tinymce.init({
                     selector: ".caption-content",
                     inline: true,
@@ -70,7 +70,7 @@ You should have received a copy of the GNU Affero General Public License along w
                     toolbar: "undo redo |  bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent "
                 });
 
-            <? }?>
+            <?php } ?>
         </script>
         <style>
             .change {
@@ -80,13 +80,13 @@ You should have received a copy of the GNU Affero General Public License along w
     </head>
 
     <body class="website">
-        <?  if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2){?>
+        <?php if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2) { ?>
         <div class="logged-in-menu">
             <div class="row">
                 <div class="large-2 medium-3 small-4 columns">
                     <a href="/"><img src="logo.png" /></a> <!-- Logo -->
                 </div>
-                <div class="large-4 small-8 medium-2 columns"><p class="regular-zylum"><? echo $page_control->web_name?></p></div>
+                <div class="large-4 small-8 medium-2 columns"><p class="regular-zylum"><?php echo $page_control->web_name ?></p></div>
                 <div class="large-6 medium-7 columns">
                     <nav class="top-bar" data-topbar role="navigation">
                         <ul class="title-area">
@@ -95,7 +95,7 @@ You should have received a copy of the GNU Affero General Public License along w
                         </ul>
 
                         <section class="top-bar-section">
-                            <? echo  $page_control->public_navigation ?>
+                            <?php echo $page_control->public_navigation ?>
                         </section>
                     </nav>
                 </div>
@@ -114,11 +114,11 @@ You should have received a copy of the GNU Affero General Public License along w
 
                         <section class="top-bar-section">
                             <ul class="inline-list right">
-                                <li id="on-off"><? site_info();?></li>
+                                <li id="on-off"><?php site_info() ?></li>
                                 <li id="colour-wheel"><a href="">Edit Colour</a></li>
                                 <li id="add-images"><a href="">Add Images</a></li>
                                 <li id="add-page"><a href="">Add a page</a></li>
-                                <li id="email-signup"><? email_info();?></li>
+                                <li id="email-signup"><?php email_info() ?></li>
                                 <li id="add-social"><a href="">Add Social Media</a></li>
                             </ul>
                         </section>
@@ -130,7 +130,7 @@ You should have received a copy of the GNU Affero General Public License along w
         <div class="logged-in-user-controls-input">
             <div class="row">
                 <div class="large-12 columns tools-action" id="colour-wheel-input">
-                    <input id="clickoutFiresChange" type="text" value="<? echo $page_control->color ?>" name="clickoutFiresChange" style="display: none;" class="basic">
+                    <input id="clickoutFiresChange" type="text" value="<?php echo $page_control->color ?>" name="clickoutFiresChange" style="display: none;" class="basic">
                     <em id='basic-log'></em>
                 </div>
                 <div class="large-12 columns tools-action" id="add-images-input">
@@ -160,18 +160,18 @@ You should have received a copy of the GNU Affero General Public License along w
                     <form action="" method="post" enctype="multipart/form-data">
                         <label for="page_name">Please enter the name of your page:</label>
                         <input type="text" input name="page[name]" />
-                        <input type="submit" value="Submit" class="button" <? echo $pdis;?> />
+                        <input type="submit" value="Submit" class="button" <?php echo $pdis ?> />
                     </form>
                 </div>
                 <div class="large-12 columns tools-action" id="add-social-input">
                     <div class="large-6 columns">
                         <label>Facebook:</label>
                         <form action="" method="post" enctype="multipart/form-data">
-                            <input type="text" placeholder="Please enter your Facebook URL"  name="facebook" value="<? echo $page_control->facebook_url?>"/>
+                            <input type="text" placeholder="Please enter your Facebook URL"  name="facebook" value="<?php echo $page_control->facebook_url ?>"/>
                         </div>
                         <div class="large-6 columns">
                             <label>Twitter:</label>
-                            <input type="text" placeholder="Please enter your Twitter URL" name="twitter"  value="<? echo $page_control->twitter_url?>" />
+                            <input type="text" placeholder="Please enter your Twitter URL" name="twitter"  value="<?php echo $page_control->twitter_url ?>" />
                         </div>
                         <div class="large-4 columns left">
                             <input type="submit" value="Submit" class="button" id="social" />
@@ -179,14 +179,14 @@ You should have received a copy of the GNU Affero General Public License along w
                     </form>
                 </div>
             </div>
-        <? }?>
+        <?php } ?>
         </div>
         <div id="top" class="change">
             <div class="row">
                 <div class="large-12 columns">
                     <nav class="top-bar" data-topbar role="navigation">
                         <ul class="inline-list left home-icon">
-                            <li class="text-center"><a href="<? echo $page_control->extension ?>"><img src="/img/tools/home-icon.png" /></a></li>
+                            <li class="text-center"><a href="<?php echo $page_control->extension ?>"><img src="/img/tools/home-icon.png" /></a></li>
                         </ul>
                         <ul class="title-area">
                             <li class="name"></li>
@@ -195,7 +195,7 @@ You should have received a copy of the GNU Affero General Public License along w
 
                         <section class="top-bar-section">
                             <ul class="inline-list right" id="web_nav">
-                                <? echo  $page_control->website_navigation ?>
+                                <?php echo  $page_control->website_navigation ?>
                             </ul>
                         </section>
                     </nav>
@@ -204,32 +204,32 @@ You should have received a copy of the GNU Affero General Public License along w
         </div>
 
         <section id="intro">
-            <?
+            <?php
             $he=450;
             $ht=349;
             $extra_styles = '';
 
-            if ($page_control->banner_id==0) { $he=100; $ht=0; $extra_styles = 'margin-top:0;position:relative;background-color:#000000;'; }?>
-            <div class="intro-image text-center" style="height: <? echo $he;?>px; background-image: url(/img/<? echo $page_control->banner_id?>/1750); background-size:cover">
-                <? // if ($page_control->banner_id!='0') { echo '<img src="/img/'.$page_control->banner_id.'/1750" />'; } ?>
-                <section class="intro-text" style="<? echo $extra_styles ?> top:<? echo $ht;?>px;">
+            if ($page_control->banner_id==0) { $he=100; $ht=0; $extra_styles = 'margin-top:0;position:relative;background-color:#000000;'; } ?>
+            <div class="intro-image text-center" style="height: <?php echo $he ?>px; background-image: url(/img/<?php echo $page_control->banner_id ?>/1750); background-size:cover">
+                <?php // if ($page_control->banner_id!='0') { echo '<img src="/img/'.$page_control->banner_id.'/1750" />' } ?>
+                <section class="intro-text" style="<?php echo $extra_styles ?> top:<?php echo $ht ?>px;">
                     <div class="row">
                         <div class="large-12 columns">
-                            <h1 class="bold"><? echo $page_control->web_name?></h1>
-                            <div class="website-logo">  <?  if ($page_control->logo_id!='0') echo '<img src="/img/'.$page_control->logo_id.'/165/const" />'; ?></div>
+                            <h1 class="bold"><?php echo $page_control->web_name ?></h1>
+                            <div class="website-logo">  <?php if ($page_control->logo_id!='0') echo '<img src="/img/'.$page_control->logo_id.'/165/const" />' ?></div>
                         </div>
                     </div>
                 </section>
             </div>
         </section>
 
-        <? echo $page_control->content ?>
+        <?php echo $page_control->content ?>
 
         <section id="newsletter" class="text-center change">
             <div class="row">
                 <div class="large-3 columns">&nbsp;</div>
                 <div class="large-6 columns" id="newsletter-form">
-                    <? echo $page_control->sign_up ?>
+                    <?php echo $page_control->sign_up ?>
                 </div>
                 <div class="large-3 columns">&nbsp;</div>
             </div>
@@ -237,8 +237,8 @@ You should have received a copy of the GNU Affero General Public License along w
                 <div class="large-2 columns">&nbsp;</div>
                 <div class="large-8 columns">
 
-                    <? echo  $page_control->facebook ?>
-                    <? echo  $page_control->twiiter ?>
+                    <?php echo  $page_control->facebook ?>
+                    <?php echo  $page_control->twiiter ?>
 
                 </div>
                 <div class="large-2 columns">&nbsp;</div>
@@ -267,8 +267,8 @@ You should have received a copy of the GNU Affero General Public License along w
             $(document).foundation();
 
             $(document).ready(function() {
-                $('.change').css( "background-color","<? echo $page_control->color; ?>");
-                $('.changeh h1, .changeh h2, .changeh h3, .changeh h4, .changeh h5, .changeh a').css( "color","<? echo $page_control->color; ?>");
+                $('.change').css( "background-color","<?php echo $page_control->color ?>");
+                $('.changeh h1, .changeh h2, .changeh h3, .changeh h4, .changeh h5, .changeh a').css( "color","<?php echo $page_control->color ?>");
                 $(".basic").spectrum({
                     change: function(color) {
                         change_color (color.toHexString());

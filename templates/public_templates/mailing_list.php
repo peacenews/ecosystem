@@ -29,8 +29,8 @@ You should have received a copy of the GNU Affero General Public License along w
 
         <div class="large-12 columns">
             <form action="" method="post">
-                <input name="send_mailing_list[sublect]" type="text" placeholder="Subject" value="<? echo $_POST[send_mailing_list][sublect]?>"/>
-                <textarea  style="width: 500px; height: 600px;" class="sendx" name="send_mailing_list[content]"><? echo $_POST[send_mailing_list][content]?></textarea>
+                <input name="send_mailing_list[sublect]" type="text" placeholder="Subject" value="<?php echo $_POST[send_mailing_list][sublect] ?>"/>
+                <textarea  style="width: 500px; height: 600px;" class="sendx" name="send_mailing_list[content]"><?php echo $_POST[send_mailing_list][content] ?></textarea>
             </div>
             <div class="large-3 columns right">
                 <div class="form-controls">
@@ -45,7 +45,7 @@ You should have received a copy of the GNU Affero General Public License along w
             <p>These are the email addresses which you have added, or people who have joined the list using the Email Sign up at the bottom of your Zylum webpages.</p>
 
             <div class="email-list">
-                <? echo mailing_list();?>
+                <?php echo mailing_list() ?>
             </div>
 
             <h3 style="margin-top:30px;">Add emails</h3>

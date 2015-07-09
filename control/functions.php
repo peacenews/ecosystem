@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -69,11 +69,11 @@ function edit_document($id, $original=0) {
         $_SESSION[this_edit]=$r[original];
         ?>
         <form action="" method="post">
-            <p>Title: <input name="edit_doc[title]" type="text" value="<? echo $r[title]?>" required></p>
-            <p><textarea  style="width: 500px; height: 600px;" class="sendx" name="edit_doc[content]"><? echo $r[content]?></textarea> </p>
+            <p>Title: <input name="edit_doc[title]" type="text" value="<?php echo $r[title] ?>" required></p>
+            <p><textarea  style="width: 500px; height: 600px;" class="sendx" name="edit_doc[content]"><?php echo $r[content] ?></textarea> </p>
             <p><input name="" type="submit" value="Save revision"></p>
         </form>
-        <? }
+        <?php }
     }
 
     function get_revisions($id) {
@@ -113,7 +113,7 @@ function existing_users($page_control) {
         if ($r[valid]=='Yes')  $drop = '<td class="delete"><a href="?suspend_user='.$r[id].'" class="confirm">suspend</a></td>';
         if ($r[valid]=='No')  $drop = '<td class="delete"><a href="?restate_user='.$r[id].'" class="confirm">re-instate</a></td>';
         if ($r[type]=='Superuser') $r[type]='Owner';
-        if ($r[type]!='Superuser'){
+        if ($r[type]!='Superuser') {
             $queryx = "select * from users where id=$r[site_id] ";
             $resultx = $dbpdo->query($queryx);
             while($rx = $resultx->fetch(PDO::FETCH_BOTH)) {
@@ -180,7 +180,7 @@ function mailing_disc() {
     }
 }
 
-function cms_nav(){
+function cms_nav() {
 }
 
 function access_control($user_type, $type) {
@@ -257,7 +257,7 @@ function  suspend_user($user_id) {
 }
 
 
-function  restate_user($user_id){
+function  restate_user($user_id) {
     global $dbpdo;
     $stmt = $dbpdo->prepare('update  users  set `valid`=\'Yes\' WHERE id = :id');
     $stmt->execute(array(':id' => $user_id));
@@ -270,7 +270,7 @@ function  restate_user($user_id){
     $result = $dbpdo->query($query);
 }
 
-function  set_password($user_id){
+function  set_password($user_id) {
     global $dbpdo;
     global $salt;
     $rnd_pass=makeRandomPassword();
@@ -430,8 +430,8 @@ function site_info() {
     $num_rows=is_site_live($_SESSION[public_user][site_id]);
     //echo '<p>Name: '.$_SESSION[public_user][site_title].'</p>';
     //echo '<p>url: <a href="http://zylum.org'.$_SESSION[public_user][site_url].'" target="_blank">http://zylum.org'.$_SESSION[public_user][site_url].'</a></p>';
-    if ($_SESSION[public_user][level]=='Superuser'){
-        if ( $num_rows!=1){
+    if ($_SESSION[public_user][level]=='Superuser') {
+        if ( $num_rows!=1) {
             echo '<a href="'.$this_domain.$_SESSION[public_user][site_url].'?turn_it_on">Make your site public</a>';
         } else {
             echo '<a href="'.$this_domain.$_SESSION[public_user][site_url].'?turn_it_off">Make your site private</a>    ';
@@ -459,7 +459,7 @@ function toAscii($str) {
 
 function check_page($page_name) {
     global $dbpdo;
-    if ($page_name!='documents'){
+    if ($page_name!='documents') {
         $query = "select * from pages where web_id=".$_SESSION[public_user][site_id]." and `url`='$page_name'  ";
         $result = $dbpdo->query($query);
         $num_rows = $result->rowCount();
@@ -624,7 +624,7 @@ function page_news($page_id, $type, $news_id='') {
         if ($news_id!='') {
             $float='  style="float: unset;" ';
         }
-        if ($r[media_id]!=0){
+        if ($r[media_id]!=0) {
             echo '<p><img src="/img/'.$r[media_id].'/772" '.$float.'/></p>';
         }
         echo "<h2 id=\"news_header\" style=\"margin-top: 20px;\">$r[title]</h2>";
@@ -680,17 +680,17 @@ function email_lists() {
 function edit_email() {
     global $_GET;
     global $dbpdo;
-    if (isset ($_GET[m])){
+    if (isset ($_GET[m])) {
         $query = "select * from emails where id=$_GET[m] ";
         $result = $dbpdo->query($query);
         while($r = $result->fetch(PDO::FETCH_BOTH)) { ?>
         <form action="" method="post">
-            <input name="app_subject" type="text" value="<? echo $r[subject]?>" /><br />
-            <textarea name="app_content" cols="" rows="" class="tinymce ta"><? echo $r[content]?></textarea><br />
-            <input name="update_email" type="hidden" value="<? echo $r[name]?>"/>
+            <input name="app_subject" type="text" value="<?php echo $r[subject] ?>" /><br />
+            <textarea name="app_content" cols="" rows="" class="tinymce ta"><?php echo $r[content] ?></textarea><br />
+            <input name="update_email" type="hidden" value="<?php echo $r[name] ?>"/>
             <input name="update" type="submit" value="Update" />
         </form>
-        <? }
+        <?php }
     }
 }
 

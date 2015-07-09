@@ -14,5 +14,5 @@ You should have received a copy of the GNU Affero General Public License along w
 
 <div style="width:1000px; margin: auto;">
     <h1>Documents</h1>
-    <? docs();?>
+    <?php docs() ?>
 </div>

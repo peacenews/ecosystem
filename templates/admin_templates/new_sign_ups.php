@@ -22,13 +22,13 @@ You should have received a copy of the GNU Affero General Public License along w
         <th>Delete</th>
         <th>Approve</th>
     </tr>
-    <? echo  new_sign_ups()?>
+    <?php echo new_sign_ups() ?>
 </table>
 
 <h4>Update welcome email:</h4>
 <form action="" method="post">
-    <input name="app_subject" type="text" value="<? echo $app_subject?>" /><br />
-    <textarea name="app_content" cols="" rows="" class="tinymce ta"><? echo $app_message?></textarea><br />
+    <input name="app_subject" type="text" value="<?php echo $app_subject ?>" /><br />
+    <textarea name="app_content" cols="" rows="" class="tinymce ta"><?php echo $app_message ?></textarea><br />
     <input name="update_email" type="hidden" value="approval"/>
     <input name="update" type="submit" value="Update" />
 </form>

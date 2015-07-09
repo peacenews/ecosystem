@@ -26,7 +26,7 @@ You should have received a copy of the GNU Affero General Public License along w
                 </ul>
 
                 <section class="top-bar-section">
-                    <? echo  $page_control->public_navigation ?>
+                    <?php echo  $page_control->public_navigation ?>
                 </section>
             </div>
         </div>

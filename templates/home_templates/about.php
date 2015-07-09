@@ -23,7 +23,7 @@ You should have received a copy of the GNU Affero General Public License along w
                 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
             <section class="top-bar-section">
-                <? echo  $page_control->public_navigation ?>
+                <?php echo $page_control->public_navigation ?>
             </section>
         </div>
     </div>

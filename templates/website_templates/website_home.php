@@ -13,14 +13,14 @@ You should have received a copy of the GNU Affero General Public License along w
 -->
 
 <div class="row content">
-    <div class="large-2 columns">&nbsp;<? if  ($page_control->error!='')  echo '<h3 style="color: red !important;">'.$page_control->error,'</h3>'; ?></div>
+    <div class="large-2 columns">&nbsp;<?php if ($page_control->error!='') echo '<h3 style="color: red !important;">'.$page_control->error,'</h3>' ?></div>
     <div class="large-8 columns changeh" id="content">
-        <? echo $page_control->page_content ?>
+        <?php echo $page_control->page_content ?>
     </div>
     <div class="large-2 columns">&nbsp;</div>
 </div>
 
-<? if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2){?>
+<?php if ($_SESSION[public_user][site_id]==$page_control->web_id  && $user_level>=2) { ?>
 <div class="row content">
     <div class="large-2 columns">&nbsp;</div>
     <div class="large-8 columns changeh" id="content">
@@ -29,35 +29,35 @@ You should have received a copy of the GNU Affero General Public License along w
     </div>
     <div class="large-2 columns">&nbsp;</div>
 </div>
-<? }?>
+<?php } ?>
 
-<?  if ($page_control->media_id!='0') {?>
+<?php if ($page_control->media_id!='0') { ?>
 <div class="row" id="content-image">
     <div class="large-2 columns">&nbsp;</div>
     <div class="large-8 columns website-image">
-        <? echo '<img src="/img/'.$page_control->media_id.'/722" />'; ?>
+        <?php echo '<img src="/img/'.$page_control->media_id.'/722" />' ?>
     </div>
     <div class="large-2 columns">
         <div class="website-image-caption">
             <div class="caption-break"></div>
-            <p class="caption-content"><? echo $page_control->page_caption?></p>
-            <? if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2){?>
+            <p class="caption-content"><?php echo $page_control->page_caption ?></p>
+            <?php if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2) { ?>
             add your caption above<br />
             <input name="" type="button" value="Save" id="capsave">
             <div id="capresult"></div>
-            <? }?>
+            <?php } ?>
             <div class="caption-break"></div>
         </div>
     </div>
 </div>
-<? }?>
-<? if ($page_control->page_type=='Home'){?>
+<?php } ?>
+<?php if ($page_control->page_type=='Home') { ?>
 <div class="row" id="latest-news-home">
     <div class="large-2 columns">&nbsp;</div>
     <div class="large-8 columns">
         <h1 class="change">Latest news</h1>
-        <?  page_news($page_control->web_id, $page_control->page_type);?>
+        <?php page_news($page_control->web_id, $page_control->page_type) ?>
     </div>
     <div class="large-2 columns"></div>
 </div>
-<? }?>
+<?php } ?>

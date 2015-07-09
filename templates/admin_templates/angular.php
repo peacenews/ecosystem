@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 "Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
 Copyright (C) 2014 Zylum Ltd.
@@ -15,15 +15,15 @@ You should have received a copy of the GNU Affero General Public License along w
 
 ini_set('display_errors', 1);
 
-if (isset($_GET[delete_user])){
+if (isset($_GET[delete_user])) {
     delete_user($_GET[delete_user]);
 }
-if (isset($_GET[approve_user])){
+if (isset($_GET[approve_user])) {
     $rnd_pass=approve_user($_GET[approve_user]);
     echo md5($rnd_pass);
     send_approval_email($_GET[approve_user],$rnd_pass);
 }
-if (isset($_POST[update_email])){
+if (isset($_POST[update_email])) {
     update_email($_POST[update_email],$_POST[app_subject],$_POST[app_content]);
 }
 
@@ -58,7 +58,7 @@ echo '<h1>New users</h1>';
     <pre ng-model="result" style="color: black;">
         {{result}}
     </pre>
-    <?
+    <?php
     echo '<table class="control">
     <tr>
         <th>Name</th>
@@ -92,8 +92,8 @@ while($r = $result->fetch(PDO::FETCH_BOTH)) {
 </div>
 <h4>Update welcome email:</h4>
 <form action="" method="post">
-    <input name="app_subject" type="text" value="<? echo $app_subject?>" /><br />
-    <textarea name="app_content" cols="" rows="" class="tinymce ta"><? echo $app_message?></textarea><br />
+    <input name="app_subject" type="text" value="<?php echo $app_subject ?>" /><br />
+    <textarea name="app_content" cols="" rows="" class="tinymce ta"><?php echo $app_message ?></textarea><br />
     <input name="update_email" type="hidden" value="approval"/>
     <input name="update" type="submit" value="Update" />
 </form>

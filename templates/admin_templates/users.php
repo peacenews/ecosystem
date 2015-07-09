@@ -41,7 +41,7 @@ You should have received a copy of the GNU Affero General Public License along w
                     <th>Suspend</th>
                     <th>Delete</th>
                 </tr>
-                <? echo  existing_users()?>
+                <?php echo existing_users() ?>
             </table>
         </div>
     </div>
