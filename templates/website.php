@@ -33,7 +33,7 @@ You should have received a copy of the GNU Affero General Public License along w
         <script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
 
-            <?php if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2) { ?>
+            <?php if ($_SESSION['public_user']['site_id']==$page_control->web_id && $user_level>=2) { ?>
                 tinymce.init({
                     selector: ".caption-content",
                     inline: true,
@@ -80,7 +80,7 @@ You should have received a copy of the GNU Affero General Public License along w
     </head>
 
     <body class="website">
-        <?php if ($_SESSION[public_user][site_id]==$page_control->web_id && $user_level>=2) { ?>
+        <?php if ($_SESSION['public_user']['site_id']==$page_control->web_id && $user_level>=2) { ?>
         <div class="logged-in-menu">
             <div class="row">
                 <div class="large-2 medium-3 small-4 columns">

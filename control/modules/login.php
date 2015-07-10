@@ -14,17 +14,17 @@ You should have received a copy of the GNU Affero General Public License along w
 */
 
 // forgotten password
-if ($_SERVER["REQUEST_URI"]=='/forgotten_password') {
-    if (isset($_POST[resetemail]) ) {
+if ($_SERVER['REQUEST_URI']=='/forgotten_password') {
+    if (isset($_POST['resetemail']) ) {
         $stmt = $dbpdo->prepare(" SELECT * FROM `users` WHERE `email`=:email  ");
         $stmt->execute(array(
-            ':email' => $_POST[resetemail]
+            ':email' => $_POST['resetemail']
             ));
         $num_rows = $stmt->rowCount();
         if ($num_rows==1) {
             $data = $stmt->fetch(PDO::FETCH_BOTH);
-            $rnd_pass=set_password($data[id]);
-            send_email($data[id],$rnd_pass,'reset');
+            $rnd_pass=set_password($data['id']);
+            send_email($data['id'],$rnd_pass,'reset');
             header( "Location: /login" );
         } else {
             // echo 'else';
@@ -40,27 +40,27 @@ if ($_SERVER["REQUEST_URI"]=='/forgotten_password') {
     <?php
 } else {
     // if not password
-    if (isset ($_POST[login_email]) ) {
+    if (isset ($_POST['login_email']) ) {
         $stmt = $dbpdo->prepare(" SELECT * FROM `users` WHERE `email`=:email AND `password`=:pass  ");
         $stmt->execute(array(
-            ':email' => $_POST[login_email],
-            ':pass' => md5($salt.$_POST[login_password])
+            ':email' => $_POST['login_email'],
+            ':pass' => md5($salt.$_POST['login_password'])
             ));
         $num_rows = $stmt->rowCount();
         if ($num_rows==1) {
             $data = $stmt->fetch(PDO::FETCH_BOTH);
-            $_SESSION[user_id] = $data[id];
-            $_SESSION[email] = $data[email];
-            $_SESSION[user_type] = $data[type];
-            $_SESSION[site_id] = $data[site_id];
-            if  ($_SESSION[site_id]==0) {
+            $_SESSION['user_id'] = $data['id'];
+            $_SESSION['email'] = $data['email'];
+            $_SESSION['user_type'] = $data['type'];
+            $_SESSION['site_id'] = $data['site_id'];
+            if  ($_SESSION['site_id']==0) {
                 header( "Location: /create" );
             } else {
                 // echo 'else';
             }
         }
     } else {
-        if ($_SERVER["REQUEST_URI"]=='/logout') {
+        if ($_SERVER['REQUEST_URI']=='/logout') {
             session_destroy();
         }
         ?>

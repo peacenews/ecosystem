@@ -17,7 +17,7 @@ $security_array=array(
     'Public'=>0,'Participant'=>1,'Contributor'=>2,'Owner'=>3,'Superuser'=>4
     );
 $security_level=$security_array[$page_control->security];
-$user_level=$security_array[$_SESSION[public_user][level]];
+$user_level=$security_array[$_SESSION['public_user']['level']];
 
 // print_r($_SESSION);
 // print_r($page_control);
@@ -27,8 +27,8 @@ $user_level=$security_array[$_SESSION[public_user][level]];
 
 if ($page_control->security=='Public') {
 } else {
-    if ( $page_control->template=='admin' && !isset($_SESSION[manager][user_id])) header( "Location: /manage/login");
-    if ( !isset($_SESSION[manager][user_id])) {
+    if ( $page_control->template=='admin' && !isset($_SESSION['manager']['user_id'])) header( "Location: /manage/login");
+    if ( !isset($_SESSION['manager']['user_id'])) {
         if ( ($page_control->template=='public' && $security_level>$user_level) ) header( "Location: /login");
     }
 }
