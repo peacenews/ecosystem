@@ -18,7 +18,7 @@ $now=strtotime("now");
 $mysql_now=date('Y-m-d H:i:s', $now);
 //$_SESSION['message']='';
 // process that deal with files are in a seperate file
-if (isset($_FILES)) {
+if (count($_FILES) > 0) {
     include("file_process.php");
 }
 
@@ -59,9 +59,12 @@ if (isset($_SESSION['manager']['user_id'])) {
 
 // not implemented yet
 $cms_nav=cms_nav();
-// add a dashboard link if yoiu are the right level of user
+
+// add a dashboard link if you are the right level of user
 if (isset($_SESSION['public_user']['level']) && $_SESSION['public_user']['level']!='Participant') {
     $logged_in_nav='<li><a href="/dashboard">Dashboard</a></li>';
+} else {
+    $logged_in_nav = '';
 }
 
 // the top navigation
