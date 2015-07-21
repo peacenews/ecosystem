@@ -114,8 +114,6 @@ function Image($image, $crop = null, $size = null) {
         return false;
     }
 
-    ini_set('display_errors', 1);
-
     $id=$_GET['id'];
     $table=$_GET['table'];
     $field=$_GET['field'];

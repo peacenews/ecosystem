@@ -14,7 +14,6 @@ You should have received a copy of the GNU Affero General Public License along w
 */
 
 include ("../control/config.php");
-ini_set('display_errors', 1);
 
 function toAscii($str) {
     $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $str);

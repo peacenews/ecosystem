@@ -19,8 +19,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 */
 
-ini_set('display_errors', 1);
-
 function getmsg($mbox,$mid) {
     // input $mbox = IMAP stream, $mid = message id
     // output all the following:

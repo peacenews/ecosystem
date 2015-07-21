@@ -13,7 +13,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 */
 
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 $dsn = 'mysql:host=localhost;dbname='; // SQL database name
 $user = ""; // SQL username
@@ -33,12 +33,12 @@ $site_name=''; // Site name
 $admin_home=''; // Directory
 $this_domain=$_SERVER['HTTP_HOST'];
 $salt=''; // salt for md5 hash
-$debug='no';
+$debug='yes';
 
-$site_vars[site_email]=''; // Site email
-$site_vars[site_name]='';  // Site name
-$site_vars[admin_home]='';  // Directory
-$site_vars[this_domain]=$_SERVER['HTTP_HOST'];
-$site_vars[salt]='';  // salt for md5 hash
-$site_vars[debug]='no';
+$site_vars['site_email']=''; // Site email
+$site_vars['site_name']='';  // Site name
+$site_vars['admin_home']='';  // Directory
+$site_vars['this_domain']=$_SERVER['HTTP_HOST'];
+$site_vars['salt']='';  // salt for md5 hash
+$site_vars['debug']='yes';
 ?>
