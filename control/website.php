@@ -15,7 +15,7 @@ You should have received a copy of the GNU Affero General Public License along w
 
 // set default (may change in script)
 $_SESSION['news_id']=0;
-
+global $site_vars;
 // get the website variables
 $query = "select * from website where id=".$page_control->web_id;
 $result = $dbpdo->query($query);
@@ -33,7 +33,7 @@ while($r = $result->fetch(PDO::FETCH_BOTH)) {
                 <input type="email" name="newsletter_email" required />
             </div>
             <div class="large-3 columns">
-                <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey="6LcemP8SAAAAABE0TF2TRqi0_sRcoW_2r4grwQaz"></div>
+                <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey="' . $site_vars['recaptcha_sitekey'] . '"></div>
                 <input type="submit" value="Submit" class="regular"/>
             </div>
         </form> ';

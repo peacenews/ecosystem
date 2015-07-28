@@ -12,7 +12,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 */
-
+global $site_vars;
 // $_SESSION['message'] prepares a pop up message in the page
 $now=strtotime("now");
 $mysql_now=date('Y-m-d H:i:s', $now);
@@ -210,7 +210,7 @@ if (isset ($_POST['invitename']) ) {
         $recaptcha=$_POST['g-recaptcha-response'];
         if(!empty($recaptcha)) {
             $google_url="https://www.google.com/recaptcha/api/siteverify";
-            $secret=''; // Recaptcha sectret
+            $secret = $site_vars['recaptcha_secret']; // Recaptcha secret
             $ip=$_SERVER['REMOTE_ADDR'];
             $url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
             $res=getCurlData($url);
@@ -251,7 +251,7 @@ if (isset ($_POST['contact']) ) {
         $recaptcha=$_POST['g-recaptcha-response'];
         if(!empty($recaptcha)) {
             $google_url="https://www.google.com/recaptcha/api/siteverify";
-            $secret=''; // Recaptcha secret
+            $secret = $site_vars['recaptcha_secret']; // Recaptcha secret
             $ip=$_SERVER['REMOTE_ADDR'];
             $url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
             $res=getCurlData($url);
@@ -568,7 +568,7 @@ if ($page_control->template=='website') {
         $recaptcha=$_POST['g-recaptcha-response'];
         if(!empty($recaptcha)) {
             $google_url="https://www.google.com/recaptcha/api/siteverify";
-            $secret=''; // Recaptcha secret
+            $secret = $site_vars['recaptcha_secret']; // Recaptcha secret
             $ip=$_SERVER['REMOTE_ADDR'];
             $url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
             $res=getCurlData($url);

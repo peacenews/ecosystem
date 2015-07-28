@@ -11,7 +11,7 @@
 
         You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
     -->
-
+    <?php global $site_vars; ?>
     <div class="row">
         <div class="large-3 small-6 medium-3 columns logo">
             <a href="/"><img src="/../img/logo.png" id="logo" /></a> <!-- Logo -->
@@ -42,7 +42,7 @@
                     <input name="contact[email]" type="text" placeholder="Please enter your email"/>
                     <label class="bold">Your message:</label>
                     <textarea name="contact[message]" style="width:100%;height:200px;"></textarea>
-                    <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey=""></div> <!-- Sitekey -->
+                    <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey="<?php echo $site_vars['recaptcha_sitekey']; ?>"></div> <!-- Sitekey -->
                     <input type="submit" value="Send" class="button" />
                 </form>
 

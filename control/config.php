@@ -40,5 +40,7 @@ $site_vars['site_name']='';  // Site name
 $site_vars['admin_home']='';  // Directory
 $site_vars['this_domain']=$_SERVER['HTTP_HOST'];
 $site_vars['salt']='';  // salt for md5 hash
+$site_vars['recaptcha_sitekey'] = ''; // Google ReCaptcha site key                                                                                                      
+$site_vars['recaptcha_secret'] = ''; // Google  ReCaptcha secret     
 $site_vars['debug']='yes';
 ?>

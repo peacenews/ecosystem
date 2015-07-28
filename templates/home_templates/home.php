@@ -12,6 +12,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 -->
 
+<?php global $site_vars; ?>
 <section id="homepage-slide">
     <div class="row">
         <div class="large-3 small-6 medium-3 columns logo">
@@ -87,7 +88,7 @@ You should have received a copy of the GNU Affero General Public License along w
                                 </div>
 
                                 <div class="large-12 columns">
-                                    <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey="6LcemP8SAAAAABE0TF2TRqi0_sRcoW_2r4grwQaz"></div>
+                                    <div style="margin-bottom:20px;" class="g-recaptcha" data-sitekey="<?php echo $site_vars['recaptcha_sitekey']; ?>"></div>
                                 </div>
                                 <button class="green light" id="create" disabled >Submit</button>
                             </form>
