@@ -42,8 +42,8 @@ You should have received a copy of the GNU Affero General Public License along w
                 <p class="bold">Register now.</p>
 
                 <div class="buttons">
-                    <a role="button" href="#register" class="button regular purple first" id="register">Register</a>
-                    <a role="button" href="#login" class="button regular green" id="login">Login</a>
+                    <a role="button" href="#register" class="button regular purple first" id="register-button">Register</a>
+                    <a role="button" href="#login" class="button regular green" id="login-button">Login</a>
                 </div>
 
 
