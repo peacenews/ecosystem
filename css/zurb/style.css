@@ -38,13 +38,13 @@ a.button.green, button.green{background-color:#6da430;}
 /** homepage **/
 
 .home #homepage-slide{
-    background: url(/img/leaves-bg-2.jpg) no-repeat center center; 
+    background: url(/img/background.png) no-repeat 82% 45%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
-    width:100%;
-    height:100%;
+    background-size: 40%;
+   /* width:60%;
+    height:60%;*/
     padding:0;
     margin:0;
 }
@@ -94,14 +94,14 @@ nav.top-bar ul li a.active{color:#6da430;}
 
 .home .row.content h2{font-size:40px;margin-bottom: 35px;}
 
-.home .row.content h3{font-size:32px;margin-bottom: 35px;} 
+.home .row.content h3{font-size:32px;margin-bottom: 35px;}
 
 .home .home-green .row.content h2{color:#ffffff;}
-.home .home-green .row.content h3{color:#ffffff;} 
+.home .home-green .row.content h3{color:#ffffff;}
 .home .home-green .row.content p{color:#ffffff;}
 
-.home .home-grey .row.content h2{margin-top:35px;} 
-.home .home-grey .row.content h3{width:75%;margin:0 auto;margin-top:40px;margin-bottom:85px;} 
+.home .home-grey .row.content h2{margin-top:35px;}
+.home .home-grey .row.content h3{width:75%;margin:0 auto;margin-top:40px;margin-bottom:85px;}
 
 .row.content ul{margin:0 0 30px 0;list-style-type: none;}
 .row.content ul li{color:#7c137a;font-size:22px;background: url(/img/bullet-list.png) no-repeat left 9px;padding-left:30px;line-height: 40px;}
@@ -116,7 +116,7 @@ nav.top-bar ul li a.active{color:#6da430;}
 
 /** about us page **/
 .about .logo img{margin-top: 20px;}
-.about .row.content.first{padding-top:170px;background:url(/img/about-leaf-bg.jpg) no-repeat 100% 2%;}
+.about .row.content.first{padding-top:170px;background:url(/img/callout.png) no-repeat 90% 2%;}
 .about .row.content h1.green{font-size:40px;margin-bottom:70px;}
 .about .row.content h2.purple{font-size:32px;}
 .about .row.content h3.purple, .about .row.content h3.purple a{color: #7c137a;font-size:28px;margin-top:50px;margin-bottom:40px;}
@@ -155,7 +155,7 @@ font-family: 'zylumregular', sans-serif;
 .contact .row.content label{margin-bottom:10px;color: #7c137a;font-size:19px;}
 
 /** footer **/
-.home section.footer, .contact section.footer, .about section.footer, .terms section.footer, .privacy section.footer, .help section.footer{background-color:#6da430;padding:18px 0 0 0;} 
+.home section.footer, .contact section.footer, .about section.footer, .terms section.footer, .privacy section.footer, .help section.footer{background-color:#6da430;padding:18px 0 0 0;}
 .home section.footer ul, .contact section.footer ul, .about section.footer ul, .terms section.footer ul, .privacy section.footer ul, .help section.footer ul{margin-top:20px;}
 .home section.footer ul li.first, .contact section.footer ul li.first, .about section.footer ul li.first, .terms section.footer ul li.first, .privacy section.footer ul li.first, .help section.footer ul li.first{padding-right:60px;}
 .home section.footer ul li a, .contact section.footer ul li a, .about section.footer ul li a, .terms section.footer ul li a, .privacy section.footer ul li a, .help section.footer ul li a{color:#ffffff;font-size:16px;}
