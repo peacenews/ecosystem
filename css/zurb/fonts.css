@@ -1,0 +1,119 @@
+/*
+"Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
+Copyright (C) 2014 Zylum Ltd.
+admin@zylum.org / 5 Caledonian Rd, London, N1 9DY
+
+Version one of Peace News Ecosystem was authored by http://www.wave.coop/ info@wave.coop
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+/** fonts **/
+
+@font-face {
+    font-family: 'zylumregular';
+    src: url('/css/fonts/oxygen-regular-webfont.eot');
+    src: url('/css/fonts/oxygen-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/oxygen-regular-webfont.woff2') format('woff2'),
+         url('/css/fonts/oxygen-regular-webfont.woff') format('woff'),
+         url('/css/fonts/oxygen-regular-webfont.ttf') format('truetype'),
+         url('/css/fonts/oxygen-regular-webfont.svg#oxygenregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'zylumlight';
+    src: url('/css/fonts/oxygen-light-webfont.eot');
+    src: url('/css/fonts/oxygen-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/oxygen-light-webfont.woff2') format('woff2'),
+         url('/css/fonts/oxygen-light-webfont.woff') format('woff'),
+         url('/css/fonts/oxygen-light-webfont.ttf') format('truetype'),
+         url('/css/fonts/oxygen-light-webfont.svg#oxygenlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'zylumbold';
+    src: url('/css/fonts/oxygen-bold-webfont.eot');
+    src: url('/css/fonts/oxygen-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/oxygen-bold-webfont.woff2') format('woff2'),
+         url('/css/fonts/oxygen-bold-webfont.woff') format('woff'),
+         url('/css/fonts/oxygen-bold-webfont.ttf') format('truetype'),
+         url('/css/fonts/oxygen-bold-webfont.svg#oxygenbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/** aleo **/
+
+@font-face {
+    font-family: 'aleobold';
+    src: url('/css/fonts/Aleo-Bold-webfont.eot');
+    src: url('/css/fonts/Aleo-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/Aleo-Bold-webfont.woff') format('woff'),
+         url('/css/fonts/Aleo-Bold-webfont.ttf') format('truetype'),
+         url('/css/fonts/Aleo-Bold-webfont.svg#aleobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'aleobolditalic';
+    src: url('/css/fonts/Aleo-BoldItalic-webfont.eot');
+    src: url('/css/fonts/Aleo-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/Aleo-BoldItalic-webfont.woff') format('woff'),
+         url('/css/fonts/Aleo-BoldItalic-webfont.ttf') format('truetype'),
+         url('/css/fonts/Aleo-BoldItalic-webfont.svg#aleobolditalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'aleolight';
+    src: url('/css/fonts/Aleo-Light-webfont.eot');
+    src: url('/css/fonts/Aleo-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/Aleo-Light-webfont.woff') format('woff'),
+         url('/css/fonts/Aleo-Light-webfont.ttf') format('truetype'),
+         url('/css/fonts/Aleo-Light-webfont.svg#aleolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'aleolightitalic';
+    src: url('/css/fonts/Aleo-LightItalic-webfont.eot');
+    src: url('/css/fonts/Aleo-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/Aleo-LightItalic-webfont.woff') format('woff'),
+         url('/css/fonts/Aleo-LightItalic-webfont.ttf') format('truetype'),
+         url('/css/fonts/Aleo-LightItalic-webfont.svg#aleolightitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'aleoregular';
+    src: url('/css/fonts/Aleo-Regular-webfont.eot');
+    src: url('/css/fonts/Aleo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/Aleo-Regular-webfont.woff') format('woff'),
+         url('/css/fonts/Aleo-Regular-webfont.ttf') format('truetype'),
+         url('/css/fonts/Aleo-Regular-webfont.svg#aleoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'aleoitalic';
+    src: url('/css/fonts/Aleo-Italic-webfont.eot');
+    src: url('/css/fonts/Aleo-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/css/fonts/Aleo-Italic-webfont.woff') format('woff'),
+         url('/css/fonts/Aleo-Italic-webfont.ttf') format('truetype'),
+         url('/css/fonts/Aleo-Italic-webfont.svg#aleoitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

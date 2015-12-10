@@ -1,0 +1,134 @@
+/*
+"Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
+Copyright (C) 2014 Zylum Ltd.
+admin@zylum.org / 5 Caledonian Rd, London, N1 9DY
+
+Version one of Peace News Ecosystem was authored by http://www.wave.coop/ info@wave.coop
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+@media only screen and (max-width: 40em) {
+    .logo{text-align: center;}
+    .home .row.content.first-slide{margin-top:50px;text-align: center;}
+    .home .row.content ul li{padding-left:0;background: transparent;color:#6da430;font-family: 'zylumbold';line-height: 27px;}
+    .home #homepage-slide{background:transparent;background-color: #edefea;width:auto;height:auto;} 
+    .home .home-green{padding:40px 0 40px 0;}
+    .columns{padding-left: 1.9375em;padding-right: 1.9375em;}
+
+    /** homepage **/
+    .home nav.top-bar{margin-top:27px;}
+    .home nav.top-bar .toggle-topbar span{color:#6da430;}
+    .home .top-bar .toggle-topbar.menu-icon a span::after{box-shadow: 0 0px 0 1px #6da430, 0 7px 0 1px #6da430, 0 14px 0 1px #6da430;}
+    .home nav.top-bar .name{color:#6da430;}
+    .home nav.top-bar li{width:100%;margin-left:0;padding:0;}
+    .home nav.top-bar li.menu-icon{width:100%;}
+    .home nav.top-bar li a:hover{color:#7c137a;}
+    .home .top-bar.expanded .title-area{background:transparent;}
+    .home #homepage-arrow{display:none;}
+    .home .row.content .large-5{text-align: center;}
+
+    #cboxContent #register{padding:20px;}
+
+    /** about page **/
+    .about .row.content.first{background:transparent;background-color:#ffffff;padding-top:0;}
+    .about .testimonial{padding:0;padding-left: 1.9375em;padding-right: 1.9375em;}
+
+    /** website **/
+    .website .top-bar{min-height:75px;}
+    .website div#top{min-height: 75px;}
+    .website div#top .large-12{padding-left:0;}
+    .website .top-bar .toggle-topbar.menu-icon{padding-top:17px;}
+    .website div#top .top-bar-section ul li{background: transparent;width:100%;margin-left:0;}
+    .website .intro-text{position: relative;margin-top:0;background: url(/img/tools/intro-bg.png) repeat;} 
+    .website .intro-text h1{color:#ffffff;text-align: center;margin-bottom:0;}
+    .website .website-logo{display:none;}
+    .website .row.content{margin-top:40px;}
+    .website section#newsletter{margin-top:50px;}
+    .website section#newsletter input[type=submit]{margin-top:0;}
+    .website section#newsletter #newsletter-form{margin-bottom:0;}
+    .website section#newsletter #facebook-link, .website section#newsletter #twitter-link{width:100%;float:none;}
+    .website section#newsletter #facebook-link a, .website section#newsletter #twitter-link a{font-size:19px;}
+    .website section#newsletter #facebook-link{margin-bottom:20px;}
+    .website section#footer p{text-align: left;}
+    .website section#footer p img{display:block;padding-top:20px;}
+
+    /** website logged in view **/
+    .website .logged-in-user-controls{padding:0;}
+    .website .logged-in-user-controls ul li, .website .logged-in-menu ul li{width:91%;padding:10px 0 10px 0;}
+    .website .logged-in-user-controls ul li a{padding-left:0;}
+    .website .logged-in-user-controls .toggle-topbar, .website .logged-in-menu .toggle-topbar{width:100%}
+    .website .logged-in-user-controls .top-bar-section, .website .logged-in-menu .top-bar-section{margin: 25px 0 5px 0;}
+
+    /** dashboard **/
+    .website #admin-content #dashboard-boxes a{margin-bottom:100px;}
+    .website #admin-content #dashboard-boxes h4{margin-bottom:0;}
+    #dashboard-icon{display:none;}
+
+    /** font sizes **/
+    .home .row.content h2{font-size:35px;text-align: center;margin-top:20px;}
+    .home .row.content h3{font-size:30px;text-align: center;}
+    .home .row.content p{font-size:20px;text-align: center;}
+    .home .row.content #home-green h2{margin-top:0;}
+    .website .row.content h1{font-size:40px;}
+    .website .row.content h2{font-size:24px;}
+    .website .row.content p{font-size:17px;}
+    .website #admin-content h2, .website .admin-title h2{font-size:35px;}
+    .website #admin-content h3{font-size:29px;}
+    section#newsletter h3{font-size:34px;}
+    section#newsletter p{font-size:19px;}
+}
+
+@media only screen and (min-width: 40.003em) and (max-width: 48em) {
+    .columns{padding-left: 1.9375em;padding-right: 1.9375em;}
+    .website .row .website-image{margin-top:0;}
+    .website div#top .top-bar-section ul.inline-list > li{margin-left:0;}
+    .website section#newsletter{margin-top:100px;}
+
+    /** homepage **/
+    .home nav.top-bar{margin-top:30px;}
+    .home .row.content.first-slide{margin-top:30px;}
+
+    /** font sizes **/
+    .home .row.content h2{font-size:35px;text-align: center;margin-top:20px;}
+    .home .row.content h3{font-size:30px;text-align: center;}
+    .home .row.content p{font-size:20px;text-align: center;}
+    .home .row.content #home-green h2{margin-top:0;}
+    .home .row.content .large-5{text-align: center;} 
+    .website .row.content h1{font-size:40px;}
+    .website .row.content h2{font-size:24px;}
+    .website .row.content p{font-size:17px;}
+    .website #admin-content h2, .website .admin-title h2{font-size:38px;}
+    .website #admin-content h3{font-size:32px;}
+    .home nav.top-bar ul li{padding-right:0;}
+
+    /** dashboard **/
+    .website #admin-content #dashboard-boxes a{margin-bottom:100px;}
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 65.4em) {
+    .home #homepage-slide{background:url(/img/leaves-bg-mobile.jpg) no-repeat center center;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}   
+    .home nav.top-bar ul li,.about nav.top-bar ul li{padding-right:0;}
+
+    /** font sizes **/
+    .website #admin-content h2, .website .admin-title h2{font-size:42px;}
+    .website #admin-content h3{font-size:35px;}
+    .website #dashboard-heading h1{font-size:36px;}
+}
+
+/** column padding up to desktop **/
+@media only screen and (max-width: 77em) {
+    .columns{padding-left: 1.9375em;padding-right: 1.9375em;}
+}
+
+/** ipad landscape **/
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+    .home .row #homepage-arrow{margin-top:0px;}
+}

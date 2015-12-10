@@ -1,0 +1,180 @@
+/*
+"Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
+Copyright (C) 2014 Zylum Ltd.
+admin@zylum.org / 5 Caledonian Rd, London, N1 9DY
+
+Version one of Peace News Ecosystem was authored by http://www.wave.coop/ info@wave.coop
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+/** global **/
+body{font-family: 'zylumregular', sans-serif;-webkit-font-smoothing: antialiased;font-smooth: always;color:#7c137a;}
+
+.home .logo #logo{margin-top:20px;}
+
+h1,h2,h3,h4,h5{color:#7c137a;}
+
+.regular{font-family: 'zylumregular';}
+.light{font-family: 'zylumlight';}
+.bold{font-family: 'zylumbold';color:#7c137a;font-size:24px;}
+
+.green{color:#6da430;}
+.purple{color:#7c137a;}
+
+a.button, button{border-radius: 5px;color:#ffffff;font-size:20px;}
+a.button.first{margin-right:20px;}
+a.button.purple, button.purple{background-color:#7c137a;}
+
+.back-to-top img{margin-bottom:20px;}
+.back-to-top{color:#6da430;font-size:22px;}
+
+a.button.green, button.green{background-color:#6da430;}
+
+/** homepage **/
+
+.home #homepage-slide{
+    background: url(/img/background.png) no-repeat 82% 45%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 40%;
+   /* width:60%;
+    height:60%;*/
+    padding:0;
+    margin:0;
+}
+
+.home .home-white{background-color:#ffffff;padding:90px 0 90px 0;}
+.home .home-green{background-color:#6da430;padding:90px 0 90px 0;}
+.home .home-grey{background-color: #edefea;padding:60px 0 0 0;}
+.home .home-grey .row {
+    background:url(/img/slide-5-bg.jpg) no-repeat;padding-bottom:165px;
+}
+
+/** popup register **/
+#cboxOverlay.register{background-color:#77337c;}
+#cboxContent #register{/*padding:55px 90px 55px 90px;*/}
+#cboxContent #register h2{margin-bottom:20px;font-size:36px;}
+#cboxContent #register label{color:#7c137a;font-size:18px;font-family: 'zylumbold';margin-bottom:10px;}
+#cboxContent #register input{border:0;border:1px solid #c5bdc4;padding:10px;font-size:24px;font-family: 'zylumlight';margin-bottom:25px;height:50px;}
+#cboxContent #register button{font-family: 'zylumlight';font-size:26px;border-radius: 0;color:#ffffff;}
+
+#cboxOverlay.login{background-color:#588822;}
+#cboxContent #login{padding:25px;}
+#cboxContent #login h2{color:#6da430;margin:25px 0 25px 0;font-size:36px;}
+#cboxContent #login input{color:#6c526e;border:1px solid #958497;padding:10px;font-size:24px;font-weight: 300;margin-bottom:25px;text-align: center;height:55px;}
+#cboxContent #login button{font-weight: 300;font-size:26px;border-radius: 0;margin-top:35px;color:#ffffff;}
+#cboxContent #login a{color:#6c526e;font-weight: 300;font-size:24px;vertical-align: top;}
+
+#cboxContent #login .save-password, #cboxContent #login .forgot-password{text-align: left;margin-bottom:25px;}
+#cboxContent #login .box{height:45px;width:45px;border:1px solid #958497;display:inline-block;margin-top: -5px;margin-right:20px;}
+
+/** registration ajax responses **/
+.home .registration-response{padding: 20px;background-color: #6da430;margin-bottom: 20px;color:#ffffff;}
+.home .registration-response.error{background-color:#8b0000;color:#ffffff;}
+
+/** navigation **/
+nav.top-bar{background-color:transparent;margin:40px 0 0 0;}
+
+nav.top-bar ul li{padding:0 20px 0 0;background: transparent;}
+nav.top-bar ul li.last{padding:0 0 0 0;}
+nav.top-bar ul li a{color:#7c137a;font-size:18px;background: transparent!important;font-family: 'zylumbold', sans-serif;}
+nav.top-bar ul li a:hover{color:#6da430!important;}
+nav.top-bar ul li a.active{color:#6da430;}
+
+/** content **/
+.home .row.content.first-slide{margin-top:60px;}
+.home .row.content h1{color:#7c137a;font-size:32px;font-weight:300;line-height: 52px;margin-bottom:20px;}
+.home .row.content h1 span{font-weight:700;}
+
+.home .row.content h2{font-size:40px;margin-bottom: 35px;}
+
+.home .row.content h3{font-size:32px;margin-bottom: 35px;}
+
+.home .home-green .row.content h2{color:#ffffff;}
+.home .home-green .row.content h3{color:#ffffff;}
+.home .home-green .row.content p{color:#ffffff;}
+
+.home .home-grey .row.content h2{margin-top:35px;}
+.home .home-grey .row.content h3{width:75%;margin:0 auto;margin-top:40px;margin-bottom:85px;}
+
+.row.content ul{margin:0 0 30px 0;list-style-type: none;}
+.row.content ul li{color:#7c137a;font-size:22px;background: url(/img/bullet-list.png) no-repeat left 9px;padding-left:30px;line-height: 40px;}
+
+.home .row.content p{font-size:22px;font-weight: 400;}
+
+.home .row.content .buttons{margin-top:45px;}
+.home .row.content .buttons a.button.green{background-color:#6da430;}
+
+.home .row #homepage-arrow{margin-top:100px;}
+
+
+/** about us page **/
+.about .logo img{margin-top: 20px;}
+.about .row.content.first{padding-top:170px;background:url(/img/callout.png) no-repeat 90% 2%;}
+.about .row.content h1.green{font-size:40px;margin-bottom:70px;}
+.about .row.content h2.purple{font-size:32px;}
+.about .row.content h3.purple, .about .row.content h3.purple a{color: #7c137a;font-size:28px;margin-top:50px;margin-bottom:40px;}
+
+.about .row.content ul li{margin-bottom: 20px;color:#4e334e;font-size:19px;line-height: 33px;}
+.about .row.content ul li a, .about .row.content a{color:#6da430;}
+
+.about .row.content p{color:#4e334e;font-size:19px;line-height: 33px;}
+.about .testimonial{padding:60px 0 60px 0;}
+.about .testimonial p{color:#6da430;font-size:32px;}
+
+.about .row.content .leaf-bg{padding:110px 0 65px 0;}
+
+.about .footer{margin-top:40px;}
+.about .top-bar .toggle-topbar.menu-icon a{color:#6da430;}
+.about .top-bar .toggle-topbar.menu-icon a span::after{box-shadow: 0 0px 0 1px #6da430, 0 7px 0 1px #6da430, 0 14px 0 1px #6da430;}
+
+/** contact page **/
+.contact #logo{margin-top:20px;}
+.contact .row.content{margin-top: 60px;}
+.contact .footer{margin-top:165px;}
+.contact .row.content h1.green {
+font-size: 40px;
+margin-bottom: 70px;
+}
+
+.contact .row.content input[type=submit] {
+border: 0;
+background-color: #6da430;
+border-radius: 5px;
+color: #ffffff;
+font-size: 18px;
+font-family: 'zylumregular', sans-serif;
+}
+.contact .row.content input[type=text]{margin-bottom:30px;}
+.contact .row.content label{margin-bottom:10px;color: #7c137a;font-size:19px;}
+
+/** footer **/
+.home section.footer, .register section.footer, .contact section.footer, .about section.footer, .terms section.footer, .privacy section.footer, .help section.footer{background-color:#6da430;padding:18px 0 0 0;}
+.home section.footer ul, .register section.footer ul, .contact section.footer ul, .about section.footer ul, .terms section.footer ul, .privacy section.footer ul, .help section.footer ul{margin-top:20px;}
+.home section.footer ul li.first, .register section.footer ul li.first, .contact section.footer ul li.first, .about section.footer ul li.first, .terms section.footer ul li.first, .privacy section.footer ul li.first, .help section.footer ul li.first{padding-right:60px;}
+.home section.footer ul li a, .register section.footer ul li a, .contact section.footer ul li a, .about section.footer ul li a, .terms section.footer ul li a, .privacy section.footer ul li a, .help section.footer ul li a{color:#ffffff;font-size:16px;}
+
+.home section.footer p, .register section.footer p, .contact section.footer p, .about section.footer p, .terms section.footer p, .privacy section.footer p, .help section.footer p{color:#ffffff;margin-top:5px;font-size:16px;}
+
+.home section.footer p a, .register section.footer p a, .contact section.footer p a, .about section.footer p a, .terms section.footer p a, .privacy section.footer p a, .help section.footer p a{color:#ffffff;text-decoration: underline;}
+
+.website #csave{background-color: #7c137a;
+border-radius: 5px;
+color: #ffffff;
+font-size: 18px;}
+
+.help span.bold{font-size: 19px;color: #4e334e;}
+#register { position:relative;}
+#register h2{ margin-bottom:25px;}
+/* Registration error message css */
+.reg-error{ color:#ff0000;}
+@media only screen and (max-width: 40em) {
+    .logo{text-align: center;}
+    .home .row.content.first-slide{margin-top:40px;}
+}

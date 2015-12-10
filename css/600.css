@@ -1,0 +1,92 @@
+/*
+"Peace News Ecosystem" is a CMS developed to allow small groups with no tech' expertise to have an internet presence. Its USP is freedom from choice. You can see one installation of Peace News Ecosystem at https://zylum.org/
+Copyright (C) 2014 Zylum Ltd.
+admin@zylum.org / 5 Caledonian Rd, London, N1 9DY
+
+Version one of Peace News Ecosystem was authored by http://www.wave.coop/ info@wave.coop
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
+*/
+
+@charset "UTF-8";
+/* CSS Document */
+.two-col-3 {
+    float:left;
+    clear:both;
+    width:68%;
+    margin-right:4%;
+}
+.two-col-4 {
+    float:left;
+    width:28%;
+    clear:none;
+}
+body {
+font-size: 17px;
+}
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.5em;
+}
+h4 {
+    font-size: 1.2em;
+}
+.big-p {
+    font-size: 1.5em;
+}
+#top-menu-wrapper {
+    padding-top: 0.3em;
+    height:auto;
+    background: #000;
+    padding-bottom: 0em;
+}
+#top-menu {
+    display:block;
+}
+#top-menu li {
+    clear:inherit;
+    width:auto;
+}
+#top-menu a:link, #top-menu a:visited {
+    width:auto;
+    margin-right: 1px;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-indent:0;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+#w-cms-menu li {
+    clear:none;
+    width:auto;
+}
+#w-cms-menu a:link, #w-cms-menu a:visited {
+    width:auto;
+    margin-right: 1px;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+#mobi-nav-select {
+    display: none;
+}
