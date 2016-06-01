@@ -24,7 +24,7 @@ You should have received a copy of the GNU Affero General Public License along w
 //Please be aware of the typo $send_data[sublect] in the code which calls this function
 
 // TESTING: we need to declare the array $_SESSION - this array will already exist when the code runs for real
-echo "function_send_mailing_list.php";
+echo "function_send_mailing_list.php<br />";
 $_SESSION = array ( 'public_user' => array ('user_id' => "4",
                                             'email' => "zylum@peacenews.info",
                                             'name' => "Luddite",
@@ -50,13 +50,13 @@ function send_mailing_list($send_data){
                            'altbody' => convert_html_to_text($send_data[content]),
                            );
 
-    exec ('printf "From: \"'.$mailman_data['fromname'].$mailman_data['listowner'].'\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'</body>\n</html>'.'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
+    exec ('printf "From: '.$mailman_data['listowner'].'\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'</body>\n</html>'.'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
     // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
 }
 
 //TESTING: call the above function
 $mail = array('subject' => "list message",
-              'body' => "here is some\n<b>important</b> information\n",
+              'content' => "here is some\n<b>important</b> information\n",
               );
 
 send_mailing_list ($mail);
