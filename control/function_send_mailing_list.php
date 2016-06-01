@@ -24,6 +24,7 @@ You should have received a copy of the GNU Affero General Public License along w
 //Please be aware of the typo $send_data[sublect] in the code which calls this function
 
 // TESTING: we need to declare the array $_SESSION - this array will already exist when the code runs for real
+echo "function_send_mailing_list.php";
 $_SESSION = array ( 'public_user' => array ('user_id' => "4",
                                             'email' => "zylum@peacenews.info",
                                             'name' => "Luddite",
