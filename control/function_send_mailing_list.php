@@ -57,7 +57,7 @@ function send_mailing_list($send_data){
 $mail = array('subject' => "list message",
               'body' => "here is some\n<b>important</b> information\n",
               );
-              
+
 send_mailing_list ($mail);
 // end testing
 
