@@ -41,7 +41,7 @@ $_SESSION = array ( 'public_user' => array ('user_id' => "4",
 function send_mailing_list($send_data){
     require 'html2text.php'; //convert_html_to_text
 
-    $mailman_data = array ('listowner' => => $_SESSION ['public_user'] ['email'],
+    $mailman_data = array ('listowner' => $_SESSION ['public_user'] ['email'],
                            'fromname' => $_SESSION ['public_user'] ['site_title'],
                            'groupname' => ltrim($_SESSION [public_user] [site_url], '/'),
                            'subject' => $send_data ['subject'],
