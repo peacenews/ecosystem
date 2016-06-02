@@ -63,4 +63,5 @@ send_mailing_list ($mail);
 // end testing
 
 ?>
-// Stil to fix - proper syntax for multipart message
+// Still to fix - Proper syntax for multipart message
+//                If it is a test message - send it only to the list owner
