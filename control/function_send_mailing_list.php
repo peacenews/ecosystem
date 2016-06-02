@@ -21,7 +21,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 */
 
-//Please be aware of the typo $send_data[sublect] in the code which calls this function
+//Please be aware of the typo $send_data[sublect] in the code which calls this function see templates/public_templates/mailing_list.php
 
 // TESTING: we need to declare the array $_SESSION - this array will already exist when the code runs for real
 echo "function_send_mailing_list.php<br />";
@@ -39,7 +39,7 @@ $_SESSION = array ( 'public_user' => array ('user_id' => "4",
 
 //function send_mailing_list
 function send_mailing_list($send_data){
-    require 'html2text.php'; //convert_html_to_text
+    require 'html2text.php'; //convert_html_to_text from http://journals.jevon.org/users/jevon-phd/entry/19818
 
     $mailman_data = array ('listowner' => $_SESSION ['public_user'] ['email'],
                            'fromname' => $_SESSION ['public_user'] ['site_title'],
@@ -49,6 +49,25 @@ function send_mailing_list($send_data){
                            'body' => $send_data[content],
                            'altbody' => convert_html_to_text($send_data[content]),
                            );
+
+    function send_as_test {
+        require 'PHPMailerAutoload.php'; // http://phpmailer.worxware.com/index.php?pg=examplebmail
+        $mail = new PHPMailer();
+        $mail->SetFrom($mailman_data['fromname'] , '<'.$mailman_data['groupname'].'@groups.zylum.org>');
+        $mail->addBCC($mailman_data['listowner']);
+        $mail->Subject = $mailman_data['subject'];
+        $mail->MsgHTML($mailman_data['body']);
+        $mail->AltBody = $mailman_data['altbody'];
+        $mail->isHTML(true);
+ 
+        if(!$mail->send()) {
+		    $_SESSION[message]= 'Message could not be sent.';
+		    //echo 'Mailer Error: ' . $mail->ErrorInfo;
+	    } else {
+		$_SESSION[message]= 'Message has been sent';
+	} //function send_as_test
+
+} //function send_mailing_list
 
     exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'</body>\n</html>'.'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
     // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
