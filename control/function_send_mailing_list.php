@@ -50,14 +50,14 @@ function send_mailing_list($send_data){
                            'altbody' => convert_html_to_text($send_data[content]),
                            );
 
-    function send_as_test {
+    function send_as_test($mail_data) {
         require 'PHPMailerAutoload.php'; // http://phpmailer.worxware.com/index.php?pg=examplebmail
         $mail = new PHPMailer();
-        $mail->SetFrom($mailman_data['fromname'] , '<'.$mailman_data['groupname'].'@groups.zylum.org>');
-        $mail->addBCC($mailman_data['listowner']);
-        $mail->Subject = $mailman_data['subject'];
-        $mail->MsgHTML($mailman_data['body']);
-        $mail->AltBody = $mailman_data['altbody'];
+        $mail->SetFrom($mail_data['fromname'] , '<'.$mail_data['groupname'].'@groups.zylum.org>');
+        $mail->addBCC($mail_data['listowner']);
+        $mail->Subject = $mail_data['subject'];
+        $mail->MsgHTML($mail_data['body']);
+        $mail->AltBody = $mail_data['altbody'];
         $mail->isHTML(true);
  
         if(!$mail->send()) {
@@ -65,17 +65,24 @@ function send_mailing_list($send_data){
 		    //echo 'Mailer Error: ' . $mail->ErrorInfo;
 	    } else {
 		$_SESSION[message]= 'Message has been sent';
-	} //function send_as_test
+    	} //if sent else
+
+    } //function send_as_test
+    
+    if ($send_data['test']="test") {
+        send_as_test($mailman_data);
+    } else {
+        exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'</body>\n</html>'.'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
+        // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
+    } //if test else
 
 } //function send_mailing_list
-
-    exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'</body>\n</html>'.'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
-    // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
-}
 
 //TESTING: call the above function
 $mail = array('subject' => "list message",
               'content' => "here is some\n<b>important</b> information\n",
+              'test' => "test";
+              //'test' => "";
               );
 
 send_mailing_list ($mail);
