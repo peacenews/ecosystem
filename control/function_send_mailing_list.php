@@ -46,8 +46,8 @@ function send_mailing_list($send_data){
                            'groupname' => ltrim($_SESSION [public_user] [site_url], '/'),
                            'subject' => $send_data ['subject'],
                            'doctype' => "\nMIME-Version: 1.0\nContent-Type: multipart/alternative;\nContent-Type: text/html; charset=utf-8;\n<!DOCTYPE html>\n<html>\n<body>\n",
-                           'body' => $send_data[content]."</body>\n</html>\n",
-                           'altbody' => "\nContent-type: text/plain; charset=utf-8\n".convert_html_to_text($send_data[content]),
+                           'body' => $send_data[content],
+                           'altbody' => convert_html_to_text($send_data[content]),
                            );
 
     function send_as_test($mail_data) {
@@ -72,7 +72,7 @@ function send_mailing_list($send_data){
     if (isset ($send_data['test'])) {
         send_as_test($mailman_data);
     } else {
-        exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
+        exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'</body>\n</html>\n'.'\nContent-type: text/plain; charset=utf-8\n'.$mailman_data['altbody'].'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
         // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
     } //if isset test
 
