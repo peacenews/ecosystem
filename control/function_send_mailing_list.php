@@ -45,21 +45,21 @@ function send_mailing_list($send_data){
                            'fromname' => $_SESSION ['public_user'] ['site_title'],
                            'groupname' => ltrim($_SESSION [public_user] [site_url], '/'),
                            'subject' => $send_data ['subject'],
-                           'doctype' => "MIME-Version: 1.0\nContent-Type: text/html\n<!DOCTYPE html>\n<html>\n<body>",
-                           'body' => $send_data[content],
-                           'altbody' => convert_html_to_text($send_data[content]),
+                           'doctype' => "\nMIME-Version: 1.0\nContent-Type: multipart/alternative;\nContent-Type: text/html; charset=utf-8;\n<!DOCTYPE html>\n<html>\n<body>\n",
+                           'body' => $send_data[content]."</body>\n</html>\n",
+                           'altbody' => "\nContent-type: text/plain; charset=utf-8\n".convert_html_to_text($send_data[content]),
                            );
 
     function send_as_test($mail_data) {
         require 'PHPMailerAutoload.php'; // http://phpmailer.worxware.com/index.php?pg=examplebmail
         $mail = new PHPMailer();
-        $mail->SetFrom($mail_data['fromname'] , '<'.$mail_data['groupname'].'@groups.zylum.org>');
+        $mail->SetFrom($mail_data['groupname'].'@groups.zylum.org', $mail_data['fromname']);
         $mail->addBCC($mail_data['listowner']);
         $mail->Subject = $mail_data['subject'];
         $mail->MsgHTML($mail_data['body']);
         $mail->AltBody = $mail_data['altbody'];
         $mail->isHTML(true);
- 
+
         if(!$mail->send()) {
 		    $_SESSION[message]= 'Message could not be sent.';
 		    //echo 'Mailer Error: ' . $mail->ErrorInfo;
@@ -68,13 +68,13 @@ function send_mailing_list($send_data){
     	} //if sent else
 
     } //function send_as_test
-    
-    if ($send_data['test']="test") {
+
+    if (isset ($send_data['test'])) {
         send_as_test($mailman_data);
     } else {
-        exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'</body>\n</html>'.'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
+        exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'\n'.$mailman_data['altbody'].'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
         // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
-    } //if test else
+    } //if isset test
 
 } //function send_mailing_list
 
@@ -82,7 +82,7 @@ function send_mailing_list($send_data){
 $mail = array('subject' => "list message",
               'content' => "here is some\n<b>important</b> information\n",
               'test' => "test",
-              //'test' => "",
+              //when the checkbox is unchecked it's not transmitted in the post http://stackoverflow.com/questions/4554758/how-to-read-if-a-checkbox-is-checked-in-php
               );
 
 send_mailing_list ($mail);
@@ -90,5 +90,4 @@ send_mailing_list ($mail);
 
 
 // Still to fix - Proper syntax for multipart message
-//                If it is a test message - send it only to the list owner
 ?>
