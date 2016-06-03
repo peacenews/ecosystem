@@ -81,13 +81,14 @@ function send_mailing_list($send_data){
 //TESTING: call the above function
 $mail = array('subject' => "list message",
               'content' => "here is some\n<b>important</b> information\n",
-              'test' => "test";
-              //'test' => "";
+              'test' => "test",
+              //'test' => "",
               );
 
 send_mailing_list ($mail);
 // end testing
 
-?>
+
 // Still to fix - Proper syntax for multipart message
 //                If it is a test message - send it only to the list owner
+?>
