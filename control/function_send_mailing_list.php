@@ -80,9 +80,20 @@ function send_mailing_list($send_data){
         $mailman_from = "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\n";
         $mailman_to   = "To: <'.$mailman_data['groupname'].'@groups.zylum.org>\n";
         // Execute the Mailman shell command 
-        exec ('printf '.$mailman_from.$mailmam_to.'Subject: '.$mailman_data['subject'].$mailman_data['header'].$mailman_data['part_text'].$mailman_data['part_html'].$mailman_data['body'].'\n</body>\n</html>\n'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
+        exec ('printf "'
+              .$mailman_from.$mailmam_to
+              .'Subject: '
+              .$mailman_data['subject']
+              .$mailman_data['header']
+              .$mailman_data['part_text']
+              .$mailman_data['altbody']
+              .$mailman_data['part_html']
+              .$mailman_data['body']
+              .'\n</body>\n</html>\n'"
+              | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']
+             );
         // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
-    } //if isset test
+    }; //if isset test
 
 } //function send_mailing_list
 
