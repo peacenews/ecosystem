@@ -41,15 +41,19 @@ $_SESSION = array ( 'public_user' => array ('user_id' => "4",
 function send_mailing_list($send_data){
     require 'html2text.php'; //convert_html_to_text from http://journals.jevon.org/users/jevon-phd/entry/19818
 
+    // Declare an array containing the info needed by mailman or send_as_test
     $mailman_data = array ('listowner' => $_SESSION ['public_user'] ['email'],
                            'fromname' => $_SESSION ['public_user'] ['site_title'],
                            'groupname' => ltrim($_SESSION [public_user] [site_url], '/'),
                            'subject' => $send_data ['subject'],
-                           'doctype' => "\nMIME-Version: 1.0\nContent-Type: multipart/alternative;\nContent-Type: text/html; charset=utf-8;\n<!DOCTYPE html>\n<html>\n<body>\n",
+                           'header' => "\nMime-Vession: 1.0\nContent-Type: multipart/alternative;\n",
+                           'part_text' => "\nContent-Type: text/plain; charset=UTF-8;\n",
+                           'part_html' => "\nContent-Type: text/html; charset=utf-8;\n<!DOCTYPE html>\n<html>\n<body>\n",
                            'body' => $send_data[content],
                            'altbody' => convert_html_to_text($send_data[content]),
                            );
 
+    // Decalre a function to be called IF we need to send_as_test
     function send_as_test($mail_data) {
         require 'PHPMailerAutoload.php'; // http://phpmailer.worxware.com/index.php?pg=examplebmail
         $mail = new PHPMailer();
@@ -72,7 +76,11 @@ function send_mailing_list($send_data){
     if (isset ($send_data['test'])) {
         send_as_test($mailman_data);
     } else {
-        exec ('printf "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\nTo: <'.$mailman_data['groupname'].'@groups.zylum.org>\nSubject: '.$mailman_data['subject'].'\n\n'.$mailman_data['doctype'].'\n'.$mailman_data['body'].'</body>\n</html>\n'.'\nContent-type: text/plain; charset=utf-8\n'.$mailman_data['altbody'].'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
+    	// Format variables for use in mailman shell command
+        $mailman_from = "From: '.$mailman_data['fromname'].' <'.$mailman_data['listowner'].'>\n";
+        $mailman_to   = "To: <'.$mailman_data['groupname'].'@groups.zylum.org>\n";
+        // Execute the Mailman shell command 
+        exec ('printf '.$mailman_from.$mailmam_to.'Subject: '.$mailman_data['subject'].$mailman_data['header'].$mailman_data['part_text'].$mailman_data['part_html'].$mailman_data['body'].'\n</body>\n</html>\n'" | sudo /usr/lib/mailman/bin/inject --listname='.$mailman_data['groupname']);
         // IMPORTANT Mailman only understands the header fields if To: From: etc are at the begining of a line thus "\n To" (with space) will not work.
     } //if isset test
 
