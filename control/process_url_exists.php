@@ -10,7 +10,8 @@ $dberror
 control/processes.php
 circa line 240
 
-The code below (lines 78-89) should be insterted at control/processes.php line 240
+The code below (lines 78-89) should be insterted at control/processes.php line 240 and the subsequent line ammended to add the url test...
+if(($emailcount[0] >= 1) && ($groupcount[0] == 0) && ($urlexists == 0)){
 */
 
 /*
@@ -75,18 +76,18 @@ catch(PDOException $e) {
 
 // ---------------------------------------------------------
 
-// Check whether the url already exists in the website table
-//
-// Prepere the SQL statement http://code.tutsplus.com/tutorials/why-you-should-be-using-phps-pdo-for-database-access--net-12059
-$stmt = $dbpdo->prepare('SELECT url FROM website WHERE url = :url');
-// Set the fetch mode
-$stmt->setFetchMode(PDO::FETCH_ASSOC);
-// Bind the parameter to the named placeholder
-$stmt->bindParam(':url', $_POST['url']);
-// Execute the prepared statement
-$stmt->execute($data);
-// Assign the result of the statement to a variable
-$urlexists = $stmt->fetch();
+                                 // Check whether the url already exists in the website table
+                                 //
+                                 // Prepere the SQL statement http://code.tutsplus.com/tutorials/why-you-should-be-using-phps-pdo-for-database-access--net-12059
+                                 $stmt = $dbpdo->prepare('SELECT url FROM website WHERE url = :url');
+                                 // Set the fetch mode
+                                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                                 // Bind the parameter to the named placeholder
+                                 $stmt->bindParam(':url', $_POST['url']);
+                                 // Execute the prepared statement
+                                 $stmt->execute($data);
+                                 // Assign the result of the statement to a variable
+                                 $urlexists = $stmt->fetch();
 
 // Test whether we returned a match or not
 if ($urlexists == 0) {
