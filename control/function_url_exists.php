@@ -3,6 +3,12 @@
 Currently, the /register page does NOT check to see whether a given url is already taken.
 If /testing123 already exists and a new Owner signs up specifying /testing123 - neither the existing group or the new Owner will be able to access their web-pages.
 This function checks whethether a given url already exists in the website table, in the database.
+
+NB: There is already a check, just not a url check...
+"Group name is already taken, please choose another."
+$dberror
+control/processes.php
+circa line 240
 */
 
 /*
@@ -21,9 +27,6 @@ You should have received a copy of the GNU Affero General Public License along w
 
 echo "dbpdo_v4.php<br /><br />";
 // http://code.tutsplus.com/tutorials/why-you-should-be-using-phps-pdo-for-database-access--net-12059
-
-// NB: There is already a check, just not a url check...
-// Group name is already taken, please choose another.
 
 // TESTING: we need to declare the array $_POST - this array will already exist when the code runs for real
 $_POST = array ('invitename' => "",
