@@ -9,6 +9,8 @@ NB: There is already a check, just not a url check...
 $dberror
 control/processes.php
 circa line 240
+
+The code below (lines 78-89) should be insterted at control/processes.php line 240
 */
 
 /*
@@ -25,8 +27,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program.  If not, see http://www.gnu.org/licenses/agpl-3.0.html
 */
 
-echo "dbpdo_v4.php<br /><br />";
-// http://code.tutsplus.com/tutorials/why-you-should-be-using-phps-pdo-for-database-access--net-12059
+echo "process_url_exists.php<br /><br />";
 
 // TESTING: we need to declare the array $_POST - this array will already exist when the code runs for real
 $_POST = array ('invitename' => "",
@@ -39,7 +40,7 @@ $_POST = array ('invitename' => "",
                 'url' => "/testing123",
                );
 
-// Testing: echo simulated $_POST
+// TESTING: echo simulated $_POST
 /*
 echo "<pre>";
 print_r ($_POST);
@@ -54,7 +55,7 @@ $dbname = "zylumdev";
 $user = "root";
 $pass = "user";
 
-// Testing: echo database conection details
+// TESTING: echo database conection details
 /*
 echo $host.'<br />';
 echo $dbname.'<br />';
@@ -62,46 +63,46 @@ echo $user.'<br />';
 echo $host.'<br />';
 */
 
-# Connect to the database. DBH means DataBase Handle
+// Connect to the database. DBH means DataBase Handle
 try {
-    $DBH = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+    $dbpdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     # ERRMODE use for testing
-    $DBH->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+    $dbpdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 }
 catch(PDOException $e) {
     echo $e->getMessage();
 };
 
-// ---------- Fetch data from the database ----------
+// ---------------------------------------------------------
 
-// Prepere the SQL statement - because we want to use variable values in the select statement, query won't work;
-// STH means Statement Handle
-$STH = $DBH->prepare('SELECT url FROM website WHERE url = :url');
-
+// Check whether the url already exists in the website table
+//
+// Prepere the SQL statement http://code.tutsplus.com/tutorials/why-you-should-be-using-phps-pdo-for-database-access--net-12059
+$stmt = $dbpdo->prepare('SELECT url FROM website WHERE url = :url');
 // Set the fetch mode
-$STH->setFetchMode(PDO::FETCH_ASSOC);
-
+$stmt->setFetchMode(PDO::FETCH_ASSOC);
 // Bind the parameter to the named placeholder
-$STH->bindParam(':url', $_POST['url']);
-
+$stmt->bindParam(':url', $_POST['url']);
 // Execute the prepared statement
-$STH->execute($data);
+$stmt->execute($data);
+// Assign the result of the statement to a variable
+$urlexists = $stmt->fetch();
 
-// Fetch data from the database
-$row = $STH->fetch();
+// Test whether we returned a match or not
+if ($urlexists == 0) {
+    echo "no match";
+}
 
 // Echo the data we fetched
 /*
 echo '<pre>';
-print_r ($row);
+print_r ($urlexists);
+print_r ($_POST);
 echo '</pre>';
 */
-if ($_POST['url']=$row) {
-    echo "match";
-}
 
 // ---------- Close the connection ----------
 
-$DBH = null;
+$dbpdo = null;
 
 ?>
