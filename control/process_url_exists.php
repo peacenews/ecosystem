@@ -78,12 +78,14 @@ catch(PDOException $e) {
 
                                  // Check whether the url already exists in the website table
                                  //
+                                 // Add a forward slash
+                                 $queryurl='/'.$_POST["url"];
                                  // Prepere the SQL statement http://code.tutsplus.com/tutorials/why-you-should-be-using-phps-pdo-for-database-access--net-12059
                                  $stmt = $dbpdo->prepare('SELECT url FROM website WHERE url = :url');
                                  // Set the fetch mode
                                  $stmt->setFetchMode(PDO::FETCH_ASSOC);
                                  // Bind the parameter to the named placeholder
-                                 $stmt->bindParam(':url', $_POST['url']);
+                                 $stmt->bindParam(':url', $queryurl);
                                  // Execute the prepared statement
                                  $stmt->execute($data);
                                  // Assign the result of the statement to a variable
