@@ -38,7 +38,8 @@ $_POST = array ('invitename' => "",
                                         ),
                 'reason' => "",
                 'title' => "",
-                'url' => "/testing123",
+                'url' => "testing123",
+                'g-recaptcha-response' => "",
                );
 
 // TESTING: echo simulated $_POST
