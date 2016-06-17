@@ -13,7 +13,7 @@ circa line 240
 The code below (lines 85-98 of this file) should be insterted at control/processes.php line 240 and the subsequent line ammended to add the url test...
 if(($emailcount[0] >= 1) && ($groupcount[0] == 0) && ($urlexists == 0)){
 and
-}else if (($emailcount[0] == 0) && ($groupcount[0] == 0) && $urlexists ==0)){
+}else if (($emailcount[0] == 0) && ($groupcount[0] == 0) && ($urlexists == 0)){
 
 NB: With this new code the same error message shows, regardless of whether the group name or group url is already taken.
 Need to handle these two errors distictly or change the message in templates/home_templates/register.php
